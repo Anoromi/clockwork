@@ -1,0 +1,12 @@
+{
+  "locales": [
+    "en",
+    "uk"
+  ],
+  "defaultLocale": "en",
+  "pages": {
+    "/timer": [
+      "timer"
+    ]
+  }
+}

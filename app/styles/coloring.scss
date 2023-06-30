@@ -1,0 +1,19 @@
+
+@mixin surface-coloring($hover, $active) {
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		transition: background ease-out 500ms;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	&:hover::before {
+		background: $hover;
+	}
+	&:active::before {
+		background: $active;
+	}
+}
