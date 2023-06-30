@@ -43,7 +43,7 @@ export default function Timer({ initial, className }: Props) {
 		console.log("changed", initial)
 
 		const ex = () => {
-			if (initial === undefined) return
+			if (initial === undefined || initial.lastContinue === undefined) return
 			console.log(dayjs(initial.lastContinue))
 			return setTimeout(() => {
 				console.log("jenny", executing)
