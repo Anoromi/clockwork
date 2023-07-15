@@ -11,7 +11,7 @@ type ClickEvent = {
 	currentTarget: React.MouseEvent<HTMLElement>["currentTarget"]
 }
 
-export function useRipple(rippleDuration: number = 300) {
+export function useRipple(rippleDuration: number = 600) {
 	const [ripplePos, setRipplePos] = useState<{
 		x: number
 		y: number
@@ -115,7 +115,7 @@ export function useRipple(rippleDuration: number = 300) {
 						left: `${ripplePos!.x}px`,
 						top: `${ripplePos!.y}px`,
 						transition: `transform ${rippleDuration}ms linear`,
-						opacity: 0.3,
+						opacity: 0.2,
 						width: ripplePos!.diameter,
 						height: ripplePos!.diameter,
 						// transform: "scale(4)",

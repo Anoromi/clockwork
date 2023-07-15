@@ -13,6 +13,11 @@ type Post {
   author: Author
 }
 
+
+type G {
+  cat: Post
+}
+
 type Query {
   posts: [Post]
 }

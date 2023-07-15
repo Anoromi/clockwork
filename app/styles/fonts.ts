@@ -4,6 +4,7 @@ import localFont from "next/font/local"
 // define your variable fonts
 const rubik = Rubik({
 	subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext"],
+  weight: ['400', '500', '600', '700', '800', '900']
 })
 
 const vollkorn = Vollkorn({

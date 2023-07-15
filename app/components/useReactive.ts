@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react";
 
 // export class Reactive<T> {
 // 	_value: T
@@ -17,11 +17,17 @@ import { Dispatch, SetStateAction, useState } from "react"
 //     this._dispatch(value)
 //   }
 // }
+//
 
-export function useReactive<T>(initial: T) {
-	let [value, setValue] = useState(initial)
-	return {
-		value,
-		set: setValue,
-	}
+export type Modal<T> = {
+  readonly value: T;
+  set: Dispatch<SetStateAction<T>>;
+};
+
+export function useReactive<T>(initial: T): Modal<T> {
+  let [value, setValue] = useState(initial);
+  return {
+    value,
+    set: setValue,
+  };
 }

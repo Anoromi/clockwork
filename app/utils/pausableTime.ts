@@ -1,3 +1,4 @@
+import {assert} from "console"
 import dayjs from "dayjs"
 
 export type PausableTime = {
@@ -22,5 +23,13 @@ export function pauseTimer(time: PausableTime) {
 	let then = dayjs(time.lastContinue!)
 	time.extraMilliseconds += now.diff(then, 'milliseconds')
 	time.lastContinue = undefined
+}
+
+
+export function resumeTimer(time: PausableTime) {
+  console.assert(isPaused(time));
+
+  time.paused = false;
+  time.lastContinue = new Date().getTime()
 
 }

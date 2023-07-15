@@ -28,6 +28,11 @@ export type AuthorPostsArgs = {
   findTitle?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type G = {
+  __typename?: 'G';
+  cat?: Maybe<Post>;
+};
+
 export type Post = {
   __typename?: 'Post';
   author?: Maybe<Author>;
@@ -113,6 +118,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Author: ResolverTypeWrapper<Author>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  G: ResolverTypeWrapper<G>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Post: ResolverTypeWrapper<Post>;
   Query: ResolverTypeWrapper<{}>;
@@ -123,6 +129,7 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Author: Author;
   Boolean: Scalars['Boolean']['output'];
+  G: G;
   Int: Scalars['Int']['output'];
   Post: Post;
   Query: {};
@@ -134,6 +141,11 @@ export type AuthorResolvers<ContextType = any, ParentType extends ResolversParen
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   posts?: Resolver<Maybe<Array<Maybe<ResolversTypes['Post']>>>, ParentType, ContextType, Partial<AuthorPostsArgs>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type GResolvers<ContextType = any, ParentType extends ResolversParentTypes['G'] = ResolversParentTypes['G']> = {
+  cat?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -150,6 +162,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type Resolvers<ContextType = any> = {
   Author?: AuthorResolvers<ContextType>;
+  G?: GResolvers<ContextType>;
   Post?: PostResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };

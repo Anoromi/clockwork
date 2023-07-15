@@ -4,7 +4,7 @@ import "./globals.scss"
 // import "sanitize.css/typography.css"
 import "reset-css"
 
-import styles from "./layout.module.scss"
+import styles from "@/app/[locale]/layout.module.scss"
 import { rubik } from "../styles/fonts"
 import { notFound } from "next/navigation"
 import { NextIntlClientProvider, useLocale } from "next-intl"
@@ -12,6 +12,7 @@ import classNames from "classnames"
 import { Provider } from "react-redux"
 import { store } from "../store"
 import Providers from "../Providers"
+import {BottomAppBar} from "./components/bottomAppBar"
 
 export const metadata = {
 	title: "Create Next App",
@@ -43,7 +44,10 @@ export default async function RootLayout({
 		<html lang="en" className="light">
 			<body className={classNames(rubik.className, styles.body)}>
 				<NextIntlClientProvider locale={params.locale} messages={messages}>
-					<Providers>{children}</Providers>
+					<Providers>
+          {children}
+          <BottomAppBar locale={params.locale}/>
+          </Providers>
 				</NextIntlClientProvider>
 			</body>
 		</html>

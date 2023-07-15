@@ -44,6 +44,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.8
     version: 1.11.8
+  dexie:
+    specifier: ^3.2.4
+    version: 3.2.4
   eslint:
     specifier: 8.43.0
     version: 8.43.0
@@ -3101,6 +3104,11 @@ packages:
 
   /detect-node@2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
+    dev: false
+
+  /dexie@3.2.4:
+    resolution: {integrity: sha512-VKoTQRSv7+RnffpOJ3Dh6ozknBqzWw/F3iqMdsZg958R0AS8AnY9x9d1lbwENr0gzeGJHXKcGhAMRaqys6SxqA==}
+    engines: {node: '>=6.0'}
     dev: false
 
   /diff@4.0.2:

@@ -1,16 +1,31 @@
-import { UserActivity } from "./data"
+
+import {IActivity} from "../backend/database"
 import { wait } from "./wait"
 
-export async function getUserExercises(): Promise<UserActivity[]> {
+export async function getUserExercises(): Promise<IActivity[]> {
 	await wait(500)
 	return [
 		{
 			name: "Sit up",
-			type: "count-parameter",
+			metrics: [
+        {
+          metric: 'kg',
+          name: 'weight'
+        }
+      ]
 		},
 		{
 			name: "Something",
-			type: "weight+count-parameter",
+      metrics: [
+        {
+          metric: 'kg',
+          name: 'weight'
+        },
+        {
+          metric: '',
+          name: 'Count'
+        }
+      ]
 		},
 	]
 }

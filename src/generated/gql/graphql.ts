@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -29,6 +28,11 @@ export type AuthorPostsArgs = {
   findTitle?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type G = {
+  __typename?: 'G';
+  cat?: Maybe<Post>;
+};
+
 export type Post = {
   __typename?: 'Post';
   author?: Maybe<Author>;
@@ -40,11 +44,3 @@ export type Query = {
   __typename?: 'Query';
   posts?: Maybe<Array<Maybe<Post>>>;
 };
-
-export type HeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type HeQuery = { __typename?: 'Query', posts?: Array<{ __typename?: 'Post', id: number } | null> | null };
-
-
-export const HeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"he"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"posts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<HeQuery, HeQueryVariables>;

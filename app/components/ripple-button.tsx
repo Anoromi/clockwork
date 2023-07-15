@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ReactElement, useState } from "react"
+import React, { ButtonHTMLAttributes, ReactElement, useState } from "react"
 import styles from "./ripple.module.scss"
 import classNames from "classnames"
 import { useRipple } from "./useRipple"
@@ -8,14 +8,17 @@ import { useRipple } from "./useRipple"
 type Props = {
 	className?: string
 	onClick?: React.MouseEventHandler<HTMLButtonElement>
-	as?: NormalElement
+	as?: NormalElement,
+  type?: ButtonHTMLAttributes<unknown>['type']
 }
+
 
 export default function RippleButton({
 	children,
 	className,
 	onClick,
 	as = "button",
+  type
 }: React.PropsWithChildren<Props>) {
 	// const [rippleClicked, setRippleClicked] = useState(false)
 	// const [ripplePos, setRipplePos] = useState<{
@@ -73,7 +76,7 @@ export default function RippleButton({
 	const Element = as as NormalElement
 	const extraProps: Record<string, unknown> = {}
 	if (as === "button") {
-		extraProps.type = "button"
+		extraProps.type = type
 		extraProps.onClick = onClick
 	}
 	return (
