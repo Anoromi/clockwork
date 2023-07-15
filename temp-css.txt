@@ -1,9 +1,0 @@
-
-"cssmodules":{
- "command": "cssmodules-language-server",
- "initializationOptions": {"camelCase": "dashes"},
- "filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
- "requireRootPattern": 0,
- "settings": {}
- }
-}
