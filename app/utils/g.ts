@@ -9,11 +9,11 @@ const c = graphql(`#graphql
   }
 `)
 
--- gql`
---   query he {
---     posts {
---       id
---       title
---     }
---   }
--- `
+// gql`
+//   query he {
+//     posts {
+//       id
+//       title
+//     }
+//   }
+// `

@@ -169,7 +169,7 @@ function CurrentEvent({ index, metrics, values }: CurrentEventsProps) {
         {
             values.map((v, i) => 
             <>
-              <div className={styles.infoText}>
+              <div className={styles.infoText} key={i}>
                 {v} <span>{metrics[i].metric}</span>
               </div>
             </>)
