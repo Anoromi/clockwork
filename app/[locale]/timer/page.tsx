@@ -2,7 +2,7 @@
 
 import React, { Suspense, useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "@/app/[locale]/timer/styles.module.scss";
+import styles from "@/app/[locale]/timer/page.module.scss";
 import RippleButton from "../../components/ripple-button";
 import Inh from "./inh";
 import { clockFont, rubik } from "../../styles/fonts";
@@ -21,14 +21,13 @@ import { useReactive } from "@/app/components/useReactive";
 import { Dialog } from "@headlessui/react";
 import AddRecordDialog from "./component/addRecordDialog";
 import { Metric } from "@/app/backend/database";
-import {useAppDispatch, useAppSelector} from "@/app/utils/clientUseRedux";
-
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import Flex from "@/app/components/layout/flex";
+import CommonButton from "@/app/components/button/commonButton";
+import {switchTheme} from "@/app/extraStore";
 
 //const useAppDispatch: () => AppDispatch = useDispatch;
 //const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
-
-
 
 export default function TimerPage() {
   const t = useTranslations("Timer");
@@ -39,6 +38,11 @@ export default function TimerPage() {
   return (
     <>
       <main className={classNames(rubik.className, styles.main)}>
+        <Flex<"header"> as="header" justifyContent={"flex-end"} className={styles.header}>
+          <CommonButton buttonType="text" textType="icon" onClick={() => dispatch(switchTheme())}>
+            <Icon icon="mdi:color" fontSize={"28px"} />
+          </CommonButton>
+        </Flex>
         <div className={classNames(styles.container)}>
           <div className={classNames(styles["top-bar"])}>
             <div className={classNames(styles.summary)}>
@@ -64,6 +68,7 @@ export default function TimerPage() {
               }) ?? <></>}
             </section>
           </div>
+
           <div className={styles["clock-wrapper"]}>
             {state.currentTimer !== null ? (
               <>
@@ -82,6 +87,7 @@ export default function TimerPage() {
               </>
             )}
           </div>
+
           <div className={classNames(styles["main-actions"], styles.test)}>
             <RippleButton
               className={styles["record-button"]}
@@ -131,9 +137,9 @@ export default function TimerPage() {
                 <>
                   <RippleButton
                     className={styles.start}
-                    // onClick={() => {
-                    //   dispatch(start());
-                    // }}
+                    onClick={() => {
+                      dispatch(start());
+                    }}
                     key="start"
                   >
                     <Icon icon="mingcute:play-fill" fontSize={30} />
@@ -146,11 +152,13 @@ export default function TimerPage() {
         </div>
       </main>
 
-      <AddRecordDialog
-        opened={openedRecord.value}
-        onClose={() => openedRecord.set(false)}
-        metrics={state.record!.activity.metrics}
-      />
+      {state.record !== null && (
+        <AddRecordDialog
+          opened={openedRecord.value}
+          onClose={() => openedRecord.set(false)}
+          metrics={state.record!.activity.metrics}
+        />
+      )}
     </>
   );
 }
@@ -166,17 +174,14 @@ function CurrentEvent({ index, metrics, values }: CurrentEventsProps) {
     <div className={classNames(styles.card)}>
       <h5 className={styles.index}>{index}</h5>
       <div className={styles.info}>
-        {
-            values.map((v, i) => 
-            <>
-              <div className={styles.infoText} key={i}>
-                {v} <span>{metrics[i].metric}</span>
-              </div>
-            </>)
-          }
+        {values.map((v, i) => (
+          <>
+            <div className={styles.infoText} key={i}>
+              {v} <span>{metrics[i].metric}</span>
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );
 }
-
-

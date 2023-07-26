@@ -3,349 +3,305 @@
 @import '@sanitize.css/typography.css'; */
 
 .light {
-	$level0: 0;
-	$level1: 0.05;
-	$level2: 0.08;
-	$level3: 0.11;
-	$level4: 0.20;
+  $level0: 0;
+  $level1: 0.05;
+  $level2: 0.08;
+  $level3: 0.11;
+  $level4: 0.2;
 
-	--primary0: rgba(0, 0, 0, 1);
-	--primary10: rgba(63, 0, 26, 1);
-	--primary20: rgba(94, 17, 47, 1);
-	--primary30: rgba(124, 41, 69, 1);
-	--primary40: rgba(153, 64, 92, 1);
-	--primary50: rgba(184, 88, 117, 1);
-	--primary60: rgba(214, 113, 142, 1);
-	--primary70: rgba(246, 139, 168, 1);
-	--primary80: rgba(255, 177, 196, 1);
-	--primary90: rgba(255, 217, 224, 1);
-	--primary95: rgba(255, 236, 239, 1);
-	--primary99: rgba(255, 251, 255, 1);
-	--primary100: rgba(255, 255, 255, 1);
+  --primary0: rgba(0, 0, 0, 1);
+  --primary10: rgba(63, 0, 26, 1);
+  --primary20: rgba(94, 17, 47, 1);
+  --primary30: rgba(124, 41, 69, 1);
+  --primary40: rgba(153, 64, 92, 1);
+  --primary50: rgba(184, 88, 117, 1);
+  --primary60: rgba(214, 113, 142, 1);
+  --primary70: rgba(246, 139, 168, 1);
+  --primary80: rgba(255, 177, 196, 1);
+  --primary90: rgba(255, 217, 224, 1);
+  --primary95: rgba(255, 236, 239, 1);
+  --primary99: rgba(255, 251, 255, 1);
+  --primary100: rgba(255, 255, 255, 1);
 
-	--primary-level-0: rgba(153, 64, 92, #{$level0});
-	--primary-level-1: rgba(153, 64, 92, #{$level1});
-	--primary-level-2: rgba(153, 64, 92, #{$level2});
-	--primary-level-3: rgba(153, 64, 92, #{$level3});
-	--primary-level-4: rgba(153, 64, 92, #{$level4});
+  --primary-level-0: rgba(153, 64, 92, #{$level0});
+  --primary-level-1: rgba(153, 64, 92, #{$level1});
+  --primary-level-2: rgba(153, 64, 92, #{$level2});
+  --primary-level-3: rgba(153, 64, 92, #{$level3});
+  --primary-level-4: rgba(153, 64, 92, #{$level4});
 
-	--on-primary-level-0: rgba(255, 255, 255, #{$level0});
-	--on-primary-level-1: rgba(255, 255, 255, #{$level1});
-	--on-primary-level-2: rgba(255, 255, 255, #{$level2});
-	--on-primary-level-3: rgba(255, 255, 255, #{$level3});
-	--on-primary-level-4: rgba(255, 255, 255, #{$level4});
+  --on-primary-level-0: rgba(255, 255, 255, #{$level0});
+  --on-primary-level-1: rgba(255, 255, 255, #{$level1});
+  --on-primary-level-2: rgba(255, 255, 255, #{$level2});
+  --on-primary-level-3: rgba(255, 255, 255, #{$level3});
+  --on-primary-level-4: rgba(255, 255, 255, #{$level4});
 
-	--secondary0: rgba(0, 0, 0, 1);
-	--secondary10: rgba(47, 0, 76, 1);
-	--secondary20: rgba(71, 24, 103, 1);
-	--secondary30: rgba(96, 49, 127, 1);
-	--secondary40: rgba(121, 74, 153, 1);
-	--secondary50: rgba(147, 99, 180, 1);
-	--secondary60: rgba(175, 124, 208, 1);
-	--secondary70: rgba(203, 151, 237, 1);
-	--secondary80: rgba(227, 181, 255, 1);
-	--secondary90: rgba(243, 218, 255, 1);
-	--secondary95: rgba(251, 236, 255, 1);
-	--secondary99: rgba(255, 251, 255, 1);
-	--secondary100: rgba(255, 255, 255, 1);
+  --secondary0: rgba(0, 0, 0, 1);
+  --secondary10: rgba(47, 0, 76, 1);
+  --secondary20: rgba(71, 24, 103, 1);
+  --secondary30: rgba(96, 49, 127, 1);
+  --secondary40: rgba(121, 74, 153, 1);
+  --secondary50: rgba(147, 99, 180, 1);
+  --secondary60: rgba(175, 124, 208, 1);
+  --secondary70: rgba(203, 151, 237, 1);
+  --secondary80: rgba(227, 181, 255, 1);
+  --secondary90: rgba(243, 218, 255, 1);
+  --secondary95: rgba(251, 236, 255, 1);
+  --secondary99: rgba(255, 251, 255, 1);
+  --secondary100: rgba(255, 255, 255, 1);
 
+  --secondary-level-0: rgba(121, 74, 153, #{$level0});
+  --secondary-level-1: rgba(121, 74, 153, #{$level1});
+  --secondary-level-2: rgba(121, 74, 153, #{$level2});
+  --secondary-level-3: rgba(121, 74, 153, #{$level3});
+  --secondary-level-4: rgba(121, 74, 153, #{$level4});
 
-	--secondary-level-0: rgba(121, 74, 153, #{$level0});
-	--secondary-level-1: rgba(121, 74, 153, #{$level1});
-	--secondary-level-2: rgba(121, 74, 153, #{$level2});
-	--secondary-level-3: rgba(121, 74, 153, #{$level3});
-	--secondary-level-4: rgba(121, 74, 153, #{$level4});
+  --tertiary0: rgba(0, 0, 0, 1);
+  --tertiary10: rgba(45, 22, 0, 1);
+  --tertiary20: rgba(71, 42, 10, 1);
+  --tertiary30: rgba(97, 64, 30, 1);
+  --tertiary40: rgba(123, 87, 51, 1);
+  --tertiary50: rgba(151, 111, 74, 1);
+  --tertiary60: rgba(179, 136, 97, 1);
+  --tertiary70: rgba(208, 162, 121, 1);
+  --tertiary80: rgba(237, 189, 146, 1);
+  --tertiary90: rgba(255, 220, 191, 1);
+  --tertiary95: rgba(255, 238, 225, 1);
+  --tertiary99: rgba(255, 251, 255, 1);
+  --tertiary100: rgba(255, 255, 255, 1);
 
-	--tertiary0: rgba(0, 0, 0, 1);
-	--tertiary10: rgba(45, 22, 0, 1);
-	--tertiary20: rgba(71, 42, 10, 1);
-	--tertiary30: rgba(97, 64, 30, 1);
-	--tertiary40: rgba(123, 87, 51, 1);
-	--tertiary50: rgba(151, 111, 74, 1);
-	--tertiary60: rgba(179, 136, 97, 1);
-	--tertiary70: rgba(208, 162, 121, 1);
-	--tertiary80: rgba(237, 189, 146, 1);
-	--tertiary90: rgba(255, 220, 191, 1);
-	--tertiary95: rgba(255, 238, 225, 1);
-	--tertiary99: rgba(255, 251, 255, 1);
-	--tertiary100: rgba(255, 255, 255, 1);
+  --error0: rgba(0, 0, 0, 1);
+  --error10: rgba(65, 0, 2, 1);
+  --error20: rgba(105, 0, 5, 1);
+  --error30: rgba(147, 0, 10, 1);
+  --error40: rgba(186, 26, 26, 1);
+  --error50: rgba(222, 55, 48, 1);
+  --error60: rgba(255, 84, 73, 1);
+  --error70: rgba(255, 137, 125, 1);
+  --error80: rgba(255, 180, 171, 1);
+  --error90: rgba(255, 218, 214, 1);
+  --error95: rgba(255, 237, 234, 1);
+  --error99: rgba(255, 251, 255, 1);
+  --error100: rgba(255, 255, 255, 1);
 
-	--error0: rgba(0, 0, 0, 1);
-	--error10: rgba(65, 0, 2, 1);
-	--error20: rgba(105, 0, 5, 1);
-	--error30: rgba(147, 0, 10, 1);
-	--error40: rgba(186, 26, 26, 1);
-	--error50: rgba(222, 55, 48, 1);
-	--error60: rgba(255, 84, 73, 1);
-	--error70: rgba(255, 137, 125, 1);
-	--error80: rgba(255, 180, 171, 1);
-	--error90: rgba(255, 218, 214, 1);
-	--error95: rgba(255, 237, 234, 1);
-	--error99: rgba(255, 251, 255, 1);
-	--error100: rgba(255, 255, 255, 1);
+  --neutral0: #000000;
+  --neutral4: #120d0b;
+  --neutral6: #181210;
+  --neutral10: #201a18;
+  --neutral12: #241e1b;
+  --neutral17: #2f2926;
+  --neutral20: #362f2c;
+  --neutral22: #3a3330;
+  --neutral24: #3f3834;
+  --neutral30: #4d4542;
+  --neutral40: #655d59;
+  --neutral50: #7f7571;
+  --neutral60: #998f8a;
+  --neutral70: #b4a9a5;
+  --neutral80: #d0c4bf;
+  --neutral87: #e4d7d3;
+  --neutral90: #ede0db;
+  --neutral92: #f2e6e1;
+  --neutral94: #f8ebe6;
+  --neutral95: #fbeee9;
+  --neutral96: #fef1ec;
+  --neutral99: #fffbff;
+  --neutral100: #ffffff;
+  --neutral5: #15100d;
+  --neutral25: #413a37;
+  --neutral35: #59514d;
+  --neutral98: #fff8f6;
 
-	--neutral0: #000000;
-	--neutral4: #120d0b;
-	--neutral6: #181210;
-	--neutral10: #201a18;
-	--neutral12: #241e1b;
-	--neutral17: #2f2926;
-	--neutral20: #362f2c;
-	--neutral22: #3a3330;
-	--neutral24: #3f3834;
-	--neutral30: #4d4542;
-	--neutral40: #655d59;
-	--neutral50: #7f7571;
-	--neutral60: #998f8a;
-	--neutral70: #b4a9a5;
-	--neutral80: #d0c4bf;
-	--neutral87: #e4d7d3;
-	--neutral90: #ede0db;
-	--neutral92: #f2e6e1;
-	--neutral94: #f8ebe6;
-	--neutral95: #fbeee9;
-	--neutral96: #fef1ec;
-	--neutral99: #fffbff;
-	--neutral100: #ffffff;
-	--neutral5: #15100d;
-	--neutral25: #413a37;
-	--neutral35: #59514d;
-	--neutral98: #fff8f6;
+  /* TODO finish surfaces variables */
+  --surface: var(--neutral98);
+  --surface-container-lowest: var(--neutral100);
+  --surface-container-low: var(--neutral96);
+  --surface-container: var(--neutral94);
+  --surface-container-high: var(--neutral92);
+  --surface-container-highest: var(--neutral90);
+  --on-surface: var(--neutral10);
 
-	/* TODO finish surfaces variables */
-	--surface: var(--neutral98);
-	--surface-container-lowest: var(--neutral100);
-	--surface-container-low: var(--neutral96);
-	--surface-container: var(--neutral94);
-	--surface-container-high: var(--neutral92);
-	--surface-container-highest: var(--neutral90);
-	--on-surface: var(--neutral10);
-  
+  --neutral-variant0: rgba(0, 0, 0, 1);
+  --neutral-variant10: rgba(36, 25, 27, 1);
+  --neutral-variant20: rgba(58, 45, 48, 1);
+  --neutral-variant30: rgba(81, 67, 70, 1);
+  --neutral-variant40: rgba(106, 90, 93, 1);
+  --neutral-variant50: rgba(132, 115, 118, 1);
+  --neutral-variant60: rgba(158, 140, 143, 1);
+  --neutral-variant70: rgba(186, 167, 170, 1);
+  --neutral-variant80: rgba(214, 194, 197, 1);
+  --neutral-variant90: rgba(243, 221, 225, 1);
+  --neutral-variant95: rgba(255, 236, 239, 1);
+  --neutral-variant99: rgba(255, 251, 255, 1);
+  --neutral-variant100: rgba(255, 255, 255, 1);
 
-	--material-theme--ref--neutral-variant--neutral-variant0: rgba(0, 0, 0, 1);
-	--material-theme--ref--neutral-variant--neutral-variant10: rgba(
-		36,
-		25,
-		27,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant20: rgba(
-		58,
-		45,
-		48,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant30: rgba(
-		81,
-		67,
-		70,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant40: rgba(
-		106,
-		90,
-		93,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant50: rgba(
-		132,
-		115,
-		118,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant60: rgba(
-		158,
-		140,
-		143,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant70: rgba(
-		186,
-		167,
-		170,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant80: rgba(
-		214,
-		194,
-		197,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant90: rgba(
-		243,
-		221,
-		225,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant95: rgba(
-		255,
-		236,
-		239,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant99: rgba(
-		255,
-		251,
-		255,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant100: rgba(
-		255,
-		255,
-		255,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant4: rgba(21, 11, 14, 1);
-	--material-theme--ref--neutral-variant--neutral-variant5: rgba(24, 14, 17, 1);
-	--material-theme--ref--neutral-variant--neutral-variant6: rgba(27, 16, 19, 1);
-	--material-theme--ref--neutral-variant--neutral-variant12: rgba(
-		40,
-		29,
-		31,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant17: rgba(
-		51,
-		39,
-		41,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant22: rgba(
-		62,
-		49,
-		52,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant24: rgba(
-		67,
-		54,
-		56,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant25: rgba(
-		69,
-		56,
-		59,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant35: rgba(
-		94,
-		79,
-		82,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant87: rgba(
-		234,
-		213,
-		216,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant92: rgba(
-		248,
-		227,
-		230,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant94: rgba(
-		254,
-		233,
-		236,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant96: rgba(
-		255,
-		240,
-		242,
-		1
-	);
-	--material-theme--ref--neutral-variant--neutral-variant98: rgba(
-		255,
-		248,
-		248,
-		1
-	);
+  --outline: var(--neutral-variant50);
 
-	--ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
-	--ease-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --material-theme--ref--neutral-variant--neutral-variant4: rgba(21, 11, 14, 1);
+  --material-theme--ref--neutral-variant--neutral-variant5: rgba(24, 14, 17, 1);
+  --material-theme--ref--neutral-variant--neutral-variant6: rgba(27, 16, 19, 1);
+  --material-theme--ref--neutral-variant--neutral-variant12: rgba(
+    40,
+    29,
+    31,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant17: rgba(
+    51,
+    39,
+    41,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant22: rgba(
+    62,
+    49,
+    52,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant24: rgba(
+    67,
+    54,
+    56,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant25: rgba(
+    69,
+    56,
+    59,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant35: rgba(
+    94,
+    79,
+    82,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant87: rgba(
+    234,
+    213,
+    216,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant92: rgba(
+    248,
+    227,
+    230,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant94: rgba(
+    254,
+    233,
+    236,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant96: rgba(
+    255,
+    240,
+    242,
+    1
+  );
+  --material-theme--ref--neutral-variant--neutral-variant98: rgba(
+    255,
+    248,
+    248,
+    1
+  );
+}
+
+:root {
+  --ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
 }
 
 .dark {
-	--primary100: rgba(0, 0, 0, 1);
-	--primary99: rgba(63, 0, 26, 1);
-	--primary95: rgba(94, 17, 47, 1);
-	--primary90: rgba(124, 41, 69, 1);
-	--primary80: rgba(153, 64, 92, 1);
-	--primary70: rgba(184, 88, 117, 1);
-	--primary60: rgba(214, 113, 142, 1);
-	--primary50: rgba(246, 139, 168, 1);
-	--primary40: rgba(255, 177, 196, 1);
-	--primary30: rgba(255, 217, 224, 1);
-	--primary25: rgba(255, 236, 239, 1);
-	--primary10: rgba(255, 251, 255, 1);
-	--primary0: rgba(255, 255, 255, 1);
+  --primary100: rgba(0, 0, 0, 1);
+  --primary99: rgba(63, 0, 26, 1);
+  --primary95: rgba(94, 17, 47, 1);
+  --primary90: rgba(124, 41, 69, 1);
+  --primary80: rgba(153, 64, 92, 1);
+  --primary70: rgba(184, 88, 117, 1);
+  --primary60: rgba(214, 113, 142, 1);
+  --primary50: rgba(246, 139, 168, 1);
+  --primary40: rgba(255, 177, 196, 1);
+  --primary30: rgba(255, 217, 224, 1);
+  --primary25: rgba(255, 236, 239, 1);
+  --primary10: rgba(255, 251, 255, 1);
+  --primary0: rgba(255, 255, 255, 1);
 
-	--neutral0: #000000;
-	--neutral4: #120d0b;
-	--neutral6: #181210;
-	--neutral10: #201a18;
-	--neutral12: #241e1b;
-	--neutral17: #2f2926;
-	--neutral20: #362f2c;
-	--neutral22: #3a3330;
-	--neutral24: #3f3834;
-	--neutral30: #4d4542;
-	--neutral40: #655d59;
-	--neutral50: #7f7571;
-	--neutral60: #998f8a;
-	--neutral70: #b4a9a5;
-	--neutral80: #d0c4bf;
-	--neutral87: #e4d7d3;
-	--neutral90: #ede0db;
-	--neutral92: #f2e6e1;
-	--neutral94: #f8ebe6;
-	--neutral95: #fbeee9;
-	--neutral96: #fef1ec;
-	--neutral99: #fffbff;
-	--neutral100: #ffffff;
-	--neutral5: #15100d;
-	--neutral25: #413a37;
-	--neutral35: #59514d;
-	--neutral98: #fff8f6;
+  --neutral0: #000000;
+  --neutral4: #120d0b;
+  --neutral6: #181210;
+  --neutral10: #201a18;
+  --neutral12: #241e1b;
+  --neutral17: #2f2926;
+  --neutral20: #362f2c;
+  --neutral22: #3a3330;
+  --neutral24: #3f3834;
+  --neutral30: #4d4542;
+  --neutral40: #655d59;
+  --neutral50: #7f7571;
+  --neutral60: #998f8a;
+  --neutral70: #b4a9a5;
+  --neutral80: #d0c4bf;
+  --neutral87: #e4d7d3;
+  --neutral90: #ede0db;
+  --neutral92: #f2e6e1;
+  --neutral94: #f8ebe6;
+  --neutral95: #fbeee9;
+  --neutral96: #fef1ec;
+  --neutral99: #fffbff;
+  --neutral100: #ffffff;
+  --neutral5: #15100d;
+  --neutral25: #413a37;
+  --neutral35: #59514d;
+  --neutral98: #fff8f6;
 
-	--surface: var(--neutral6);
-	--surface-container-lowest: var(--neutral4);
-	--surface-container-low: var(--neutral10);
-	--surface-container: var(--neutral12);
-	--surface-container-high: var(--neutral17);
-	--surface-container-highest: var(--neutral22);
-	--on-surface: var(--neutral90);
+  --surface: var(--neutral6);
+  --surface-container-lowest: var(--neutral4);
+  --surface-container-low: var(--neutral10);
+  --surface-container: var(--neutral12);
+  --surface-container-high: var(--neutral17);
+  --surface-container-highest: var(--neutral22);
+  --on-surface: var(--neutral90);
+
+  --neutral-variant0: rgba(0, 0, 0, 1);
+  --neutral-variant10: rgba(36, 25, 27, 1);
+  --neutral-variant20: rgba(58, 45, 48, 1);
+  --neutral-variant30: rgba(81, 67, 70, 1);
+  --neutral-variant40: rgba(106, 90, 93, 1);
+  --neutral-variant50: rgba(132, 115, 118, 1);
+  --neutral-variant60: rgba(158, 140, 143, 1);
+  --neutral-variant70: rgba(186, 167, 170, 1);
+  --neutral-variant80: rgba(214, 194, 197, 1);
+  --neutral-variant90: rgba(243, 221, 225, 1);
+  --neutral-variant95: rgba(255, 236, 239, 1);
+  --neutral-variant99: rgba(255, 251, 255, 1);
+  --neutral-variant100: rgba(255, 255, 255, 1);
+
+  --outline: var(--neurtal-variant50);
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-	}
+  :root {
+  }
 }
 
 * {
-//	box-sizing: border-box;
-//	padding: 0;
-//	margin: 0;
+  //	box-sizing: border-box;
+  //	padding: 0;
+  //	margin: 0;
 
- // -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
-  
- -webkit-tap-highlight-color: transparent;
+  // -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 
-  
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
-	max-width: 100vw;
-	overflow-x: hidden;
+  max-width: 100vw;
+  overflow-x: hidden;
   font-size: 1rem;
 }
 
 button {
   font-family: inherit;
 }
-

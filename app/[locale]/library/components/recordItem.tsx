@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function RecordItem({ record, activity }: Props) {
-  console.log('arr', record, activity)
+  //console.log('arr', record, activity)
   return (
     <>
       <div className={styles.card}>
@@ -36,7 +36,7 @@ function Attempt({
       <div className={styles.attempt}>
         <div className={styles.attemptIndex}>{index + 1}</div>
         {values.map((value, index) => {
-          console.log(value, index)
+          //console.log(value, index)
           return (
             <div key={index}>
               {value} {metrics[index].metric}

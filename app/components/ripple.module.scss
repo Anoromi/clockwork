@@ -1,8 +1,19 @@
-.ripple-button {
+.rippleButton {
 	position: relative;
 	overflow: hidden;
 	outline: none;
 	border: none;
+}
+
+.detector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 // @keyframes ripple {

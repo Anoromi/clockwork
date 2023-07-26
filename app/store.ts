@@ -1,16 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit"
-import libraryReducer from "./[locale]/library/libraryStore"
-import timerReducer from "./[locale]/timer/timerStore"
+import { configureStore } from "@reduxjs/toolkit";
+import extraReducer from "./extraStore";
+import libraryReducer from "./[locale]/library/libraryStore";
+import timerReducer from "./[locale]/timer/timerStore";
 
 export const store = configureStore({
-	reducer: {
-		timer: timerReducer,
-    library: libraryReducer
-	},
-})
+  reducer: {
+    timer: timerReducer,
+    library: libraryReducer,
+    extra: extraReducer,
+  },
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
-
+export type AppDispatch = typeof store.dispatch;

@@ -10,7 +10,7 @@ class MyAppDatabase extends Dexie {
     super("MyAppDatabase");
     this.version(1).stores({
       record: "++id, activityId, records, date",
-      activity: "++id, parameterCount, metrics",
+      activity: "++id, name, metrics",
     });
   }
 

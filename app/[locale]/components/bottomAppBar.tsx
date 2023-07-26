@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { useRipple } from "@/app/components/useRipple";
 import Link from "next/link";
+import {useMemo} from "react";
 
 type BottomAppBarProps = {
   locale: string;
@@ -14,7 +15,10 @@ type BottomAppBarProps = {
 export function BottomAppBar({ locale }: BottomAppBarProps) {
   const route = useRouter();
   //console.log(route)
-  console.log(usePathname());
+  //console.log(usePathname());
+  const pathName = usePathname()
+  
+  //const selectedRoute = useMemo(factory, deps)
 
   return (
     <>
@@ -22,13 +26,13 @@ export function BottomAppBar({ locale }: BottomAppBarProps) {
         <AppBarIcon
           icon="material-symbols:timer"
           text="Timer"
-          selected={false}
+          selected={pathName.includes("timer")}
           href={`/${locale}/timer`}
         />
         <AppBarIcon
           icon="fluent:library-20-filled"
           text="Library"
-          selected={true}
+          selected={pathName.includes("library")}
           href={`/${locale}/library`}
         />
       </div>

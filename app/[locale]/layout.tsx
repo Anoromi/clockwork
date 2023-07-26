@@ -11,7 +11,7 @@ import { NextIntlClientProvider, useLocale } from "next-intl"
 import classNames from "classnames"
 import { Provider } from "react-redux"
 import { store } from "../store"
-import Providers from "../Providers"
+import Providers from "../providers"
 import {BottomAppBar} from "./components/bottomAppBar"
 
 export const metadata = {
@@ -41,7 +41,7 @@ export default async function RootLayout({
 	}
 
 	return (
-		<html lang="en" className="light">
+		<html lang="en">
 			<body className={classNames(rubik.className, styles.body)}>
 				<NextIntlClientProvider locale={params.locale} messages={messages}>
 					<Providers>

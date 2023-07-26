@@ -16,6 +16,7 @@
 .button {
 	--ripple-color: var(--on-surface);
 	background-color: var(--surface-container);
+  color: var(--on-surface);
 	padding: 1.25rem 1.75rem;
 	border-radius: 2rem;
 	font-size: 1.25rem;
@@ -25,6 +26,9 @@
 
 	position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
 
 
 

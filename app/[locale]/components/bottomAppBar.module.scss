@@ -14,7 +14,7 @@
   font-weight: 500;
   border-radius: 30% 30%;
   user-select: none;
-  color: var(--primary0);
+  color: var(--on-surface);
   text-decoration: none;
     
   --ripple-color: var(--on-surface);
@@ -22,6 +22,7 @@
   .routeIcon {
     padding: 0.25rem 0.5rem;
     border-radius: 9999px;
+    transition: background 1000ms ease-out;
   }
 }
 

@@ -18,12 +18,6 @@ export type InputControls<T extends Record<string, FormInput<any>>> = {
   [Item in keyof T]: InputControl<
     T[Item] extends FormInput<infer Value> ? Value : never
   >;
-
-  //  {
-  //  value: T[Item] extends FormInput<infer Value> ? Value : never;
-  //  errors: Record<string, unknown> | null;
-  //  checked: boolean;
-  //};
 };
 
 type FormControl<T extends Record<string, FormInput<any>>> = {
@@ -58,7 +52,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
   params: T;
   onSubmit: (formData: InputControls<T>) => void;
 }): FormControl<T> {
-  // const modal = useReactive()
   const initialInputs: Record<
     string,
     {
@@ -75,7 +68,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
       errors: null,
     };
 
-    //initialValue.next =
   }
 
   const state = useReactive({

@@ -18,6 +18,7 @@ type State = {
     records: number[][];
     date: number;
   } | null;
+  selectedActivity: IActivity | null;
   currentTimer: StartedTimer | null;
   counter: number;
 };
@@ -25,37 +26,38 @@ type State = {
 const initialState: State = {
   record: null,
   currentTimer: null,
+  selectedActivity: null,
   counter: 0,
 };
 
-const testState: State = {
-  record: {
-    activity: {
-      metrics: [
-        {
-          metric: "kg",
-          name: "Weight",
-        },
-      ],
-      name: "some activity",
-    },
-    date: new Date().getDate(),
-    records: [[20], [30]],
-  },
-  currentTimer: {
-    firstRecordTimestamp: {
-      extraMilliseconds: 0,
-      lastContinue: new Date().getTime(),
-      paused: false,
-    },
-    currentRecordTimestamp: {
-      extraMilliseconds: 0,
-      lastContinue: new Date().getTime(),
-      paused: false,
-    },
-  },
-  counter: 0,
-};
+//const testState: State = {
+//  record: {
+//    activity: {
+//      metrics: [
+//        {
+//          metric: "kg",
+//          name: "Weight",
+//        },
+//      ],
+//      name: "some activity",
+//    },
+//    date: new Date().getDate(),
+//    records: [[20], [30]],
+//  },
+//  currentTimer: {
+//    firstRecordTimestamp: {
+//      extraMilliseconds: 0,
+//      lastContinue: new Date().getTime(),
+//      paused: false,
+//    },
+//    currentRecordTimestamp: {
+//      extraMilliseconds: 0,
+//      lastContinue: new Date().getTime(),
+//      paused: false,
+//    },
+//  },
+//  counter: 0,
+//};
 
 function createStartTimer(): StartedTimer {
   return {
@@ -74,13 +76,13 @@ function createStartTimer(): StartedTimer {
 
 export const timerSlice = createSlice({
   name: "timerSlice",
-  initialState: testState,
+  initialState: initialState,
 
   reducers: {
-    start(state, action: PayloadAction<IActivity>) {
+    start(state, action: PayloadAction<undefined>) {
       state.currentTimer = createStartTimer();
       state.record = {
-        activity: action.payload,
+        activity: state.selectedActivity!,
         records: [],
         date: new Date().getTime(),
       };
@@ -126,6 +128,10 @@ export const timerSlice = createSlice({
       resumeTimer(state.currentTimer!.currentRecordTimestamp);
       resumeTimer(state.currentTimer!.firstRecordTimestamp);
     },
+
+    selectActivity(state, data: PayloadAction<IActivity | null>) {
+      state.selectedActivity = data.payload
+    }
   },
 });
 
@@ -136,5 +142,6 @@ export const {
   stop: stopTimer,
   resume,
   pause,
+  selectActivity
 } = timerSlice.actions;
 export default timerSlice.reducer;

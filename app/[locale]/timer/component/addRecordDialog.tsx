@@ -17,7 +17,9 @@ import {
 
 import { Validators } from "@/app/utils/simpleValidators";
 import { useAppDispatch } from "@/app/utils/clientUseRedux";
-import {record} from "../timerStore";
+import { record } from "../timerStore";
+import { AppDialog } from "@/app/components/Dialog";
+import Flex from "@/app/components/layout/flex";
 
 type Props = {
   opened: boolean;
@@ -46,57 +48,52 @@ export default function AddRecordDialog({ opened, onClose, metrics }: Props) {
       const resultingStats = metrics.map((metric) =>
         parseFloat(values[metric.name].value)
       );
-      dispatch(record(resultingStats))
-      onClose()
+      dispatch(record(resultingStats));
+      onClose();
     },
   });
 
   return (
     <>
-      <Dialog open={opened} onClose={onClose}>
-        <div className={styles.dialogWrapper}>
-          <Dialog.Panel className={styles.dialog}>
-            <div className={styles.dialogBackground}></div>
-            <div className={styles.dialogContent}>
-              <form onSubmit={form.onSubmit}>
-                <fieldset>
-                  <legend>
-                    <Dialog.Title className={styles.title}>Record</Dialog.Title>
-                  </legend>
+      <AppDialog open={opened} onClose={onClose}>
+        <form onSubmit={form.onSubmit}>
+          <fieldset>
+            <legend>
+              <AppDialog.Title className={styles.title}>Record</AppDialog.Title>
+            </legend>
 
-                  {metrics.map(({ name, metric }) => (
-                    <TextField
-                      text={form.inputs[name].value.toString()}
-                      errors={form.inputs[name].errors}
-                      updateText={(value) => form.change(name, value)}
-                      name={name}
-                      label={name}
-                      metric={metric}
-                      key={name}
-                      // checkError={(text) => }
-                    />
-                  ))}
+            <Flex flexDirection="column" rowGap={"1rem"}>
+              {metrics.map(({ name, metric }) => (
+                <TextField
+                  text={form.inputs[name].value.toString()}
+                  errors={form.inputs[name].errors}
+                  updateText={(value) => form.change(name, value)}
+                  name={name}
+                  label={name}
+                  metric={metric}
+                  key={name}
+                  // checkError={(text) => }
+                />
+              ))}
+            </Flex>
 
-                  <div className={classNames(styles.buttonRow)}>
-                    <RippleButton
-                      className={classNames(styles.button, styles.cancel)}
-                      onClick={onClose}
-                    >
-                      Cancel
-                    </RippleButton>
-                    <RippleButton
-                      className={classNames(styles.button, styles.submit)}
-                      type="submit"
-                    >
-                      Submit
-                    </RippleButton>
-                  </div>
-                </fieldset>
-              </form>
+            <div className={classNames(styles.buttonRow)}>
+              <RippleButton
+                className={classNames(styles.button, styles.cancel)}
+                onClick={onClose}
+              >
+                Cancel
+              </RippleButton>
+              <RippleButton
+                className={classNames(styles.button, styles.submit)}
+                type="submit"
+              >
+                Submit
+              </RippleButton>
             </div>
-          </Dialog.Panel>
-        </div>
-      </Dialog>
+          </fieldset>
+        </form>
+      </AppDialog>
     </>
   );
 }

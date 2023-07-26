@@ -7,12 +7,14 @@ import { Listbox } from "@headlessui/react";
 import { useQuery } from "react-query";
 import utilStyles from "@/app/styles/utils.module.scss";
 import { useReactive } from "@/app/components/useReactive";
-import { IActivity } from "@/app/backend/database";
+import { getDb, IActivity } from "@/app/backend/database";
 import classNames from "classnames";
 import { Icon } from "@iconify/react";
 
 export function LibrarySelectActivity() {
-  const data = useQuery("select-activity", getUserExercises);
+  const data = useQuery("activities", async () =>
+    (await getDb()).activity.toArray()
+  );
   const selectedActivity = useReactive<IActivity | null>(null);
 
   return (
