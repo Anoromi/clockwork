@@ -1,34 +1,34 @@
 "use client";
 
-import { Dialog } from "@headlessui/react";
-import styles from "@/app/[locale]/timer/component/addRecordDialog.module.scss";
-import { Fragment, HTMLInputTypeAttribute, useMemo } from "react";
-import { Modal, useReactive } from "@/app/components/useReactive";
-import textField from "@/app/[locale]/timer/component/textField.module.scss";
-import classNames from "classnames";
-import RippleButton from "@/app/components/ripple-button";
-import { rubik } from "@/app/styles/fonts";
+import {useReactive} from "@/app/components/useReactive";
 import {
   createInputForm,
-  FormInput,
-  InputControl,
-  useForm,
+  FormInput, useForm
 } from "@/app/utils/useForm";
+import styles from "@/app/[locale]/timer/component/addRecordDialog.module.scss";
+import textField from "@/app/[locale]/timer/component/textField.module.scss";
+import classNames from "classnames";
+import {HTMLInputTypeAttribute, useMemo} from "react";
 
-import { Validators } from "@/app/utils/simpleValidators";
-import { useAppDispatch } from "@/app/utils/clientUseRedux";
-import { record } from "../timerStore";
-import { AppDialog } from "@/app/components/Dialog";
+import CommonButton from "@/app/components/button/commonButton";
+import {AppDialog} from "@/app/components/Dialog";
 import Flex from "@/app/components/layout/flex";
+import {useAppDispatch, useAppSelector} from "@/app/utils/clientUseRedux";
+import {Validators} from "@/app/utils/simpleValidators";
+import {record} from "../timerStore";
 
-type Props = {
-  opened: boolean;
-  onClose: () => void;
-  metrics: { name: string; metric: string }[];
-};
+type Props = {};
 
-export default function AddRecordDialog({ opened, onClose, metrics }: Props) {
+export default function AddRecordDialog({}: Props) {
+  const state = useAppSelector((state) => state.timer.record);
+  return <>{state !== null && <DialogImpl />}</>;
+}
+
+function DialogImpl() {
+  const state = useAppSelector((state) => state.timer.record);
   const dispatch = useAppDispatch();
+
+  const metrics = state!.activity.metrics;
 
   const formInputs = useMemo(() => {
     return metrics.reduce((previous, next) => {
@@ -41,6 +41,10 @@ export default function AddRecordDialog({ opened, onClose, metrics }: Props) {
       };
     }, {} as Record<string, FormInput<string>>);
   }, [metrics]);
+
+  const opened = useReactive(false);
+
+  const onClose = () => opened.set(false);
 
   const form = useForm({
     params: formInputs,
@@ -55,45 +59,47 @@ export default function AddRecordDialog({ opened, onClose, metrics }: Props) {
 
   return (
     <>
-      <AppDialog open={opened} onClose={onClose}>
-        <form onSubmit={form.onSubmit}>
-          <fieldset>
-            <legend>
-              <AppDialog.Title className={styles.title}>Record</AppDialog.Title>
-            </legend>
+      {state !== null && (
+        <AppDialog open={opened.value} onClose={onClose}>
+          <form onSubmit={form.onSubmit}>
+            <fieldset>
+              <legend>
+                <AppDialog.Title className={styles.title}>
+                  Record
+                </AppDialog.Title>
+              </legend>
 
-            <Flex flexDirection="column" rowGap={"1rem"}>
-              {metrics.map(({ name, metric }) => (
-                <TextField
-                  text={form.inputs[name].value.toString()}
-                  errors={form.inputs[name].errors}
-                  updateText={(value) => form.change(name, value)}
-                  name={name}
-                  label={name}
-                  metric={metric}
-                  key={name}
-                  // checkError={(text) => }
-                />
-              ))}
-            </Flex>
+              <Flex flexDirection="column" rowGap={"1rem"}>
+                {metrics.map(({ name, metric }) => (
+                  <TextField
+                    text={form.inputs[name].value.toString()}
+                    errors={form.inputs[name].errors}
+                    updateText={(value) => form.change(name, value)}
+                    name={name}
+                    label={name}
+                    metric={metric}
+                    key={name}
+                    // checkError={(text) => }
+                  />
+                ))}
+              </Flex>
 
-            <div className={classNames(styles.buttonRow)}>
-              <RippleButton
-                className={classNames(styles.button, styles.cancel)}
-                onClick={onClose}
-              >
-                Cancel
-              </RippleButton>
-              <RippleButton
-                className={classNames(styles.button, styles.submit)}
-                type="submit"
-              >
-                Submit
-              </RippleButton>
-            </div>
-          </fieldset>
-        </form>
-      </AppDialog>
+              <div className={classNames(styles.buttonRow)}>
+                <CommonButton onClick={onClose} buttonType="text">
+                  Cancel
+                </CommonButton>
+                <CommonButton
+                  onClick={onClose}
+                  type="submit"
+                  buttonType="primary"
+                >
+                  Submit
+                </CommonButton>
+              </div>
+            </fieldset>
+          </form>
+        </AppDialog>
+      )}
     </>
   );
 }

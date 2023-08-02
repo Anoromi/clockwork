@@ -1,3 +1,7 @@
+.mainDialog {
+  z-index: 10;
+  position: relative;
+}
 .dialogWrapper {
   left: 0;
   right: 0;
@@ -11,11 +15,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  //z-index: 10;
 }
 
 .dialogBackground {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -33,6 +37,7 @@
   .dialogContent {
     position: relative;
     background-color: var(--surface-container);
+    color: var(--on-surface);
     z-index: 40;
     border-radius: 2rem;
     padding: 1.5rem 1.5rem;
@@ -69,4 +74,39 @@
     color: var(--primary40);
     --ripple-color: var(--primary0);
   }
+}
+
+
+
+.opacityLeave,
+.opacityEnter {
+	transition: opacity var(--ease-decelerate) 500ms;
+}
+
+.opacityLeaveFrom,
+.opacityEnterTo {
+	opacity: 0.1;
+}
+
+.opacityLeaveTo,
+.opacityEnterFrom {
+	opacity: 0;
+}
+
+
+.popupLeave,
+.popupEnter {
+	transition: transform var(--ease-decelerate) 200ms, opacity var(--ease-decelerate) 200ms;
+}
+
+.popupLeaveFrom,
+.popupEnterTo {
+	transform: scale(1);
+  opacity: 1;
+}
+
+.popupLeaveTo,
+.popupEnterFrom {
+	transform: scale(0.7);
+  opacity: 0;
 }

@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 import RippleButton from "../ripple-button";
 
 type Props = React.PropsWithChildren<{
-  buttonType?: "primary" | "text" | "tonal" | "outlined";
+  buttonType?: "primary" | "text" | "tonal" | "outlined" | 'blank';
   textType?: "normal" | "icon";
   type?: ButtonHTMLAttributes<unknown>["type"];
   className?: string;
@@ -29,6 +29,7 @@ export default function CommonButton({
           {
             [styles.primary]: buttonType === "primary",
             [styles.textButton]: buttonType === "text",
+            [styles.blank]: buttonType === "blank",
             [styles.tonal]: buttonType === "tonal",
             [styles.outlined]: buttonType === "outlined",
             [styles.icon]: textType === "icon",

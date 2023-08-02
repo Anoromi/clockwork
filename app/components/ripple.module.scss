@@ -1,8 +1,11 @@
+@use "@/app/styles/coloring.scss";
+
 .rippleButton {
-	position: relative;
-	overflow: hidden;
-	outline: none;
-	border: none;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  @include coloring.surface-coloring(var(--background-coloring, var(--ripple-color, #000)));
 }
 
 .detector {
@@ -24,47 +27,48 @@
 // }
 
 @keyframes calm-down {
-	from {
-		opacity: 0.2;
-	}
-	to {
-		opacity: 0;
-	}
+  from {
+    opacity: 0.13;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .ripple {
-	position: absolute; /* The absolute position we mentioned earlier */
-	border-radius: 50%;
-	z-index: 10;
-	// width: 0;
-	// height: 0;
-	// visibility: hidden;
-	// transform: scale(0);
-	// transition-property: transform;
-	// transition-duration: 1500ms;
-	// transition-timing-function: linear;
-	// transition: width 600ms linear, height 600ms linear;
-	// transform: scale(0);
-	// animation: ripple 600ms linear;
-	background-color: var(--ripple-color, #fff);
-	// opacity: 0.1;
-	// opacity: --ripple-opacity;
+  position: absolute; /* The absolute position we mentioned earlier */
+  border-radius: 50%;
+  z-index: 10;
+  background-color: transparent;
+  // width: 0;
+  // height: 0;
+  // visibility: hidden;
+  // transform: scale(0);
+  // transition-property: transform;
+  // transition-duration: 1500ms;
+  // transition-timing-function: linear;
+  // transition: width 600ms linear, height 600ms linear;
+  // transform: scale(0);
+  // animation: ripple 600ms linear;
+  background-color: var(--ripple-color, #000);
+  // opacity: 0.1;
+  // opacity: --ripple-opacity;
 
-	// height: 100px;
-	// width: 100px;
+  // height: 100px;
+  // width: 100px;
 
-	// width: 50%;
-	// height: 50%;
+  // width: 50%;
+  // height: 50%;
 
-	// left: 0;
-	// // right: 0;
-	// // top: 0;
-	// // bottom: 0;
+  // left: 0;
+  // // right: 0;
+  // // top: 0;
+  // // bottom: 0;
 
 }
 
 .ripple-calm {
-	animation: calm-down 400ms linear;
-	transform: scale(4);
-	// background: green;
+  animation: calm-down 400ms linear;
+  transform: scale(4);
+  // background: green;
 }

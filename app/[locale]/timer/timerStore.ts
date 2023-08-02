@@ -1,11 +1,12 @@
-import { IActivity, IRecord } from "@/app/backend/database";
+import {IActivity, IRecord} from "@/app/backend/database";
 import {
   PausableTime,
   pauseTimer,
-  resumeTimer,
+  resumeTimer
 } from "@/app/utils/pausableTime";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import dayjs from "dayjs";
+import {activityApi} from "../library/api";
 
 type StartedTimer = {
   firstRecordTimestamp: PausableTime;
@@ -20,44 +21,15 @@ type State = {
   } | null;
   selectedActivity: IActivity | null;
   currentTimer: StartedTimer | null;
-  counter: number;
+  openedRecord: boolean;
 };
 
 const initialState: State = {
   record: null,
   currentTimer: null,
   selectedActivity: null,
-  counter: 0,
+  openedRecord: false,
 };
-
-//const testState: State = {
-//  record: {
-//    activity: {
-//      metrics: [
-//        {
-//          metric: "kg",
-//          name: "Weight",
-//        },
-//      ],
-//      name: "some activity",
-//    },
-//    date: new Date().getDate(),
-//    records: [[20], [30]],
-//  },
-//  currentTimer: {
-//    firstRecordTimestamp: {
-//      extraMilliseconds: 0,
-//      lastContinue: new Date().getTime(),
-//      paused: false,
-//    },
-//    currentRecordTimestamp: {
-//      extraMilliseconds: 0,
-//      lastContinue: new Date().getTime(),
-//      paused: false,
-//    },
-//  },
-//  counter: 0,
-//};
 
 function createStartTimer(): StartedTimer {
   return {
@@ -74,6 +46,13 @@ function createStartTimer(): StartedTimer {
   };
 }
 
+const createRecord = createAsyncThunk(
+  "timerSlice/stopRecord",
+  async (record: IRecord, thunkApi) => {
+    thunkApi.dispatch(activityApi.endpoints.addRecord.initiate(record));
+  }
+);
+
 export const timerSlice = createSlice({
   name: "timerSlice",
   initialState: initialState,
@@ -86,11 +65,6 @@ export const timerSlice = createSlice({
         records: [],
         date: new Date().getTime(),
       };
-    },
-
-    increment(state) {
-      // console.log(state)
-      state.counter++;
     },
 
     record(state, record: PayloadAction<number[]>) {
@@ -130,18 +104,30 @@ export const timerSlice = createSlice({
     },
 
     selectActivity(state, data: PayloadAction<IActivity | null>) {
-      state.selectedActivity = data.payload
-    }
+      state.selectedActivity = data.payload;
+    },
+
+    setOpenedRecord(state, data: PayloadAction<boolean>) {
+      state.openedRecord = data.payload;
+    },
+  },
+  extraReducers(builder) {
+    builder.addCase(createRecord.fulfilled, (state) => {
+      console.log("ended");
+      state.record = null;
+      state.currentTimer = null;
+    });
   },
 });
 
 export const {
   start,
-  increment,
   record,
   stop: stopTimer,
   resume,
   pause,
-  selectActivity
+  selectActivity,
+  setOpenedRecord,
 } = timerSlice.actions;
+export {createRecord};
 export default timerSlice.reducer;

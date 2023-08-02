@@ -2,6 +2,7 @@
   --ripple-color: var(--on-surface);
   display: flex;
   border-radius: 9999px;
+  color: var(--on-surface);
 }
 
 .menuWrapper {
@@ -12,20 +13,22 @@
   position: absolute;
   right: 0;
   background-color: var(--surface-container-highest);
+  color: var(--on-surface);
   min-width: 8rem;
   outline: none;
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  padding: 0rem 0;
+  padding: 0rem;
   z-index: 10;
 }
 
 .menuItem {
-  padding: 0.5rem 0.5rem;
+  padding: 1rem 1rem;
   background-color: transparent;
   --ripple-color: var(--on-surface);
+  color: var(--on-surface);
   font-size: 1rem;
   text-align: start;
 }

@@ -139,7 +139,7 @@ export function useRipple(
             left: `${ripplePos!.x}px`,
             top: `${ripplePos!.y}px`,
             transition: `transform ${rippleDuration}ms linear`,
-            opacity: 0.2,
+            opacity: 0.13,
             width: ripplePos!.diameter,
             height: ripplePos!.diameter,
             // transform: "scale(4)",

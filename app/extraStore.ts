@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { isClient } from "./utils/isClient";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
 
 type State = {
   theme: Theme;
@@ -15,16 +16,16 @@ const extraSlice = createSlice({
   name: "extraStore",
   reducers: {
     changeTheme(state, data: PayloadAction<Theme>) {
-      state.theme = data.payload
+      state.theme = data.payload;
+      if (isClient()) localStorage.setItem("theme", state.theme);
     },
     switchTheme(state, data: PayloadAction<undefined>) {
-      if(state.theme === 'light')
-        state.theme = 'dark'
-      else if(state.theme === 'dark')
-        state.theme = 'light'
-    }
+      if (state.theme === "light") state.theme = "dark";
+      else if (state.theme === "dark") state.theme = "light";
+      if (isClient()) localStorage.setItem("theme", state.theme);
+    },
   },
 });
 
-export const {changeTheme, switchTheme} = extraSlice.actions;
-export default extraSlice.reducer
+export const { changeTheme, switchTheme } = extraSlice.actions;
+export default extraSlice.reducer;

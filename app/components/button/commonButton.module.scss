@@ -1,5 +1,3 @@
-
-
 .button {
   border-radius: 9999px;
   outline: none;
@@ -14,23 +12,32 @@
   background-color: var(--primary40);
   color: var(--primary100);
   --ripple-color: var(--primary100);
+  --background-coloring: var(--primary100);
 }
 
 .textButton {
   background-color: transparent;
   color: var(--primary40);
   --ripple-color: var(--primary40);
+  --background-coloring: var(--primary40);
+  &.disabled {
+    color: var(--on-surface);
+    opacity: 0.38;
+  }
 }
 
-.textButton.disabled {
+.blank {
+  background-color: transparent;
   color: var(--on-surface);
-  opacity: 0.38;
+  --ripple-color: var(--on-surface);
+  --background-coloring: var(--on-surface);
 }
 
 .tonal {
   background-color: var(--secondary90);
   color: var(--secondary10);
   --ripple-color: var(--secondary10);
+  --background-coloring: var(--secondary10);
 }
 
 .outlined {
@@ -38,6 +45,12 @@
   background-color: transparent;
   color: var(--primary40);
   --ripple-color: var(--primary40);
+  //--background-coloring: var(--primary40);
+
+  &.disabled {
+    color: var(--on-surface);
+    opacity: 0.38;
+  }
 }
 
 .icon {

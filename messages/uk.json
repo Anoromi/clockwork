@@ -1,5 +1,6 @@
 {
   "Timer": {
-    "attempt": "Спроба {value}"
+    "attempt": "Спроба {value}",
+    "overall": "Загалом {value}"
   }
 }

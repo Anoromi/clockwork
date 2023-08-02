@@ -5,7 +5,7 @@
 .light {
   $level0: 0;
   $level1: 0.05;
-  $level2: 0.08;
+  $level2: 0.12;
   $level3: 0.11;
   $level4: 0.2;
 
@@ -120,6 +120,12 @@
   --surface-container-highest: var(--neutral90);
   --on-surface: var(--neutral10);
 
+  --on-surface-level-0: rgba(32, 26, 24, #{$level0});
+  --on-surface-level-1: rgba(32, 26, 24, #{$level1});
+  --on-surface-level-2: rgba(32, 26, 24, #{$level2});
+  --on-surface-level-3: rgba(32, 26, 24, #{$level3});
+  --on-surface-level-4: rgba(32, 26, 24, #{$level4});
+
   --neutral-variant0: rgba(0, 0, 0, 1);
   --neutral-variant10: rgba(36, 25, 27, 1);
   --neutral-variant20: rgba(58, 45, 48, 1);
@@ -207,6 +213,20 @@
   );
 }
 
+//::-webkit-scrollbar {
+//  width: 15px;
+//  height: 15px;
+//  background-color: white;
+//}
+//
+//::-webkit-scrollbar-track-piece {
+//}
+//::-webkit-scrollbar-thumb:vertical {
+//  height: 30px;
+//  background-color: #ffffff33;
+//  opacity: 0.4;
+//}
+
 :root {
   --ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
   --ease-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
@@ -277,7 +297,8 @@
   --neutral-variant99: rgba(255, 251, 255, 1);
   --neutral-variant100: rgba(255, 255, 255, 1);
 
-  --outline: var(--neurtal-variant50);
+  --outline: var(--neutral-variant60);
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -30,12 +30,9 @@ export interface IRecord {
   date: number;
 }
 
-export interface SerializableIRerord {
+export interface SerializableIRerord {}
 
-}
-
-
-export type Metric = {name: string, metric: string}
+export type Metric = { name: string; metric: string };
 
 export interface IActivity {
   id?: number;
@@ -43,46 +40,51 @@ export interface IActivity {
   metrics: Metric[];
 }
 
-let db: MyAppDatabase | null = null;
+let lazyDb: Promise<MyAppDatabase> | null = null;
 
 export async function getDb() {
-  db ??= new MyAppDatabase();
-
-  if(await db.record.count() === 0) {
-    const vals = await db.activity.bulkAdd([
-      {
-        metrics: [
+  lazyDb ??= (async () => {
+    const db = new MyAppDatabase();
+    const initializedDbKey = "initializedDb";
+    if (localStorage.getItem(initializedDbKey) !== "true") {
+      const vals = await db.activity.bulkAdd(
+        [
           {
-            name: "count",
-            metric: "",
-          },
-          {
-            name: "weight",
-            metric: "kg",
+            metrics: [
+              {
+                name: "count",
+                metric: "",
+              },
+              {
+                name: "weight",
+                metric: "kg",
+              },
+            ],
+            name: "Hello",
           },
         ],
-        name: "Hello",
-      }
-    ], {allKeys: true})
+        { allKeys: true }
+      );
 
-    
-    
-    db.record.bulkAdd([
-      {
-      activityId: vals[0],
-      date: Date.now(),
-      records: [
-        [1, 2],
-        [1, 2],
-        [1, 2],
-        [1, 2],
-        [1, 2],
-        [1, 2],
-        [1, 2],
-        [1, 2],
-      ],
-      }
-    ])
-  }
-  return db;
+      db.record.bulkAdd([
+        {
+          activityId: vals[0],
+          date: Date.now(),
+          records: [
+            [1, 2],
+            [1, 2],
+            [1, 2],
+            [1, 2],
+            [1, 2],
+            [1, 2],
+            [1, 2],
+            [1, 2],
+          ],
+        },
+      ]);
+    }
+    localStorage.setItem(initializedDbKey, "true");
+    return db;
+  })();
+  return lazyDb;
 }
