@@ -1,0 +1,77 @@
+
+
+.inputWrapper {
+  display: flex;
+  row-gap: 0.25rem;
+  flex-direction: column;
+}
+
+.inputLabel {
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+.inputField {
+  font-size: 1rem;
+  outline: var(--outline) 1px solid;
+  display: block;
+  background-color: transparent;
+  border-radius: 9999rem;
+  padding: 0.5rem 1.5rem;
+  box-sizing: content-box;
+  border: none;
+  transition: outline ease-out 100ms;
+  //outline: none;
+  &:focus-visible {
+    outline-width: 2px;
+  }
+}
+
+.inputError {
+  color: red;
+  padding-left: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.measurementsContainer {
+  max-height: 16rem;
+  overflow: auto;
+  
+}
+
+.measurementLabel {
+  font-weight: bold;
+}
+
+.measurementIndex {
+  margin: auto 0;
+  text-align: center;
+  min-width: 1rem;
+}
+
+.measurementField {
+  border: var(--outline) 1px solid;
+  padding: 0.5rem 1rem;
+  display: inline;
+  min-width: 0;
+  //max-width: 5rem;
+  border-radius: 999rem;
+  font-size: 1rem;
+  background-color: transparent;
+  flex-grow: 1;
+  width: 100%;
+  &:disabled {
+    opacity: 0.50;
+  }
+}
+
+.measurementAction {
+  font-size: 0.75rem;
+  //margin-left: 2rem;
+  //width:100%;
+}
+
+.measurementDelete {
+  flex: none;
+}

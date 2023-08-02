@@ -1,0 +1,49 @@
+
+
+//.topBar {
+//  display: flex;
+//  flex-direction: column;
+//}
+
+.summary {
+  align-self: center;
+  font-size: 1.25rem;
+}
+
+.eventList {
+  display: flex;
+  margin: 1.5rem 1.25rem 1.25rem 1.25rem;
+  // margin-top: 1.5rem;
+  column-gap: 0.5rem;
+  overflow-x: scroll;
+}
+
+.card {
+  background-color: var(--surface-container);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 4.5rem;
+  font-size: 1.25rem;
+  row-gap: 0.25rem;
+  flex-shrink: 0;
+
+  .index {
+    color: var(--on-surface);
+    width: fit-content;
+    padding: 0.25rem;
+    align-self: flex-start;
+    font-size: 1.5rem;
+  }
+
+  .info {
+    padding-left: 1rem;
+    .infoText {
+      color: var(--on-surface);
+      align-self: flex-end;
+      padding: 0.1rem 0;
+      text-align: end;
+    }
+  }
+}
