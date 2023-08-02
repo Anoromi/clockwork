@@ -1,21 +1,18 @@
 "use client";
 
-import {useReactive} from "@/app/components/useReactive";
-import {
-  createInputForm,
-  FormInput, useForm
-} from "@/app/utils/useForm";
+import { useReactive } from "@/app/components/useReactive";
+import { createInputForm, FormInput, useForm } from "@/app/utils/useForm";
 import styles from "@/app/[locale]/timer/component/addRecordDialog.module.scss";
 import textField from "@/app/[locale]/timer/component/textField.module.scss";
 import classNames from "classnames";
-import {HTMLInputTypeAttribute, useMemo} from "react";
+import { HTMLInputTypeAttribute, useMemo } from "react";
 
 import CommonButton from "@/app/components/button/commonButton";
-import {AppDialog} from "@/app/components/Dialog";
+import { AppDialog } from "@/app/components/Dialog";
 import Flex from "@/app/components/layout/flex";
-import {useAppDispatch, useAppSelector} from "@/app/utils/clientUseRedux";
-import {Validators} from "@/app/utils/simpleValidators";
-import {record} from "../timerStore";
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import { Validators } from "@/app/utils/simpleValidators";
+import { record, setOpenedRecord } from "../timerStore";
 
 type Props = {};
 
@@ -42,9 +39,9 @@ function DialogImpl() {
     }, {} as Record<string, FormInput<string>>);
   }, [metrics]);
 
-  const opened = useReactive(false);
+  const opened = useAppSelector((state) => state.timer.openedRecord);
 
-  const onClose = () => opened.set(false);
+  const onClose = () => dispatch(setOpenedRecord(false));
 
   const form = useForm({
     params: formInputs,
@@ -59,47 +56,43 @@ function DialogImpl() {
 
   return (
     <>
-      {state !== null && (
-        <AppDialog open={opened.value} onClose={onClose}>
-          <form onSubmit={form.onSubmit}>
-            <fieldset>
-              <legend>
-                <AppDialog.Title className={styles.title}>
-                  Record
-                </AppDialog.Title>
-              </legend>
+      <AppDialog open={opened} onClose={onClose}>
+        <form onSubmit={form.onSubmit}>
+          <fieldset>
+            <legend>
+              <AppDialog.Title className={styles.title}>Record</AppDialog.Title>
+            </legend>
 
-              <Flex flexDirection="column" rowGap={"1rem"}>
-                {metrics.map(({ name, metric }) => (
-                  <TextField
-                    text={form.inputs[name].value.toString()}
-                    errors={form.inputs[name].errors}
-                    updateText={(value) => form.change(name, value)}
-                    name={name}
-                    label={name}
-                    metric={metric}
-                    key={name}
-                    // checkError={(text) => }
-                  />
-                ))}
-              </Flex>
+            <Flex flexDirection="column" rowGap={"1rem"}>
+              {metrics.map(({ name, metric }) => (
+                <TextField
+                  text={form.inputs[name].value.toString()}
+                  errors={form.inputs[name].errors}
+                  updateText={(value) => form.change(name, value)}
+                  name={name}
+                  label={name}
+                  metric={metric}
+                  key={name}
+                  // checkError={(text) => }
+                />
+              ))}
+            </Flex>
 
-              <div className={classNames(styles.buttonRow)}>
-                <CommonButton onClick={onClose} buttonType="text">
-                  Cancel
-                </CommonButton>
-                <CommonButton
-                  onClick={onClose}
-                  type="submit"
-                  buttonType="primary"
-                >
-                  Submit
-                </CommonButton>
-              </div>
-            </fieldset>
-          </form>
-        </AppDialog>
-      )}
+            <div className={classNames(styles.buttonRow)}>
+              <CommonButton onClick={onClose} buttonType="text">
+                Cancel
+              </CommonButton>
+              <CommonButton
+                onClick={onClose}
+                type="submit"
+                buttonType="primary"
+              >
+                Submit
+              </CommonButton>
+            </div>
+          </fieldset>
+        </form>
+      </AppDialog>
     </>
   );
 }
