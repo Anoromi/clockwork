@@ -10,7 +10,7 @@ type Props = React.PropsWithChildren<{
   columnGap?: React.CSSProperties["columnGap"];
   justifyContent?: React.CSSProperties["justifyContent"];
   alignItems?: React.CSSProperties["alignItems"];
-  padding?: React.CSSProperties["padding"];
+  //padding?: React.CSSProperties["padding"];
   paddingLeft?: React.CSSProperties["paddingLeft"];
   paddingRight?: React.CSSProperties["paddingRight"];
   paddingTop?: React.CSSProperties["paddingTop"];
@@ -28,7 +28,7 @@ export default function Flex<
     columnGap,
     justifyContent,
     alignItems,
-    padding,
+    //padding,
     paddingLeft,
     paddingRight,
     paddingTop,
@@ -47,7 +47,7 @@ export default function Flex<
         columnGap,
         justifyContent,
         alignItems,
-        padding,
+        //padding,
         paddingLeft,
         paddingRight,
         paddingTop,

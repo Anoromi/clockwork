@@ -14,12 +14,8 @@ type BottomAppBarProps = {
 
 export function BottomAppBar({ locale }: BottomAppBarProps) {
   const route = useRouter();
-  //console.log(route)
-  //console.log(usePathname());
   const pathName = usePathname()
   
-  //const selectedRoute = useMemo(factory, deps)
-
   return (
     <>
       <div className={styles.appBarWrapper}>

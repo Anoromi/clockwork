@@ -1,10 +1,6 @@
 "use client";
 
-import { getDb } from "@/app/backend/database";
-import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { notUnd } from "@/app/utils/notNull";
-import { useEffect } from "react";
-import { useQuery, useQueryClient } from "react-query";
+import {notUnd} from "@/app/utils/notNull";
 import {useAddActivityMutation, useGetActivityQuery, useGetRecordsQuery} from "../api";
 import ActivityItem from "./activityItem";
 import RecordItem from "./recordItem";

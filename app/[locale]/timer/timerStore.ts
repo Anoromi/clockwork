@@ -1,12 +1,12 @@
-import {IActivity, IRecord} from "@/app/backend/database";
+import { IActivity, IRecord } from "@/app/backend/database";
 import {
   PausableTime,
   pauseTimer,
-  resumeTimer
+  resumeTimer,
 } from "@/app/utils/pausableTime";
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
-import {activityApi} from "../library/api";
+import { activityApi } from "../library/api";
 
 type StartedTimer = {
   firstRecordTimestamp: PausableTime;
@@ -49,7 +49,9 @@ function createStartTimer(): StartedTimer {
 const createRecord = createAsyncThunk(
   "timerSlice/stopRecord",
   async (record: IRecord, thunkApi) => {
-    thunkApi.dispatch(activityApi.endpoints.addRecord.initiate(record));
+    if (record.records.length === 0)
+      thunkApi.dispatch(timerSlice.actions.abortRecording());
+    else thunkApi.dispatch(activityApi.endpoints.addRecord.initiate(record));
   }
 );
 
@@ -76,10 +78,9 @@ export const timerSlice = createSlice({
       };
     },
 
-    stop(state) {
-      // dayjs(state.currentTimer!.currentRecordTimestamp)
-      // state.currentTimer = undefined
+    abortRecording(state) {
       state.currentTimer = null;
+      state.record = null;
     },
 
     pause(state) {
@@ -123,11 +124,10 @@ export const timerSlice = createSlice({
 export const {
   start,
   record,
-  stop: stopTimer,
   resume,
   pause,
   selectActivity,
   setOpenedRecord,
 } = timerSlice.actions;
-export {createRecord};
+export { createRecord };
 export default timerSlice.reducer;

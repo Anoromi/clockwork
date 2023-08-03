@@ -23,25 +23,7 @@ export const activityApi = createApi({
   reducerPath: "activityApi",
   tagTypes: ["Activity", "Record"],
   baseQuery: (query: Query) => {
-    switch (query.type) {
-      case "get": {
-        break;
-      }
-      case "add": {
-        break;
-      }
-
-      case "update": {
-        break;
-      }
-
-      case "delete": {
-        break;
-      }
-    }
-    return {
-      data: 3,
-    };
+    return { data: undefined };
   },
   endpoints(builder) {
     return {
@@ -64,7 +46,6 @@ export const activityApi = createApi({
 
       addActivity: builder.mutation<null, IActivity>({
         async queryFn(arg, api, extraOptions, baseQuery) {
-          await wait(3000);
           await (await getDb()).activity.add(arg);
           return {
             data: null,
@@ -122,12 +103,13 @@ export const activityApi = createApi({
 
       addRecord: builder.mutation<void, IRecord>({
         async queryFn(arg, api, extraOptions, baseQuery) {
-          console.log('executing add record')
+          console.log("executing add record");
           await (await getDb()).record.add(arg);
           return {
             data: undefined,
           };
         },
+        invalidatesTags: ["Record"],
       }),
 
       //editAcitivity: builder.mutation<null, IActivity>({

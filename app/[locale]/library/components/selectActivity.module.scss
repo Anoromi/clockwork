@@ -7,8 +7,8 @@
 }
 
 .listboxButton {
-  background-color: var(--surface-container-highest);
-  color: var(--on-surface);
+  background-color: var(--primary80);
+  color: var(--primary10);
   border-radius: 9999px;
   padding: 0.5rem 1rem;
   display: flex;
@@ -22,8 +22,8 @@
 .options {
   margin-top: 0.5rem;
   position: absolute;
-  background-color: var(--surface-container-highest);
-  color: var(--on-surface);
+  background-color: var(--primary80);
+  color: var(--primary10);
   outline: none;
   left: 0;
   top: 100%;
@@ -38,8 +38,8 @@
 }
 
 .option {
-  --ripple-color: var(--on-surface);
-  padding: 0.5rem 1rem;
+  --ripple-color: var(--primary10);
+  padding: 1rem 1rem;
   user-select: none;
 }
 

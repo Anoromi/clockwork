@@ -9,9 +9,9 @@ import styles from "@/app/[locale]/timer/page.module.scss";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import { clockFont, rubik } from "../../styles/fonts";
 import ActionButtons from "./component/actionButtons";
-import AddRecordDialog from "./component/addRecordDialog";
 import SelectActivity from "./component/selectActivity";
 import Timer from "./component/timer";
 import TimerInfo from "./component/topBar";
@@ -27,8 +27,11 @@ export default function TimerPage() {
         <Flex<"header">
           as="header"
           justifyContent={"space-between"}
+          paddingLeft={"1rem"}
+          paddingTop={"1rem"}
+          paddingRight={"1rem"}
+          paddingBottom={"1rem"}
           alignItems={"baseline"}
-          padding={'1rem'}
         >
           <Title>Timer</Title>
           <CommonButton
@@ -47,10 +50,12 @@ export default function TimerPage() {
         </div>
       </main>
 
-      <AddRecordDialog />
+      <DynamicDialog />
     </>
   );
 }
+
+const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), {ssr: false});
 
 function CurrentTimer() {
   const state = useAppSelector((state) => state.timer.currentTimer);

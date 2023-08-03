@@ -33,6 +33,7 @@
   width: 100%;
   padding: 0 1rem;
   box-sizing: border-box;
+  overflow: auto;
 
   .dialogContent {
     position: relative;
@@ -76,37 +77,35 @@
   }
 }
 
-
-
 .opacityLeave,
 .opacityEnter {
-	transition: opacity var(--ease-decelerate) 500ms;
+  transition: opacity var(--ease-decelerate) 500ms;
 }
 
 .opacityLeaveFrom,
 .opacityEnterTo {
-	opacity: 0.1;
+  opacity: 0.1;
 }
 
 .opacityLeaveTo,
 .opacityEnterFrom {
-	opacity: 0;
+  opacity: 0;
 }
-
 
 .popupLeave,
 .popupEnter {
-	transition: transform var(--ease-decelerate) 200ms, opacity var(--ease-decelerate) 200ms;
+  transition: transform var(--ease-decelerate) 200ms,
+    opacity var(--ease-decelerate) 200ms;
 }
 
 .popupLeaveFrom,
 .popupEnterTo {
-	transform: scale(1);
+  transform: scale(1);
   opacity: 1;
 }
 
 .popupLeaveTo,
 .popupEnterFrom {
-	transform: scale(0.7);
+  transform: scale(0.7);
   opacity: 0;
 }

@@ -4,17 +4,15 @@ import RippleButton from "@/app/components/ripple-button";
 import { getUserExercises } from "@/app/utils/load";
 import styles from "@/app/[locale]/library/components/selectActivity.module.scss";
 import { Listbox } from "@headlessui/react";
-import { useQuery } from "react-query";
 import utilStyles from "@/app/styles/utils.module.scss";
 import { useReactive } from "@/app/components/useReactive";
 import { getDb, IActivity } from "@/app/backend/database";
 import classNames from "classnames";
 import { Icon } from "@iconify/react";
+import {useGetActivityQuery} from "../api";
 
 export function LibrarySelectActivity() {
-  const data = useQuery("activities", async () =>
-    (await getDb()).activity.toArray()
-  );
+  const data = useGetActivityQuery()
   const selectedActivity = useReactive<IActivity | null>(null);
 
   return (

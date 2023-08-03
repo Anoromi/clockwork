@@ -9,14 +9,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0.75rem 1.5rem;
+  padding: 0.25rem 0;
+  flex: 1;
   row-gap: 0.5rem;
   font-weight: 500;
-  border-radius: 30% 30%;
   user-select: none;
   color: var(--on-surface);
   text-decoration: none;
-    
   --ripple-color: var(--on-surface);
 
   .routeIcon {
@@ -28,7 +27,8 @@
 
 .selectedRoute {
   .routeIcon {
-    background-color: var(--primary80);
-    color: var(--primary20);
+    background-color: var(--secondary80);
+    color: var(--secondary10);
   }
+  color: var(--secondary40);
 }
