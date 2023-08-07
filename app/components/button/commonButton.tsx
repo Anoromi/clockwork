@@ -10,6 +10,7 @@ type Props = React.PropsWithChildren<{
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
+  as?: React.ComponentProps<typeof RippleButton>['as']
 }>;
 
 export default function CommonButton({
@@ -20,6 +21,8 @@ export default function CommonButton({
   className,
   onClick,
   disabled,
+  as
+  
 }: Props) {
   return (
     <>
@@ -40,6 +43,7 @@ export default function CommonButton({
         type={type}
         onClick={onClick}
         disabled={disabled}
+        as={as}
       >
         {children}
       </RippleButton>

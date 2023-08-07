@@ -19,13 +19,10 @@ export default function OptionsMenu({}: Props) {
   return (
     <>
       <Menu as="div" className={styles.menuWrapper}>
-        <Menu.Button
-          className={styles.iconButton}
-          as={CommonButton}
-          buttonType={"blank"}
-          textType={"icon"}
-        >
-          <Icon icon="material-symbols:more-vert" fontSize={24} />
+        <Menu.Button className={utilStyles.contents}>
+          <CommonButton buttonType={"blank"} textType={"icon"} as="div">
+            <Icon icon="material-symbols:more-vert" fontSize={24} />
+          </CommonButton>
         </Menu.Button>
         <Menu.Items className={styles.menuItems}>
           <Menu.Item>

@@ -1,58 +1,149 @@
 "use client";
 
-import {notUnd} from "@/app/utils/notNull";
-import {useAddActivityMutation, useGetActivityQuery, useGetRecordsQuery} from "../api";
+import { useReactive } from "@/app/components/useReactive";
+import { notUnd } from "@/app/utils/notNull";
+import {
+  useAddActivityMutation,
+  useGetActivityQuery,
+  useGetRecordsQuery,
+  useListRecordsQuery,
+} from "../api";
 import ActivityItem from "./activityItem";
 import RecordItem from "./recordItem";
+import styles from "@/app/[locale]/library/components/lists.module.scss";
+import { useEffect, useRef, useState } from "react";
+import { LibrarySelectActivity } from "./selectActivity";
+import { useAppSelector } from "@/app/utils/clientUseRedux";
 
 export function LibraryList() {
-  //const state = useAppSelector((state) => state.library.records);
-  //console.log(state);
-  //useLoadRecords();
-
-  const recordsQuery = useGetRecordsQuery() 
-  const activityQuery = useGetActivityQuery() 
+  const selectedActivity = useAppSelector((state) => state.library.records.selectedActivity)
+  useEffect(() => {
+    console.log('selected', selectedActivity)
+  }, [selectedActivity])
+  const recordsQuery = useGetRecordsQuery(selectedActivity?.id ?? null);
+  const activityQuery = useGetActivityQuery();
 
   return (
     <>
-      {recordsQuery.isLoading || activityQuery.isLoading ? (
-        <></>
-      ) : (
-        <>
-          {recordsQuery.data!.map((record) => (
-            <RecordItem
-              record={record}
-              activity={notUnd(
-                activityQuery.data!.find(
-                  (activity) => activity.id === record.activityId
-                )
-              )}
-              key={record.id}
-            />
-          ))}
-        </>
-      )}
+      <div className={styles.eventsContent}>
+        <div className={styles.selectActivityWrapper}>
+          <LibrarySelectActivity />
+        </div>
+        {recordsQuery.data === undefined || activityQuery.isLoading ? (
+          <></>
+        ) : (
+          <>
+            <div className={styles.itemList}>
+              {recordsQuery.data.map((record) => (
+                <RecordItem
+                  record={record}
+                  activity={notUnd(
+                    activityQuery.data!.find(
+                      (activity) => activity.id === record.activityId
+                    )
+                  )}
+                  key={record.id}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }
 
+
+//export function LibraryList() {
+//  //const state = useAppSelector((state) => state.library.records);
+//  //console.log(state);
+//  //useLoadRecords();
+//
+//  const [page, setPage] = useState(0);
+//  const recordsQuery = useListRecordsQuery(page);
+//  const activityQuery = useGetActivityQuery();
+//
+//  const pageDiv = useRef<HTMLDivElement | null>(null);
+//
+//  useEffect(() => {
+//    const div = pageDiv.current;
+//    if (div === null) return;
+//
+//    const scrolledToBottom =
+//      div.scrollTop + div.clientHeight >= div.scrollHeight;
+//    if (
+//      scrolledToBottom &&
+//      !recordsQuery.isLoading &&
+//      !recordsQuery.data!.reachedEnd
+//    )
+//      setPage(recordsQuery.data!.lastPage + 1);
+//
+//    const onScroll = () => {
+//      const scrolledToBottom =
+//        div.scrollTop + div.clientHeight >= div.scrollHeight;
+//      if (
+//        scrolledToBottom &&
+//        !recordsQuery.isLoading &&
+//        !recordsQuery.data!.reachedEnd
+//      )
+//        setPage(recordsQuery.data!.lastPage + 1);
+//    };
+//
+//    div.addEventListener("scroll", onScroll);
+//    return () => {
+//      div.removeEventListener("scroll", onScroll);
+//    };
+//  }, [page, recordsQuery.data?.lastPage, recordsQuery.isLoading]);
+//
+//  return (
+//    <>
+//      <div className={styles.eventsContent} ref={pageDiv}>
+//        <div className={styles.selectActivityWrapper}>
+//          <LibrarySelectActivity />
+//        </div>
+//        {recordsQuery.data === undefined || activityQuery.isLoading ? (
+//          <></>
+//        ) : (
+//          <>
+//            <div className={styles.itemList}>
+//              {recordsQuery.data.list.map((record) => (
+//                <RecordItem
+//                  record={record}
+//                  activity={notUnd(
+//                    activityQuery.data!.find(
+//                      (activity) => activity.id === record.activityId
+//                    )
+//                  )}
+//                  key={record.id}
+//                />
+//              ))}
+//            </div>
+//          </>
+//        )}
+//      </div>
+//    </>
+//  );
+//}
+
 export function ActivityList() {
   //const state = useAppSelector((state) => state.library.activities);
   //useLoadActivities();
-  
-  const activityQuery = useGetActivityQuery()
-  const [updateHehe, result] = useAddActivityMutation()
+
+  const activityQuery = useGetActivityQuery();
+  const [updateHehe, result] = useAddActivityMutation();
   return (
     <>
-      {activityQuery.isLoading ? (
-        <></>
-      ) : (
-        <>
-          {activityQuery.data!.map((activity) => (
-            <ActivityItem activity={activity} key={activity.id} />
-          ))}
-        </>
-      )}
+      <div className={styles.eventsContent}>
+        {activityQuery.isLoading ? (
+          <></>
+        ) : (
+          <>
+            {activityQuery.data!.map((activity) => (
+              <ActivityItem activity={activity} key={activity.id} />
+            ))}
+          </>
+        )}
+      </div>
     </>
   );
 }

@@ -3,6 +3,7 @@
 import ClientOnly from "@/app/components/ClientOnly";
 import Title from "@/app/components/text/title";
 import utilStyles from "@/app/styles/utils.module.scss";
+import {notUnd} from "@/app/utils/notNull";
 import styles from "@/app/[locale]/library/page.module.scss";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
@@ -27,21 +28,10 @@ export default function LibraryPage() {
           <Tab.Group>
             <Tab.Panels as={Fragment}>
               <Tab.Panel className={utilStyles.contents}>
-                <div className={styles.eventsContent}>
-                  <div className={styles.selectActivityWrapper}>
-                    <LibrarySelectActivity />
-                  </div>
-                  <ClientOnly>
-                    <LibraryList />
-                  </ClientOnly>
-                </div>
+                  <LibraryList />
               </Tab.Panel>
               <Tab.Panel className={utilStyles.contents}>
-                <div className={styles.eventsContent}>
-                  <ClientOnly>
-                    <ActivityList />
-                  </ClientOnly>
-                </div>
+                  <ActivityList />
               </Tab.Panel>
             </Tab.Panels>
 

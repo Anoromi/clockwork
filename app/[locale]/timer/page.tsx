@@ -20,7 +20,8 @@ import { setOpenedRecord } from "./timerStore";
 export default function TimerPage() {
   const t = useTranslations("Timer");
   const dispatch = useAppDispatch();
-
+  
+  
   return (
     <>
       <main className={classNames(rubik.className, styles.main)}>

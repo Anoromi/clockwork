@@ -9,6 +9,7 @@ type State = {
     //activityList: IActivity[] | null;
     //loading: boolean;
     //dirty: boolean;
+    selectedActivity: IActivity | null
   };
   activities: {
     //actvityList: IActivity[] | null;
@@ -37,6 +38,7 @@ const initialState: State = {
     //activityList: null,
     //loading: true,
     //dirty: true,
+    selectedActivity: null
   },
   activities: {
     //actvityList: null,
@@ -106,45 +108,45 @@ const initialState: State = {
 //};
 //
 
-const addActivity = createAsyncThunk(
-  "libraryStore/addActivity",
-  async (activity: IActivity) => {
-    await wait(300);
-    const db = await getDb();
-    await db.activity.add(activity);
-  }
-);
-
-const editActivity = createAsyncThunk(
-  "libraryStore/editActivity",
-  async ({
-    previousAc,
-    newAc,
-  }: {
-    previousAc: IActivity;
-    newAc: IActivity;
-  }) => {
-    const db = await getDb();
-    await db.activity.update(previousAc.id!, newAc);
-  }
-);
-
-const deleteActivity = createAsyncThunk(
-  "libraryStore/deleteActivity",
-  async (activity: IActivity) => {
-    const db = await getDb();
-    console.log(
-      "deleting",
-      await db.record.where("activityId").equals(activity.id!).toArray()
-    );
-    await db.record.where("activityId").equals(activity.id!).delete();
-    await db.activity.delete(activity.id!);
-    console.log(activity.id);
-    console.log(await db.activity.toArray());
-    console.log("record", await db.record.toArray());
-    console.log("deleted");
-  }
-);
+//const addActivity = createAsyncThunk(
+//  "libraryStore/addActivity",
+//  async (activity: IActivity) => {
+//    await wait(300);
+//    const db = await getDb();
+//    await db.activity.add(activity);
+//  }
+//);
+//
+//const editActivity = createAsyncThunk(
+//  "libraryStore/editActivity",
+//  async ({
+//    previousAc,
+//    newAc,
+//  }: {
+//    previousAc: IActivity;
+//    newAc: IActivity;
+//  }) => {
+//    const db = await getDb();
+//    await db.activity.update(previousAc.id!, newAc);
+//  }
+//);
+//
+//const deleteActivity = createAsyncThunk(
+//  "libraryStore/deleteActivity",
+//  async (activity: IActivity) => {
+//    const db = await getDb();
+//    console.log(
+//      "deleting",
+//      await db.record.where("activityId").equals(activity.id!).toArray()
+//    );
+//    await db.record.where("activityId").equals(activity.id!).delete();
+//    await db.activity.delete(activity.id!);
+//    console.log(activity.id);
+//    console.log(await db.activity.toArray());
+//    console.log("record", await db.record.toArray());
+//    console.log("deleted");
+//  }
+//);
 
 
 const librarySlice = createSlice({
@@ -194,6 +196,10 @@ const librarySlice = createSlice({
     selectDeleteActivity(state, data: PayloadAction<IActivity | null>) {
       state.activities.delete.selected = data.payload;
     },
+
+    selectActivity(state, data: PayloadAction<IActivity | null>) {
+      state.records.selectedActivity = data.payload
+    }
 
     //addActivity(state, data: PayloadAction<boolean>) {},
   },
@@ -247,6 +253,7 @@ export const {
   //changeActivityToLoading,
   selectEditActivity,
   selectDeleteActivity,
+  selectActivity
 } = librarySlice.actions;
 //export { addActivity, editActivity, deleteActivity };
 export default librarySlice.reducer;

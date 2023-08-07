@@ -13,6 +13,7 @@ type StartedTimer = {
   currentRecordTimestamp: PausableTime;
 };
 
+
 type State = {
   record: {
     activity: IActivity;

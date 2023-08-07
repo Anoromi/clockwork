@@ -1,5 +1,9 @@
+"use client"
 import { IActivity, IRecord, Metric } from "@/app/backend/database";
 import styles from "@/app/[locale]/library/components/recordItem.module.scss";
+import { useFormatter } from "next-intl";
+import { vollkorn } from "@/app/styles/fonts";
+import classNames from "classnames";
 
 type Props = {
   record: IRecord;
@@ -7,10 +11,18 @@ type Props = {
 };
 
 export default function RecordItem({ record, activity }: Props) {
-  //console.log('arr', record, activity)
+  const format = useFormatter()
+  const date = format.dateTime(record.date, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
   return (
     <>
       <div className={styles.card}>
+        <div className={classNames(styles.date, vollkorn.className)}>
+          {date}
+        </div>
         <h3>{activity.name}</h3>
         <div className={styles.attemptList}>
           {record.records.map((value, i) => (

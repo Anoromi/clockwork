@@ -9,26 +9,41 @@ import { useReactive } from "@/app/components/useReactive";
 import { getDb, IActivity } from "@/app/backend/database";
 import classNames from "classnames";
 import { Icon } from "@iconify/react";
-import {useGetActivityQuery} from "../api";
+import { useGetActivityQuery } from "../api";
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import { selectActivity } from "../libraryStore";
 
 export function LibrarySelectActivity() {
   const data = useGetActivityQuery()
-  const selectedActivity = useReactive<IActivity | null>(null);
+  //const selectedActivity = useReactive<IActivity | null>(null);
+  const selectedActivity = useAppSelector((state) => state.library.records.selectedActivity)
+  const dispatch = useAppDispatch()
+
+  const onActivityChange = (activity: IActivity | null) => dispatch(selectActivity(activity))
 
   return (
     <>
       <span className={styles.listbox}>
-        <Listbox value={selectedActivity.value} onChange={selectedActivity.set}>
+        <Listbox value={selectedActivity} onChange={onActivityChange}>
           <Listbox.Button className={utilStyles.contents}>
             {(state) => (
               <RippleButton as="div" className={styles.listboxButton}>
-                {selectedActivity.value?.name ?? "Activity"}
+                {selectedActivity?.name ?? "Activity"}
                 <Icon icon="octicon:chevron-down-12" fontSize={24} />
               </RippleButton>
             )}
           </Listbox.Button>
 
           <Listbox.Options className={styles.options}>
+              <Listbox.Option
+                key={'Empty'}
+                value={null}
+                className={utilStyles.contents}
+              >
+                <RippleButton as="div" className={styles.option}>
+                  None
+                </RippleButton>
+              </Listbox.Option>
             {data.isLoading ? <></> : data.data!.map((activity) => (
               <Listbox.Option
                 key={activity.name}

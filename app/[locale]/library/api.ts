@@ -4,20 +4,20 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 
 type Query =
   | {
-      type: "get";
-    }
+    type: "get";
+  }
   | {
-      type: "add";
-      value: IActivity;
-    }
+    type: "add";
+    value: IActivity;
+  }
   | {
-      type: "update";
-      value: IActivity;
-    }
+    type: "update";
+    value: IActivity;
+  }
   | {
-      type: "delete";
-      value: IActivity;
-    };
+    type: "delete";
+    value: IActivity;
+  };
 
 export const activityApi = createApi({
   reducerPath: "activityApi",
@@ -35,13 +35,70 @@ export const activityApi = createApi({
         },
         providesTags: ["Activity"],
       }),
-      getRecords: builder.query<IRecord[], void>({
+      getRecords: builder.query<IRecord[], number | null>({
         async queryFn(arg, api, extraOptions, baseQuery) {
+          if (arg === null)
+            return {
+              data: await (await getDb()).record.reverse().sortBy('id'),
+            };
+          console.log(arg)
           return {
-            data: await (await getDb()).record.toArray(),
-          };
+            data: await (await getDb()).record.where("activityId").equals(arg).reverse().sortBy('id')
+          }
         },
         providesTags: ["Record"],
+      }),
+      listRecords: builder.query<
+        {
+          list: IRecord[];
+          reachedEnd: boolean;
+          lastPage: number;
+        },
+        number
+      >({
+
+        async queryFn(arg, api, extraOptions, baseQuery) {
+          const pageSize = 10;
+
+          //const resultPage = await (
+          //  await getDb()
+          //).record
+          //  .offset(arg * pageSize)
+          //  .limit(pageSize)
+          //  .sortBy('id');
+          //return {
+          //  data: {
+          //    list: resultPage,
+          //    reachedEnd: resultPage.length < pageSize,
+          //    lastPage: arg,
+          //  },
+          //};
+          //
+
+          const resultPage = await (await getDb()).record.toArray()
+          const sortedResult = resultPage.sort((a, b) => a.id! - b.id!).slice(arg * pageSize, (arg + 1) * pageSize)
+          return {
+            data: {
+              list: sortedResult,
+              reachedEnd: sortedResult.length < pageSize,
+              lastPage: arg
+            }
+          }
+
+        },
+        serializeQueryArgs: (e) => {
+          return e.endpointName;
+        },
+        merge(currentCacheData, responseData, otherArgs) {
+          currentCacheData.list.push(...responseData.list);
+          currentCacheData.lastPage = responseData.lastPage;
+          currentCacheData.reachedEnd = responseData.reachedEnd;
+          //currentCacheData.push(...responseData);
+        },
+
+        forceRefetch(params) {
+          return params.currentArg !== params.previousArg;
+        },
       }),
 
       addActivity: builder.mutation<null, IActivity>({
@@ -56,7 +113,6 @@ export const activityApi = createApi({
 
       editActivity: builder.mutation<null, IActivity>({
         async queryFn(arg, api, extraOptions, baseQuery) {
-          //await wait(3000);
           console.log(arg);
           await (await getDb()).activity.update(arg.id!, arg);
           return {
@@ -68,8 +124,6 @@ export const activityApi = createApi({
 
       deleteActivity: builder.mutation<null, IActivity>({
         async queryFn(arg, api, extraOptions, baseQuery) {
-          //await wait(3000);
-          //await (await getDb()).activity.update(arg.id!, arg);
           const db = await getDb();
           await db.record.where("activityId").equals(arg.id!).delete();
           await db.activity.delete(arg.id!);
@@ -101,12 +155,12 @@ export const activityApi = createApi({
         },
       }),
 
-      addRecord: builder.mutation<void, IRecord>({
+      addRecord: builder.mutation<null, IRecord>({
         async queryFn(arg, api, extraOptions, baseQuery) {
           console.log("executing add record");
           await (await getDb()).record.add(arg);
           return {
-            data: undefined,
+            data: null,
           };
         },
         invalidatesTags: ["Record"],
@@ -124,6 +178,8 @@ export const activityApi = createApi({
 export const {
   useAddActivityMutation,
   useGetRecordsQuery,
+  useLazyGetRecordsQuery,
+  useListRecordsQuery,
   useGetActivityQuery,
   useEditActivityMutation,
   useDeleteActivityMutation,
