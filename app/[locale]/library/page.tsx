@@ -3,7 +3,7 @@
 import ClientOnly from "@/app/components/ClientOnly";
 import Title from "@/app/components/text/title";
 import utilStyles from "@/app/styles/utils.module.scss";
-import {notUnd} from "@/app/utils/notNull";
+import { notUnd } from "@/app/utils/notNull";
 import styles from "@/app/[locale]/library/page.module.scss";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
@@ -13,25 +13,32 @@ import LibraryEditActivityDialog from "./components/libraryEditActivityDialog";
 import LibraryTab from "./components/libraryTabs";
 import { ActivityList, LibraryList } from "./components/lists";
 import OptionsMenu from "./components/optionsMenu";
-import { LibrarySelectActivity } from "./components/selectActivity";
+import Flex from "@/app/components/layout/flex";
 
 export default function LibraryPage() {
   return (
     <>
       <main className={styles.main}>
         <div className={styles.container}>
-          <header className={styles.header}>
-            <Title>Library</Title>
-            <OptionsMenu />
-          </header>
+          <Flex<"header">
+            as="header"
+            justifyContent={"space-between"}
+            alignItems={"center"}
+            className={styles.header}
+            paddingLeft={'1rem'}
+            paddingRight={'1rem'}
+          >
+            <Title>Libary</Title>
+            <OptionsMenu/>
+          </Flex>
 
           <Tab.Group>
             <Tab.Panels as={Fragment}>
               <Tab.Panel className={utilStyles.contents}>
-                  <LibraryList />
+                <LibraryList />
               </Tab.Panel>
               <Tab.Panel className={utilStyles.contents}>
-                  <ActivityList />
+                <ActivityList />
               </Tab.Panel>
             </Tab.Panels>
 

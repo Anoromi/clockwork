@@ -20,19 +20,18 @@ import { setOpenedRecord } from "./timerStore";
 export default function TimerPage() {
   const t = useTranslations("Timer");
   const dispatch = useAppDispatch();
-  
-  
+
+
   return (
     <>
       <main className={classNames(rubik.className, styles.main)}>
         <Flex<"header">
           as="header"
           justifyContent={"space-between"}
-          paddingLeft={"1rem"}
-          paddingTop={"1rem"}
-          paddingRight={"1rem"}
-          paddingBottom={"1rem"}
-          alignItems={"baseline"}
+          alignItems={"center"}
+          className={styles.header}
+          paddingLeft={'1rem'}
+          paddingRight={'1rem'}
         >
           <Title>Timer</Title>
           <CommonButton
@@ -56,7 +55,7 @@ export default function TimerPage() {
   );
 }
 
-const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), {ssr: false});
+const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), { ssr: false });
 
 function CurrentTimer() {
   const state = useAppSelector((state) => state.timer.currentTimer);

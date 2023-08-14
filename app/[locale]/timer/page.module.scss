@@ -39,41 +39,19 @@
   .clockOverall {
     margin-top: 1rem;
     font-size: 1.5rem;
-    // color: var(--neutral25);
   }
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  height: 3.5rem;
+  box-sizing: border-box;
+  background-color: var(--surface-container)
+}
 
-// .hello {
-// 	background: var(--primary80);
-// 	position: relative;
-// 	border-radius: 0.5rem;
-
-// 	&::before {
-// 		background-color: transparent;
-// 		transition: background ease-out 400ms;
-// 	}
-
-// 	&:hover::before {
-// 		background: var(--primary-level-4);
-// 	}
-
-// 	&:active::before {
-// 		background: var(--primary-level-4);
-// 	}
-// }
-// .hello::before {
-// 	// content: 'hello';
-// 	content: "";
-// 	// background: gray;
-// 	position: absolute;
-// 	top: 0;
-// 	bottom: 0;
-// 	left: 0;
-// 	right: 0;
-// 	&:hover {
-// 	}
-// }
 
 .test {
   position: relative;

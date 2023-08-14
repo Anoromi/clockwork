@@ -13,6 +13,7 @@ import { store } from "../store";
 import Providers from "../providers";
 import { BottomAppBar } from "./components/bottomAppBar";
 import PageResizer from "./pageResizer";
+import styles from "@/app/[locale]/layout.module.scss";
 
 export const metadata = {
   title: "Create Next App",
@@ -45,7 +46,9 @@ export default async function RootLayout({
       <PageResizer>
         <NextIntlClientProvider locale={params.locale} messages={messages}>
           <Providers>
-            {children}
+            <div className={styles.mainPage}>
+              {children}
+            </div>
             <BottomAppBar locale={params.locale} />
           </Providers>
         </NextIntlClientProvider>

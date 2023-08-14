@@ -1,9 +1,15 @@
 
 
 .body {
-  display: flex;
-  height: 100vh;
   width: 100vw;
   flex-direction: column;
   overflow: hidden;
+}
+
+.mainPage {
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+  display: flex;
+  box-sizing: border-box;
 }

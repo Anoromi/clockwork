@@ -20,11 +20,16 @@
 .header {
   display: flex;
   flex-direction: row;
-  padding: 1rem 1rem;
   row-gap: 1rem;
   background-color: var(--surface-container);
   justify-content: space-between;
   align-items: center;
+  height: 3.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 
@@ -43,5 +48,6 @@
   //max-width: 400px;
 }
 
+.header {
 
-
+}

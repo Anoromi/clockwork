@@ -35,15 +35,15 @@ export function LibrarySelectActivity() {
           </Listbox.Button>
 
           <Listbox.Options className={styles.options}>
-              <Listbox.Option
-                key={'Empty'}
-                value={null}
-                className={utilStyles.contents}
-              >
-                <RippleButton as="div" className={styles.option}>
-                  None
-                </RippleButton>
-              </Listbox.Option>
+            <Listbox.Option
+              key={'Empty'}
+              value={null}
+              className={utilStyles.contents}
+            >
+              <RippleButton as="div" className={styles.option}>
+                None
+              </RippleButton>
+            </Listbox.Option>
             {data.isLoading ? <></> : data.data!.map((activity) => (
               <Listbox.Option
                 key={activity.name}
