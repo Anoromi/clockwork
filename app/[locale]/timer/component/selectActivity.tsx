@@ -1,20 +1,20 @@
 "use client";
 
-import {IActivity} from "@/app/backend/database";
+import { IActivity } from "@/app/backend/database";
 import RippleButton from "@/app/components/ripple-button";
 import utilStyles from "@/app/styles/utils.module.scss";
-import {useAppDispatch, useAppSelector} from "@/app/utils/clientUseRedux";
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
 import styles from "@/app/[locale]/timer/component/selectActivity.module.scss";
-import {Listbox, Transition} from "@headlessui/react";
-import {Icon} from "@iconify/react";
+import { Listbox, Transition } from "@headlessui/react";
+import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import {Fragment} from "react";
-import {useGetActivityQuery} from "../../library/api";
-import {selectActivity} from "../timerStore";
+import { Fragment } from "react";
+import { useGetActivityQuery } from "../../library/api";
+import { selectActivity } from "../timerStore";
 
 type Props = {};
 
-export default function SelectActivity({}: Props) {
+export default function SelectActivity({ }: Props) {
   const selectedActivity = useAppSelector(
     (state) => state.timer.selectedActivity
   );
@@ -34,7 +34,7 @@ export default function SelectActivity({}: Props) {
               onChange={(value) => dispatch(selectActivity(value))}
             >
               <Listbox.Button className={classNames(utilStyles.contents)}>
-                {({open}) => (
+                {({ open }) => (
                   <>
                     <RippleButton
                       className={classNames(
