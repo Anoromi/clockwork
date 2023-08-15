@@ -4,41 +4,111 @@
 }
 
 .listboxButton {
-  background-color: var(--primary80);
+  background-color: var(--primary90);
   color: var(--primary10);
-  border-radius: 9999px;
-  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   font-size: 1rem;
   --ripple-color: var(--on-surface);
   column-gap: 0.5rem;
   font-weight: 500;
+  min-width: 7rem;
+  //display: inline-block;
+  display: flex;
+  justify-content: space-between;
+
+  //outline: var(--outline) 2px solid;
 }
 
 .options {
-  margin-top: 0.5rem;
+  margin-top: 4px;
+  //margin-top: 0.5rem;
+  z-index: 10;
   position: absolute;
-  background-color: var(--primary80);
-  color: var(--primary10);
-  outline: none;
+  //background-color: var(--primary90);
+  //color: var(--primary10);
+  
+  background: var(--surface-container-highest);
+  //outline: var(--primary40) 2px solid;
   left: 0;
   top: 100%;
   min-width: 100%;
   font-weight: 500;
-  border-radius: 1rem;
-  overflow-x: hidden;
+  border-radius: 0.4rem;
+  //overflow-x: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-height: 200px;
+  //touch-action: pan-y;
+  //overscroll-behavior-y: contain;
+  overflow: hidden auto;
+}
+
+.specialOptions {
+  background-color: rgb(18, 18, 18);
+  color: rgb(255, 255, 255);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
+    rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.12)
+  );
+  position: absolute;
+  overflow: hidden auto;
+  //min-width: 16px;
+  //min-height: 16px;
+  //max-width: calc(100% - 32px);
+  outline: 0px;
+  //max-height: calc(100% - 96px);
+  height: 200px;
+  top: 0;
+  left: 0;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
 }
 
 .option {
   --ripple-color: var(--primary10);
   --surface-coloring: var(--primary10);
-  overflow-x: hidden;
+  //overflow-x: hidden;
+  overflow: hidden;
   padding: 1rem 1rem;
   user-select: none;
   flex-shrink: 0;
+}
+
+.specialOption {
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  margin: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  color: inherit;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  display: flex;
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  -moz-box-align: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  min-height: 48px;
+  padding: 6px 16px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
