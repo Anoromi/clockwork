@@ -1,12 +1,10 @@
 "use client";
 
 import RippleButton from "@/app/components/ripple-button";
-import { getUserExercises } from "@/app/utils/load";
 import styles from "@/app/[locale]/library/components/selectActivity.module.scss";
 import { Listbox } from "@headlessui/react";
 import utilStyles from "@/app/styles/utils.module.scss";
-import { useReactive } from "@/app/components/useReactive";
-import { getDb, IActivity } from "@/app/backend/database";
+import { IActivity } from "@/app/backend/database";
 import classNames from "classnames";
 import { Icon } from "@iconify/react";
 import { useGetActivityQuery } from "../api";

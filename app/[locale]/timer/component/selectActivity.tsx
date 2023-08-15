@@ -79,16 +79,21 @@ export default function SelectActivity({}: Props) {
 
 function ActivityOption({ data }: { data: IActivity }) {
   const { rippleData, buttonData } = useRipple({
-    withElevation: false
-      });
+    withElevation: false,
+  });
   return (
     <Listbox.Option
       value={data}
       {...buttonData}
       className={({ active }) =>
-        classNames(buttonData.className, styles.option, surfaceColoring.surfaceNormal, {
-          [surfaceColoring.surfaceElevated]: active,
-        })
+        classNames(
+          buttonData.className,
+          styles.option,
+          surfaceColoring.surfaceNormal,
+          {
+            [surfaceColoring.surfaceElevated]: active,
+          },
+        )
       }
     >
       {({ active }) => (

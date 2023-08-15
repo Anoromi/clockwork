@@ -70,13 +70,10 @@
   --surface-coloring: var(--on-surface);
   background-color: var(--surface-container);
   font-size: 1rem;
-  transition: color 500ms var(--ease-decelerate), background-color 500ms var(--ease-decelerate);
+  transition:
+    color 500ms var(--ease-decelerate),
+    background-color 500ms var(--ease-decelerate);
   user-select: none;
-}
-
-.activeOption {
-  //background-color: var(--primary40);
-  //color: var(--primary100);
 }
 
 .opacity-leave,
