@@ -23,4 +23,10 @@
     background: $hover;
     opacity: 0.12;
   }
+  &:focus-within::before {
+    background: $hover;
+    opacity: 0.12;
+  }
 }
+
+

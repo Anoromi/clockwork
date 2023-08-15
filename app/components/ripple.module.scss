@@ -5,7 +5,12 @@
   overflow: hidden;
   outline: none;
   border: none;
-  @include coloring.surface-coloring(var(--background-coloring, var(--ripple-color, #000)));
+  //@include coloring.surface-coloring(var(--background-coloring, var(--ripple-color, #000)));
+  
+}
+
+.rippleButtonSurfaceVars {
+  --surface-coloring: var(--ripple-color, #000);
 }
 
 .detector {
@@ -18,13 +23,6 @@
   top: 0;
   bottom: 0;
 }
-
-// @keyframes ripple {
-// 	to {
-// 		transform: scale(4);
-// 		// opacity: 0;
-// 	}
-// }
 
 @keyframes calm-down {
   from {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./ripple.module.scss";
 import classNames from "classnames";
 import { conditionalStyles } from "../utils/conditionalStyles";
+import { surfaceColoring } from "../styles/coloring";
 
 type ClickEvent = {
   clientX: number;
@@ -12,7 +13,11 @@ type ClickEvent = {
 };
 
 export function useRipple(
-  params: { rippleDuration?: number; disabled?: boolean } = {}
+  params: {
+    rippleDuration?: number;
+    disabled?: boolean;
+    withElevation?: boolean;
+  } = {},
 ) {
   const rippleDuration = params.rippleDuration ?? 600;
 
@@ -28,7 +33,7 @@ export function useRipple(
     //   diameter: 10,
     //   startedAt: new Date()
     // }
-    null
+    null,
   );
 
   const [calming, setCalming] = useState<{
@@ -44,7 +49,7 @@ export function useRipple(
     console.log(e.currentTarget.offsetLeft, e.currentTarget.offsetTop);
     console.log(e.currentTarget.clientLeft, e.currentTarget.clientTop);
     console.log(e.clientX, e.clientY);
-    console.log(e)
+    console.log(e);
     let offsetX = e.currentTarget.offsetLeft;
     let offsetY = e.currentTarget.offsetTop;
     let element = e.currentTarget.offsetParent;
@@ -61,7 +66,7 @@ export function useRipple(
     // e.currentTarget.client
     const diameter = Math.max(
       e.currentTarget.clientWidth,
-      e.currentTarget.clientHeight
+      e.currentTarget.clientHeight,
     );
     const radius = diameter / 2;
     setRipplePos({
@@ -82,13 +87,19 @@ export function useRipple(
     if (ripplePos === null) return;
     const oldRipple = ripplePos;
 
-    setTimeout(() => {
-      const ripple = ripplePos;
-      if (oldRipple !== ripple) return;
+    setTimeout(
+      () => {
+        const ripple = ripplePos;
+        if (oldRipple !== ripple) return;
 
-      setRipplePos(null);
-      calmDown({ diameter: ripple!.diameter });
-    }, rippleDuration - new Date().getTime() + ripplePos!.startedAt.getTime() - 100);
+        setRipplePos(null);
+        calmDown({ diameter: ripple!.diameter });
+      },
+      rippleDuration -
+        new Date().getTime() +
+        ripplePos!.startedAt.getTime() -
+        100,
+    );
   }
 
   function calmDown(params: typeof calming) {
@@ -98,16 +109,26 @@ export function useRipple(
     }, 400);
   }
 
+  console.log(
+    "why not ",
+    classNames(styles.rippleButton, {
+      [styles.rippleButtonSurfaceVars]: params.withElevation !== false,
+      [surfaceColoring.surfaceColoring]: params.withElevation !== false,
+    }),
+    surfaceColoring
+  );
   return {
     buttonData: {
-      className: styles.rippleButton,
+      className: classNames(styles.rippleButton, {
+        [styles.rippleButtonSurfaceVars]: params.withElevation !== false,
+        [surfaceColoring.surfaceColoring]: params.withElevation !== false,
+      }),
       disabled: params.disabled,
       onMouseDown: (e: React.MouseEvent<HTMLElement>) => calculateRipple(e),
       onMouseUp: () => finishRipple(),
       onMouseOut: () => finishRipple(),
       onTouchStart: (e: React.TouchEvent<HTMLElement>) => {
-      
-        console.log(e)
+        console.log(e);
         // e.touches[0].
         calculateRipple({
           clientX: e.touches[0].clientX,
@@ -119,9 +140,6 @@ export function useRipple(
         finishRipple();
       },
       onTouchCancel: () => finishRipple(),
-    },
-    detectorData: {
-      className: styles.detector,
     },
     rippleData: {
       className: classNames(styles.ripple, {
@@ -168,7 +186,7 @@ export function useRipple(
             // opacity: 0
             opacity: 0,
           }),
-        ]
+        ],
       ),
     },
   };

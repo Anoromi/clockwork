@@ -65,11 +65,18 @@
   display: inline-block;
   padding: 1rem 0;
   flex-shrink: 0;
-  
-
+  border-radius: 0;
   --ripple-color: var(--on-surface);
+  --surface-coloring: var(--on-surface);
   background-color: var(--surface-container);
   font-size: 1rem;
+  transition: color 500ms var(--ease-decelerate), background-color 500ms var(--ease-decelerate);
+  user-select: none;
+}
+
+.activeOption {
+  //background-color: var(--primary40);
+  //color: var(--primary100);
 }
 
 .opacity-leave,

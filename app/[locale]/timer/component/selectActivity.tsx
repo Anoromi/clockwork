@@ -11,16 +11,19 @@ import classNames from "classnames";
 import { Fragment } from "react";
 import { useGetActivityQuery } from "../../library/api";
 import { selectActivity } from "../timerStore";
+import CommonButton from "@/app/components/button/commonButton";
+import { useRipple } from "@/app/components/useRipple";
+import { surfaceColoring } from "@/app/styles/coloring";
 
 type Props = {};
 
-export default function SelectActivity({ }: Props) {
+export default function SelectActivity({}: Props) {
   const selectedActivity = useAppSelector(
-    (state) => state.timer.selectedActivity
+    (state) => state.timer.selectedActivity,
   );
   const dispatch = useAppDispatch();
 
-  const data = useGetActivityQuery()
+  const data = useGetActivityQuery();
 
   return (
     <>
@@ -37,10 +40,9 @@ export default function SelectActivity({ }: Props) {
                 {({ open }) => (
                   <>
                     <RippleButton
-                      className={classNames(
-                        styles.button,
-                        { [styles.buttonSelected]: open }
-                      )}
+                      className={classNames(styles.button, {
+                        [styles.buttonSelected]: open,
+                      })}
                       as="div"
                     >
                       {selectedActivity?.name ?? "Select activity"}
@@ -76,11 +78,25 @@ export default function SelectActivity({ }: Props) {
 }
 
 function ActivityOption({ data }: { data: IActivity }) {
+  const { rippleData, buttonData } = useRipple({
+    withElevation: false
+      });
   return (
-    <Listbox.Option value={data} className={classNames(utilStyles.contents)}>
-      <RippleButton className={classNames(styles.option)} as="div">
-        {data.name}
-      </RippleButton>
+    <Listbox.Option
+      value={data}
+      {...buttonData}
+      className={({ active }) =>
+        classNames(buttonData.className, styles.option, surfaceColoring.surfaceNormal, {
+          [surfaceColoring.surfaceElevated]: active,
+        })
+      }
+    >
+      {({ active }) => (
+        <>
+          <div {...rippleData}></div>
+          {data.name}
+        </>
+      )}
     </Listbox.Option>
   );
 }

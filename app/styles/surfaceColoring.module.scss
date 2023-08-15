@@ -1,0 +1,52 @@
+.surfaceColoring {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    transition: opacity ease-out 200ms;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface-coloring);
+    opacity: 0;
+  }
+  &:hover::before {
+    background: var(--surface-coloring);
+    opacity: 0.12;
+  }
+  &:active::before {
+    background: var(--surface-coloring);
+    opacity: 0.12;
+  }
+  &:focus::before {
+    background: var(--surface-coloring);
+    opacity: 0.12;
+  }
+  &:focus-within::before {
+    background: var(--surface-coloring);
+    opacity: 0.12;
+  }
+}
+
+.surfaceNormal {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    transition: opacity ease-out 200ms;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface-coloring);
+    opacity: 0;
+  }
+}
+
+.surfaceElevated {
+  &::before {
+    background: var(--surface-coloring);
+    opacity: 0.12;
+  }
+}

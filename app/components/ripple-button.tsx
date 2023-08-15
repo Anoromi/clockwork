@@ -1,7 +1,6 @@
 "use client";
 
 import React, { ButtonHTMLAttributes, ReactElement, useState } from "react";
-import styles from "./ripple.module.scss";
 import classNames from "classnames";
 import { useRipple } from "./useRipple";
 import {NormalElement} from "../utils/elementTypes";
@@ -73,7 +72,7 @@ export default function RippleButton({
   // 	}, 400)
   // }
 
-  let { buttonData, detectorData, rippleData } = useRipple({
+  let { buttonData, rippleData } = useRipple({
     disabled,
   });
 

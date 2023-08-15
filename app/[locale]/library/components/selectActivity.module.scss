@@ -1,9 +1,6 @@
 .listbox {
   position: relative;
   display: inline-block;
-
-  //display: flex;
-  //flex-direction: column;
 }
 
 .listboxButton {
@@ -39,6 +36,8 @@
 
 .option {
   --ripple-color: var(--primary10);
+  --surface-coloring: var(--primary10);
+  overflow-x: hidden;
   padding: 1rem 1rem;
   user-select: none;
   flex-shrink: 0;
