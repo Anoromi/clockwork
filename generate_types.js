@@ -1,7 +1,7 @@
-import * as ts from "typescript"
-import { readFileSync } from "fs"
+import { readFileSync } from "fs";
+import * as ts from "typescript";
 
-console.log(ts.factory)
+console.log(ts.factory);
 // const file = ts.createSourceFile(
 // 	"src/intl",
 // 	"",
@@ -25,41 +25,41 @@ console.log(ts.factory)
 
 // ts.factory.createFunct
 
-function eachRecursive(obj
-	// : Record<string, unknown>
+function eachRecursive(
+  obj,
+  // : Record<string, unknown>
 ) {
-	let v
-		// : ts.PropertySignature[]
-		= []
-	for (let i in obj) {
-		if (typeof obj[i] === "string") {
-			v.push(
-				ts.factory.createPropertySignature(
-					undefined,
-					i,
-					undefined,
-					ts.factory.createTypeReferenceNode("string")
-				)
-			)
-		} else if (typeof obj[i] === "object") {
-			let object = obj[i]
-			// as any as Record<string, unknown>
-			let result = eachRecursive(object)
+  let v =
+    // : ts.PropertySignature[]
+    [];
+  for (let i in obj) {
+    if (typeof obj[i] === "string") {
+      v.push(
+        ts.factory.createPropertySignature(
+          undefined,
+          i,
+          undefined,
+          ts.factory.createTypeReferenceNode("string"),
+        ),
+      );
+    } else if (typeof obj[i] === "object") {
+      let object = obj[i];
+      // as any as Record<string, unknown>
+      let result = eachRecursive(object);
 
-			// ts.factory.createPropertySignature(
-			//   undefined,
-			//   i,
-			//   undefined,
-			//   // ts.factory.createNode
-			// )
-		}
-	}
-	return ts.factory.createTypeLiteralNode(v)
+      // ts.factory.createPropertySignature(
+      //   undefined,
+      //   i,
+      //   undefined,
+      //   // ts.factory.createNode
+      // )
+    }
+  }
+  return ts.factory.createTypeLiteralNode(v);
 }
 
-let result = eachRecursive(JSON.parse(readFileSync("./messages/en.json", "utf8")))
+let result = eachRecursive(
+  JSON.parse(readFileSync("./messages/en.json", "utf8")),
+);
 
-
-console.log(result)
-
-
+console.log(result);

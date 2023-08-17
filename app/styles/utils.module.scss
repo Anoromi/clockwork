@@ -1,48 +1,45 @@
 .flex {
-	display: flex;
+  display: flex;
 }
 
 .flex-column {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 $justify-content-rules: center, start, end, space-between, space-evenly,
-	space-around;
+  space-around;
 
 // .justify-whatever {
 // }
 
 @each $rule in $justify-content-rules {
-	.justify-#{$rule} {
-		justify-content: $rule;
-	}
+  .justify-#{$rule} {
+    justify-content: $rule;
+  }
 }
 
 $align-items-rules: center, start, end, stretch, baseline;
 
 @each $rule in $align-items-rules {
-	.align-#{$rule} {
-		align-items: $rule;
-	}
+  .align-#{$rule} {
+    align-items: $rule;
+  }
 }
 
 @for $i from 0 through 40 {
-	.gap-y-#{$i} {
-		column-gap: #{$i / 4}rem;
-	}
+  .gap-y-#{$i} {
+    column-gap: #{$i / 4}rem;
+  }
 }
 
 .contents {
-	display: contents;
+  display: contents;
 }
-
 
 $display-rules: contents, block, inline-block, inline, flex;
 
-
-
 @each $rule in $display-rules {
-	.#{$rule} {
-		display: $rule;
-	}
+  .#{$rule} {
+    display: $rule;
+  }
 }

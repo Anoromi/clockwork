@@ -94,7 +94,8 @@
 
 .popupLeave,
 .popupEnter {
-  transition: transform var(--ease-decelerate) 200ms,
+  transition:
+    transform var(--ease-decelerate) 200ms,
     opacity var(--ease-decelerate) 200ms;
 }
 

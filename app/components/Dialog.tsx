@@ -26,33 +26,32 @@ const AppDialog = function AppDialog({ children, open, onClose }: Props) {
     <>
       <Transition appear show={open} as={Fragment}>
         <Dialog onClose={onClose} as="div" className={styles.mainDialog}>
-          
+          <Transition.Child
+            as={Fragment}
+            enter={styles.opacityEnter}
+            enterFrom={styles.opacityEnterFrom}
+            enterTo={styles.opacityEnterTo}
+            leave={styles.opacityLeave}
+            leaveFrom={styles.opacityLeaveFrom}
+            leaveTo={styles.opacityLeaveTo}
+          >
+            <div className={styles.dialogBackground}></div>
+          </Transition.Child>
+          <div className={styles.dialogWrapper}>
             <Transition.Child
-                as={Fragment}
-                enter={styles.opacityEnter}
-                enterFrom={styles.opacityEnterFrom}
-                enterTo={styles.opacityEnterTo}
-                leave={styles.opacityLeave}
-                leaveFrom={styles.opacityLeaveFrom}
-                leaveTo={styles.opacityLeaveTo}
+              as={Fragment}
+              enter={styles.popupEnter}
+              enterFrom={styles.popupEnterFrom}
+              enterTo={styles.popupEnterTo}
+              leave={styles.popupLeave}
+              leaveFrom={styles.popupLeaveFrom}
+              leaveTo={styles.popupLeaveTo}
             >
-              <div className={styles.dialogBackground}></div>
+              <Dialog.Panel className={styles.dialog}>
+                <div className={styles.dialogContent}>{attempt}</div>
+              </Dialog.Panel>
             </Transition.Child>
-            <div className={styles.dialogWrapper}>
-              <Transition.Child
-                as={Fragment}
-                enter={styles.popupEnter}
-                enterFrom={styles.popupEnterFrom}
-                enterTo={styles.popupEnterTo}
-                leave={styles.popupLeave}
-                leaveFrom={styles.popupLeaveFrom}
-                leaveTo={styles.popupLeaveTo}
-              >
-                <Dialog.Panel className={styles.dialog}>
-                  <div className={styles.dialogContent}>{attempt}</div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
+          </div>
         </Dialog>
       </Transition>
     </>

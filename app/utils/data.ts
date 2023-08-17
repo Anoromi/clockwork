@@ -35,7 +35,7 @@
 // 	exercise: UserActivity
 // 	trials: PERecords
 // }
-// 
+//
 // export type UserRepeatedTrialAttempt = {
 // 	exercise: UserActivity
 // 	trials: PERecords

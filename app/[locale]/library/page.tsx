@@ -1,10 +1,9 @@
 "use client";
 
-import ClientOnly from "@/app/components/ClientOnly";
+import styles from "@/app/[locale]/library/page.module.scss";
+import Flex from "@/app/components/layout/flex";
 import Title from "@/app/components/text/title";
 import utilStyles from "@/app/styles/utils.module.scss";
-import { notUnd } from "@/app/utils/notNull";
-import styles from "@/app/[locale]/library/page.module.scss";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react";
 import LibraryAddDialog from "./components/addDialog";
@@ -13,7 +12,6 @@ import LibraryEditActivityDialog from "./components/libraryEditActivityDialog";
 import LibraryTab from "./components/libraryTabs";
 import { ActivityList, LibraryList } from "./components/lists";
 import OptionsMenu from "./components/optionsMenu";
-import Flex from "@/app/components/layout/flex";
 
 export default function LibraryPage() {
   return (
@@ -25,11 +23,11 @@ export default function LibraryPage() {
             justifyContent={"space-between"}
             alignItems={"center"}
             className={styles.header}
-            paddingLeft={'1rem'}
-            paddingRight={'1rem'}
+            paddingLeft={"1rem"}
+            paddingRight={"1rem"}
           >
             <Title>Libary</Title>
-            <OptionsMenu/>
+            <OptionsMenu />
           </Flex>
 
           <Tab.Group>

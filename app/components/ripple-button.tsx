@@ -1,9 +1,9 @@
 "use client";
 
-import React, { ButtonHTMLAttributes, ReactElement, useState } from "react";
 import classNames from "classnames";
+import React, { ButtonHTMLAttributes } from "react";
+import { NormalElement } from "../utils/elementTypes";
 import { useRipple } from "./useRipple";
-import {NormalElement} from "../utils/elementTypes";
 
 type Props = {
   className?: string;
@@ -97,7 +97,6 @@ export default function RippleButton({
       //    console.log(e)
       //  }}
     >
-    
       <div
         // className={classNames(styles.ripple, {
         // 	[styles["ripple-calm"]]: calming,
@@ -109,4 +108,3 @@ export default function RippleButton({
     </Element>
   );
 }
-

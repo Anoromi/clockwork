@@ -4,13 +4,13 @@ import { ButtonHTMLAttributes } from "react";
 import RippleButton from "../ripple-button";
 
 type Props = React.PropsWithChildren<{
-  buttonType?: "primary" | "text" | "tonal" | "outlined" | 'blank';
+  buttonType?: "primary" | "text" | "tonal" | "outlined" | "blank";
   textType?: "normal" | "icon";
   type?: ButtonHTMLAttributes<unknown>["type"];
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
-  as?: React.ComponentProps<typeof RippleButton>['as']
+  as?: React.ComponentProps<typeof RippleButton>["as"];
 }>;
 
 export default function CommonButton({
@@ -21,8 +21,7 @@ export default function CommonButton({
   className,
   onClick,
   disabled,
-  as
-  
+  as,
 }: Props) {
   return (
     <>
@@ -38,7 +37,7 @@ export default function CommonButton({
             [styles.icon]: textType === "icon",
             [styles.disabled]: disabled === true,
           },
-          className
+          className,
         )}
         type={type}
         onClick={onClick}

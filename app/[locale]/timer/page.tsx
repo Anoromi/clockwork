@@ -1,11 +1,11 @@
 "use client";
 
+import styles from "@/app/[locale]/timer/page.module.scss";
 import CommonButton from "@/app/components/button/commonButton";
 import Flex from "@/app/components/layout/flex";
 import Title from "@/app/components/text/title";
 import { switchTheme } from "@/app/extraStore";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import styles from "@/app/[locale]/timer/page.module.scss";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
@@ -21,7 +21,6 @@ export default function TimerPage() {
   const t = useTranslations("Timer");
   const dispatch = useAppDispatch();
 
-
   return (
     <>
       <main className={classNames(rubik.className, styles.main)}>
@@ -30,8 +29,8 @@ export default function TimerPage() {
           justifyContent={"space-between"}
           alignItems={"center"}
           className={styles.header}
-          paddingLeft={'1rem'}
-          paddingRight={'1rem'}
+          paddingLeft={"1rem"}
+          paddingRight={"1rem"}
         >
           <Title>Timer</Title>
           <CommonButton
@@ -55,7 +54,9 @@ export default function TimerPage() {
   );
 }
 
-const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), { ssr: false });
+const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), {
+  ssr: false,
+});
 
 function CurrentTimer() {
   const state = useAppSelector((state) => state.timer.currentTimer);

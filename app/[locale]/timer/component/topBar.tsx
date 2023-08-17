@@ -1,9 +1,9 @@
 "use client";
 
+import styles from "@/app/[locale]/timer/component/topBar.module.scss";
 import { Metric } from "@/app/backend/database";
 import Flex from "@/app/components/layout/flex";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import styles from "@/app/[locale]/timer/component/topBar.module.scss";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
 

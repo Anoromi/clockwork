@@ -1,12 +1,7 @@
 {
-  "locales": [
-    "en",
-    "uk"
-  ],
+  "locales": ["en", "uk"],
   "defaultLocale": "en",
   "pages": {
-    "/timer": [
-      "timer"
-    ]
+    "/timer": ["timer"]
   }
 }

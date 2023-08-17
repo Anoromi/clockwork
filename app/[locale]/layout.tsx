@@ -4,16 +4,12 @@ import "./globals.scss";
 // import "sanitize.css/typography.css"
 import "reset-css";
 
-import { rubik } from "../styles/fonts";
-import { notFound } from "next/navigation";
+import styles from "@/app/[locale]/layout.module.scss";
 import { NextIntlClientProvider, useLocale } from "next-intl";
-import classNames from "classnames";
-import { Provider } from "react-redux";
-import { store } from "../store";
+import { notFound } from "next/navigation";
 import Providers from "../providers";
 import { BottomAppBar } from "./components/bottomAppBar";
 import PageResizer from "./pageResizer";
-import styles from "@/app/[locale]/layout.module.scss";
 
 export const metadata = {
   title: "Create Next App",

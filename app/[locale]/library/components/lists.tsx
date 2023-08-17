@@ -1,25 +1,25 @@
 "use client";
 
-import { useReactive } from "@/app/components/useReactive";
+import styles from "@/app/[locale]/library/components/lists.module.scss";
+import { useAppSelector } from "@/app/utils/clientUseRedux";
 import { notUnd } from "@/app/utils/notNull";
+import { useEffect } from "react";
 import {
   useAddActivityMutation,
   useGetActivityQuery,
   useGetRecordsQuery,
-  useListRecordsQuery,
 } from "../api";
 import ActivityItem from "./activityItem";
 import RecordItem from "./recordItem";
-import styles from "@/app/[locale]/library/components/lists.module.scss";
-import { useEffect, useRef, useState } from "react";
 import { LibrarySelectActivity } from "./selectActivity";
-import { useAppSelector } from "@/app/utils/clientUseRedux";
 
 export function LibraryList() {
-  const selectedActivity = useAppSelector((state) => state.library.records.selectedActivity)
+  const selectedActivity = useAppSelector(
+    (state) => state.library.records.selectedActivity,
+  );
   useEffect(() => {
-    console.log('selected', selectedActivity)
-  }, [selectedActivity])
+    console.log("selected", selectedActivity);
+  }, [selectedActivity]);
   const recordsQuery = useGetRecordsQuery(selectedActivity?.id ?? null);
   const activityQuery = useGetActivityQuery();
 
@@ -39,8 +39,8 @@ export function LibraryList() {
                   record={record}
                   activity={notUnd(
                     activityQuery.data!.find(
-                      (activity) => activity.id === record.activityId
-                    )
+                      (activity) => activity.id === record.activityId,
+                    ),
                   )}
                   key={record.id}
                 />
@@ -52,7 +52,6 @@ export function LibraryList() {
     </>
   );
 }
-
 
 //export function LibraryList() {
 //  //const state = useAppSelector((state) => state.library.records);

@@ -1,8 +1,8 @@
 "use client";
-import {useReactive} from "@/app/components/useReactive";
-import {PausableTime} from "@/app/utils/pausableTime";
-import dayjs, {Dayjs} from "dayjs";
-import {useEffect} from "react";
+import { useReactive } from "@/app/components/useReactive";
+import { PausableTime } from "@/app/utils/pausableTime";
+import dayjs, { Dayjs } from "dayjs";
+import { useEffect } from "react";
 
 type Props = {
   initial?: PausableTime;
@@ -52,8 +52,8 @@ export default function Timer({ initial, className }: Props) {
         seconds.set(
           dateToDisplay(
             dayjs(Date.now()).add(initial.extraMilliseconds, "millisecond"),
-            dayjs(initial.lastContinue)
-          )
+            dayjs(initial.lastContinue),
+          ),
         );
         //console.log("hehe");
         ex();

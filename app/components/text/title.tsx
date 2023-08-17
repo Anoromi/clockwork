@@ -1,5 +1,5 @@
 "use client";
-import styles from "@/app/components/text/title.module.scss"
+import styles from "@/app/components/text/title.module.scss";
 
 type Props = React.PropsWithChildren<{}>;
 

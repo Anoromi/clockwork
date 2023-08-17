@@ -1,19 +1,18 @@
 "use client";
 
+import styles from "@/app/[locale]/timer/component/selectActivity.module.scss";
 import { IActivity } from "@/app/backend/database";
 import RippleButton from "@/app/components/ripple-button";
+import { useRipple } from "@/app/components/useRipple";
+import { surfaceColoring } from "@/app/styles/coloring";
 import utilStyles from "@/app/styles/utils.module.scss";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import styles from "@/app/[locale]/timer/component/selectActivity.module.scss";
 import { Listbox, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { Fragment } from "react";
 import { useGetActivityQuery } from "../../library/api";
 import { selectActivity } from "../timerStore";
-import CommonButton from "@/app/components/button/commonButton";
-import { useRipple } from "@/app/components/useRipple";
-import { surfaceColoring } from "@/app/styles/coloring";
 
 type Props = {};
 

@@ -1,12 +1,10 @@
 "use client";
 
 import { AppDialog } from "@/app/components/Dialog";
-import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useMemo, useRef } from "react";
-import styles from "@/app/[locale]/library/components/deleteActivityDialog.module.scss";
 import CommonButton from "@/app/components/button/commonButton";
 import Flex from "@/app/components/layout/flex";
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import { useEffect, useMemo } from "react";
 import { useDeleteActivityMutation } from "../api";
 import { selectDeleteActivity } from "../libraryStore";
 

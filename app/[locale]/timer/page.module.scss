@@ -22,7 +22,6 @@
   flex-grow: 1;
 }
 
-
 .clockWrapper {
   width: 100%;
   text-align: center;
@@ -46,13 +45,12 @@
 .header {
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
   height: 3.5rem;
   box-sizing: border-box;
-  background-color: var(--surface-container)
+  background-color: var(--surface-container);
 }
-
 
 .test {
   position: relative;

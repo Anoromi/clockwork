@@ -1,8 +1,7 @@
 "use client";
 
 import { NormalElement } from "@/app/utils/elementTypes";
-import { Normalizer } from "next/dist/server/future/normalizers/normalizer";
-import React, { JSXElementConstructor, StyleHTMLAttributes } from "react";
+import React, { JSXElementConstructor } from "react";
 
 type Props = React.PropsWithChildren<{
   flexDirection?: React.CSSProperties["flexDirection"];
@@ -19,7 +18,7 @@ type Props = React.PropsWithChildren<{
 }>;
 
 export default function Flex<
-  T extends NormalElement | JSXElementConstructor<any> = "div"
+  T extends NormalElement | JSXElementConstructor<any> = "div",
 >(props: Props & { as?: T } & { innerParams?: React.ComponentProps<T> }) {
   const {
     children,

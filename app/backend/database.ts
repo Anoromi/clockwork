@@ -63,7 +63,7 @@ export async function getDb() {
             name: "Hello",
           },
         ],
-        { allKeys: true }
+        { allKeys: true },
       );
 
       db.record.bulkAdd([

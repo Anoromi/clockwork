@@ -1,17 +1,17 @@
 "use client";
 
-import RippleButton from "@/app/components/ripple-button";
 import styles from "@/app/[locale]/library/components/selectActivity.module.scss";
-import { Listbox } from "@headlessui/react";
-import utilStyles from "@/app/styles/utils.module.scss";
 import { IActivity } from "@/app/backend/database";
-import classNames from "classnames";
-import { Icon } from "@iconify/react";
-import { useGetActivityQuery } from "../api";
-import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { selectActivity } from "../libraryStore";
+import RippleButton from "@/app/components/ripple-button";
 import { useRipple } from "@/app/components/useRipple";
 import { surfaceColoring } from "@/app/styles/coloring";
+import utilStyles from "@/app/styles/utils.module.scss";
+import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import { Listbox } from "@headlessui/react";
+import { Icon } from "@iconify/react";
+import classNames from "classnames";
+import { useGetActivityQuery } from "../api";
+import { selectActivity } from "../libraryStore";
 
 export function LibrarySelectActivity() {
   const data = useGetActivityQuery();

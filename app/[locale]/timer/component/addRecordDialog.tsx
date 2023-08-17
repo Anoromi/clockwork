@@ -1,9 +1,8 @@
 "use client";
 
-import { useReactive } from "@/app/components/useReactive";
-import { createInputForm, FormInput, useForm } from "@/app/utils/useForm";
 import styles from "@/app/[locale]/timer/component/addRecordDialog.module.scss";
 import textField from "@/app/[locale]/timer/component/textField.module.scss";
+import { createInputForm, FormInput, useForm } from "@/app/utils/useForm";
 import classNames from "classnames";
 import { HTMLInputTypeAttribute, useMemo } from "react";
 
@@ -28,15 +27,18 @@ function DialogImpl() {
   const metrics = state!.activity.metrics;
 
   const formInputs = useMemo(() => {
-    return metrics.reduce((previous, next) => {
-      return {
-        ...previous,
-        [next.name]: createInputForm<string>({
-          initialValue: "",
-          validators: [Validators.required, Validators.isNumber],
-        }),
-      };
-    }, {} as Record<string, FormInput<string>>);
+    return metrics.reduce(
+      (previous, next) => {
+        return {
+          ...previous,
+          [next.name]: createInputForm<string>({
+            initialValue: "",
+            validators: [Validators.required, Validators.isNumber],
+          }),
+        };
+      },
+      {} as Record<string, FormInput<string>>,
+    );
   }, [metrics]);
 
   const opened = useAppSelector((state) => state.timer.openedRecord);
@@ -47,7 +49,7 @@ function DialogImpl() {
     params: formInputs,
     onSubmit: (values) => {
       const resultingStats = metrics.map((metric) =>
-        parseFloat(values[metric.name].value)
+        parseFloat(values[metric.name].value),
       );
       dispatch(record(resultingStats));
       onClose();

@@ -1,10 +1,7 @@
 "use client";
 import styles from "@/app/[locale]/layout.module.scss";
 import classNames from "classnames";
-import { useEffect, useMemo, useState } from "react";
-import { useReactive } from "../components/useReactive";
 import { rubik } from "../styles/fonts";
-import { isClient } from "../utils/isClient";
 import { useTheme } from "../useTheme";
 
 type Props = React.PropsWithChildren<{}>;
@@ -42,8 +39,10 @@ export default function PageResizer({ children }: Props) {
   //  // eslint-disable-next-line react-hooks/exhaustive-deps
   //}, [setHeight]);
 
-  const theme = useTheme()
+  const theme = useTheme();
   return (
-    <body className={classNames(rubik.className, styles.body, theme)}>{children}</body>
+    <body className={classNames(rubik.className, styles.body, theme)}>
+      {children}
+    </body>
   );
 }

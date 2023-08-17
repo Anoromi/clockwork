@@ -1,7 +1,3 @@
-
-
-
-
 .label {
   background: var(--surface-container-highest);
   border-radius: 1rem;
@@ -14,8 +10,7 @@
   .label-text {
     font-size: 1.25rem;
   }
-  
-  
+
   &:focus-within {
     background: var(--primary90);
   }
@@ -36,5 +31,4 @@
 }
 
 .input-metric {
-  
 }

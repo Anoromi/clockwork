@@ -3,7 +3,6 @@ export function notNull<T>(value: T | null): T {
   return value;
 }
 
-
 export function notUnd<T>(value: T | undefined): T {
   if (value === undefined) throw new Error("Value is undefined");
   return value;

@@ -1,5 +1,3 @@
-
-
 type Author {
   id: Int!
   firstName: String!
@@ -12,7 +10,6 @@ type Post {
   title: String!
   author: Author
 }
-
 
 type G {
   cat: Post

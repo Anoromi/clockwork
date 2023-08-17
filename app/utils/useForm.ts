@@ -67,7 +67,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
       value: g.initialValue,
       errors: null,
     };
-
   }
 
   const state = useReactive({
@@ -112,7 +111,7 @@ export function useForm<T extends Record<string, FormInput<any>>>({
         inputName,
         input,
         errors,
-        params[inputName].validators
+        params[inputName].validators,
       );
 
       if (errors !== null) {

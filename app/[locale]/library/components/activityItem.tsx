@@ -1,11 +1,9 @@
 "use client";
+import styles from "@/app/[locale]/library/components/activityItem.module.scss";
 import { IActivity } from "@/app/backend/database";
 import CommonButton from "@/app/components/button/commonButton";
-import RippleButton from "@/app/components/ripple-button";
 import { useAppDispatch } from "@/app/utils/clientUseRedux";
-import styles from "@/app/[locale]/library/components/activityItem.module.scss";
 import { Icon } from "@iconify/react";
-import classNames from "classnames";
 import { selectDeleteActivity, selectEditActivity } from "../libraryStore";
 
 type Props = {

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import styles from "./ripple.module.scss";
 import classNames from "classnames";
-import { conditionalStyles } from "../utils/conditionalStyles";
+import { useState } from "react";
 import { surfaceColoring } from "../styles/coloring";
+import { conditionalStyles } from "../utils/conditionalStyles";
+import styles from "./ripple.module.scss";
 
 type ClickEvent = {
   clientX: number;

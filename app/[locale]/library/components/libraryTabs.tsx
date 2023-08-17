@@ -1,12 +1,12 @@
 "use client";
 
-import RippleButton from "@/app/components/ripple-button";
 import styles from "@/app/[locale]/library/components/libraryTabs.module.scss";
-import { Tab } from "@headlessui/react";
+import RippleButton from "@/app/components/ripple-button";
+import { useReactive } from "@/app/components/useReactive";
 import utilStyles from "@/app/styles/utils.module.scss";
+import { Tab } from "@headlessui/react";
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
-import { useReactive } from "@/app/components/useReactive";
 
 export default function LibraryTab() {
   let options = [

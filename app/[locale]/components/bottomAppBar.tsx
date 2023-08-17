@@ -1,12 +1,11 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import styles from "@/app/[locale]/components/bottomAppBar.module.scss";
+import { useRipple } from "@/app/components/useRipple";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import { useRipple } from "@/app/components/useRipple";
 import Link from "next/link";
-import {useMemo} from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 type BottomAppBarProps = {
   locale: string;
@@ -14,8 +13,8 @@ type BottomAppBarProps = {
 
 export function BottomAppBar({ locale }: BottomAppBarProps) {
   const route = useRouter();
-  const pathName = usePathname()
-  
+  const pathName = usePathname();
+
   return (
     <>
       <div className={styles.appBarWrapper}>

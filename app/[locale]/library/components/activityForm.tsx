@@ -1,15 +1,14 @@
 "use client";
-import React from "react";
-import { Field, Form } from "react-final-form";
-import arrayMutators from "final-form-arrays";
-import { AppDialog } from "@/app/components/Dialog";
+import styles from "@/app/[locale]/library/components/activityForm.module.scss";
+import { getDb } from "@/app/backend/database";
+import CommonButton from "@/app/components/button/commonButton";
 import Flex from "@/app/components/layout/flex";
 import { combinedValidators } from "@/app/utils/combinedValidator";
-import { FieldArray } from "react-final-form-arrays";
-import CommonButton from "@/app/components/button/commonButton";
 import { Icon } from "@iconify/react";
-import { getDb } from "@/app/backend/database";
-import styles from "@/app/[locale]/library/components/activityForm.module.scss";
+import arrayMutators from "final-form-arrays";
+import React from "react";
+import { Field, Form } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 
 type FormActivityValues = {
   name: string;
@@ -22,7 +21,7 @@ type FormActivityValues = {
 const unusedName = async (value: string) => {
   const db = await getDb();
   console.log(
-    await db.activity.where("name").equalsIgnoreCase(value).toArray()
+    await db.activity.where("name").equalsIgnoreCase(value).toArray(),
   );
   if ((await db.activity.where("name").equalsIgnoreCase(value).count()) !== 0)
     return "used/name";
@@ -31,7 +30,7 @@ const unusedName = async (value: string) => {
 const unusedEditName = (originalName: string) => async (value: string) => {
   const db = await getDb();
   console.log(
-    await db.activity.where("name").equalsIgnoreCase(value).toArray()
+    await db.activity.where("name").equalsIgnoreCase(value).toArray(),
   );
   if (
     (await db.activity
@@ -84,7 +83,7 @@ export function ActivityForm({
                 validate={combinedValidators<string>(
                   async (v: string) =>
                     v === "" || v === undefined ? "empty" : undefined,
-                  inEdit ? unusedEditName(initialValues.name) : unusedName
+                  inEdit ? unusedEditName(initialValues.name) : unusedName,
                 )}
               >
                 {({ meta, input }) => (

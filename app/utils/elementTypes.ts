@@ -1,4 +1,3 @@
-
 export type NormalElement = keyof Omit<JSX.IntrinsicElements, SVGS>;
 
 export type SVGS =

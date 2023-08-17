@@ -1,23 +1,22 @@
 import { getDb, IActivity, IRecord } from "@/app/backend/database";
-import { wait } from "@/app/utils/wait";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 type Query =
   | {
-    type: "get";
-  }
+      type: "get";
+    }
   | {
-    type: "add";
-    value: IActivity;
-  }
+      type: "add";
+      value: IActivity;
+    }
   | {
-    type: "update";
-    value: IActivity;
-  }
+      type: "update";
+      value: IActivity;
+    }
   | {
-    type: "delete";
-    value: IActivity;
-  };
+      type: "delete";
+      value: IActivity;
+    };
 
 export const activityApi = createApi({
   reducerPath: "activityApi",
@@ -39,12 +38,16 @@ export const activityApi = createApi({
         async queryFn(arg, api, extraOptions, baseQuery) {
           if (arg === null)
             return {
-              data: await (await getDb()).record.reverse().sortBy('id'),
+              data: await (await getDb()).record.reverse().sortBy("id"),
             };
-          console.log(arg)
+          console.log(arg);
           return {
-            data: await (await getDb()).record.where("activityId").equals(arg).reverse().sortBy('id')
-          }
+            data: await (await getDb()).record
+              .where("activityId")
+              .equals(arg)
+              .reverse()
+              .sortBy("id"),
+          };
         },
         providesTags: ["Record"],
       }),
@@ -56,7 +59,6 @@ export const activityApi = createApi({
         },
         number
       >({
-
         async queryFn(arg, api, extraOptions, baseQuery) {
           const pageSize = 10;
 
@@ -75,16 +77,17 @@ export const activityApi = createApi({
           //};
           //
 
-          const resultPage = await (await getDb()).record.toArray()
-          const sortedResult = resultPage.sort((a, b) => a.id! - b.id!).slice(arg * pageSize, (arg + 1) * pageSize)
+          const resultPage = await (await getDb()).record.toArray();
+          const sortedResult = resultPage
+            .sort((a, b) => a.id! - b.id!)
+            .slice(arg * pageSize, (arg + 1) * pageSize);
           return {
             data: {
               list: sortedResult,
               reachedEnd: sortedResult.length < pageSize,
-              lastPage: arg
-            }
-          }
-
+              lastPage: arg,
+            },
+          };
         },
         serializeQueryArgs: (e) => {
           return e.endpointName;

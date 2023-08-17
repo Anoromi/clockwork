@@ -1,15 +1,14 @@
-
 .opacityLeave,
 .opacityEnter {
-	transition: opacity var(--ease-decelerate) 500ms;
+  transition: opacity var(--ease-decelerate) 500ms;
 }
 
 .opacityLeaveFrom,
 .opacityEnterTo {
-	opacity: 1;
+  opacity: 1;
 }
 
 .opacityLeaveTo,
 .opacityEnterFrom {
-	opacity: 0;
+  opacity: 0;
 }

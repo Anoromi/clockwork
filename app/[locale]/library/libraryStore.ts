@@ -1,7 +1,5 @@
-import { getDb, IActivity, IRecord } from "@/app/backend/database";
-import { wait } from "@/app/utils/wait";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createApi } from "@reduxjs/toolkit/query";
+import { IActivity } from "@/app/backend/database";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type State = {
   records: {
@@ -9,7 +7,7 @@ type State = {
     //activityList: IActivity[] | null;
     //loading: boolean;
     //dirty: boolean;
-    selectedActivity: IActivity | null
+    selectedActivity: IActivity | null;
   };
   activities: {
     //actvityList: IActivity[] | null;
@@ -38,7 +36,7 @@ const initialState: State = {
     //activityList: null,
     //loading: true,
     //dirty: true,
-    selectedActivity: null
+    selectedActivity: null,
   },
   activities: {
     //actvityList: null,
@@ -148,7 +146,6 @@ const initialState: State = {
 //  }
 //);
 
-
 const librarySlice = createSlice({
   initialState: initialState,
   name: "libraryStore",
@@ -198,8 +195,8 @@ const librarySlice = createSlice({
     },
 
     selectActivity(state, data: PayloadAction<IActivity | null>) {
-      state.records.selectedActivity = data.payload
-    }
+      state.records.selectedActivity = data.payload;
+    },
 
     //addActivity(state, data: PayloadAction<boolean>) {},
   },
@@ -214,11 +211,9 @@ const librarySlice = createSlice({
     //builder.addCase(addActivity.pending, (state, action) => {
     //  state.menuOptions.addDialog.submitting = true;
     //});
-
     //builder.addCase(editActivity.pending, (state, action) => {
     //  state.activities.edit.selected = null;
     //});
-
     //builder.addCase(editActivity.fulfilled, (state, action) => {
     //  state.activities.dirty = true;
     //  state.records.dirty = true;
@@ -227,11 +222,9 @@ const librarySlice = createSlice({
     //  state.activities.loading = true;
     //  state.records.loading = true;
     //});
-
     //builder.addCase(deleteActivity.pending, (state, action) => {
     //  state.activities.delete.selected = null;
     //});
-
     //builder.addCase(deleteActivity.fulfilled, (state, action) => {
     //  console.log("marking dirty");
     //  state.activities.dirty = true;
@@ -253,7 +246,7 @@ export const {
   //changeActivityToLoading,
   selectEditActivity,
   selectDeleteActivity,
-  selectActivity
+  selectActivity,
 } = librarySlice.actions;
 //export { addActivity, editActivity, deleteActivity };
 export default librarySlice.reducer;

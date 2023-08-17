@@ -4,7 +4,7 @@ import {
   pauseTimer,
   resumeTimer,
 } from "@/app/utils/pausableTime";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
 import { activityApi } from "../library/api";
 
@@ -12,7 +12,6 @@ type StartedTimer = {
   firstRecordTimestamp: PausableTime;
   currentRecordTimestamp: PausableTime;
 };
-
 
 type State = {
   record: {
@@ -53,7 +52,7 @@ const createRecord = createAsyncThunk(
     if (record.records.length === 0)
       thunkApi.dispatch(timerSlice.actions.abortRecording());
     else thunkApi.dispatch(activityApi.endpoints.addRecord.initiate(record));
-  }
+  },
 );
 
 export const timerSlice = createSlice({
@@ -122,13 +121,7 @@ export const timerSlice = createSlice({
   },
 });
 
-export const {
-  start,
-  record,
-  resume,
-  pause,
-  selectActivity,
-  setOpenedRecord,
-} = timerSlice.actions;
+export const { start, record, resume, pause, selectActivity, setOpenedRecord } =
+  timerSlice.actions;
 export { createRecord };
 export default timerSlice.reducer;
