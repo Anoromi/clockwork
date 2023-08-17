@@ -109,14 +109,6 @@ export function useRipple(
     }, 400);
   }
 
-  console.log(
-    "why not ",
-    classNames(styles.rippleButton, {
-      [styles.rippleButtonSurfaceVars]: params.withElevation !== false,
-      [surfaceColoring.surfaceColoring]: params.withElevation !== false,
-    }),
-    surfaceColoring
-  );
   return {
     buttonData: {
       className: classNames(styles.rippleButton, {
