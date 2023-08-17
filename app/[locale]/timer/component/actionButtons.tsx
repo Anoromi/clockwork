@@ -7,6 +7,7 @@ import {Icon} from "@iconify/react";
 import classNames from "classnames";
 import {useAddRecordMutation} from "../../library/api";
 import {createRecord, pause, resume, start} from "../timerStore";
+import CommonButton from "@/app/components/button/commonButton";
 
 type Props = {
   openRecord: () => void;
@@ -78,16 +79,15 @@ export default function ActionButtons({ openRecord }: Props) {
             </>
           ) : (
             <>
-              <RippleButton
+              <CommonButton
                 className={styles.start}
                 onClick={() => {
                   dispatch(start());
                 }}
                 key="start"
               >
-                <Icon icon="mingcute:play-fill" fontSize={30} />
-                Start
-              </RippleButton>
+                <Icon icon="mingcute:play-fill" fontSize={42} />
+              </CommonButton>
             </>
           )}
         </div>

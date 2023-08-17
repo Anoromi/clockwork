@@ -3,7 +3,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { Fragment, ReactNode, useMemo, useRef } from "react";
-import ThemeProvider from "../themeProvider";
 import styles from "./dialog.module.scss";
 
 type Props = {
@@ -27,7 +26,7 @@ const AppDialog = function AppDialog({ children, open, onClose }: Props) {
     <>
       <Transition appear show={open} as={Fragment}>
         <Dialog onClose={onClose} as="div" className={styles.mainDialog}>
-          <ThemeProvider>
+          
             <Transition.Child
                 as={Fragment}
                 enter={styles.opacityEnter}
@@ -54,7 +53,6 @@ const AppDialog = function AppDialog({ children, open, onClose }: Props) {
                 </Dialog.Panel>
               </Transition.Child>
             </div>
-          </ThemeProvider>
         </Dialog>
       </Transition>
     </>

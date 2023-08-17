@@ -211,6 +211,8 @@
     248,
     1
   );
+
+  background: var(--surface);
 }
 
 //::-webkit-scrollbar {
@@ -313,6 +315,8 @@
 
   --outline: var(--neutral-variant60);
   color-scheme: dark;
+
+  background: var(--surface);
 }
 
 @media (prefers-color-scheme: dark) {

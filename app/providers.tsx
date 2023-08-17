@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import {Provider} from "react-redux";
-import {store} from "./store";
-import ThemeProvider from "./themeProvider";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 type Props = React.PropsWithChildren<{}>;
 
@@ -34,7 +33,7 @@ type Props = React.PropsWithChildren<{}>;
 export default function Providers({ children }: Props) {
   return (
     <Provider store={store}>
-      <ThemeProvider>{children}</ThemeProvider>
+      {children}
       {
         //<ApolloNextAppProvider
         //  makeClient={makeClient}

@@ -43,16 +43,14 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <PageResizer>
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
-          <Providers>
-            <div className={styles.mainPage}>
-              {children}
-            </div>
+      <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <Providers>
+          <PageResizer>
+            <div className={styles.mainPage}>{children}</div>
             <BottomAppBar locale={params.locale} />
-          </Providers>
-        </NextIntlClientProvider>
-      </PageResizer>
+          </PageResizer>
+        </Providers>
+      </NextIntlClientProvider>
     </html>
   );
 }
