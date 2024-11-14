@@ -26,7 +26,7 @@ export default function LibraryPage() {
             paddingLeft={"1rem"}
             paddingRight={"1rem"}
           >
-            <Title>Libary</Title>
+            <Title href="/">Library</Title>
             <OptionsMenu />
           </Flex>
 

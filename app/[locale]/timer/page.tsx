@@ -32,7 +32,7 @@ export default function TimerPage() {
           paddingLeft={"1rem"}
           paddingRight={"1rem"}
         >
-          <Title>Timer</Title>
+          <Title href="/">Timer</Title>
           <CommonButton
             buttonType="blank"
             textType="icon"
