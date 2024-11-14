@@ -36,17 +36,19 @@ export default function OptionsMenu({}: Props) {
               </RippleButton>
             )}
           </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <RippleButton
-                as="button"
-                onClick={() => {}}
-                className={styles.menuItem}
-              >
-                Options
-              </RippleButton>
-            )}
-          </Menu.Item>
+          {
+            // <Menu.Item>
+            //   {({ active }) => (
+            //     <RippleButton
+            //       as="button"
+            //       onClick={() => {}}
+            //       className={styles.menuItem}
+            //     >
+            //       Options
+            //     </RippleButton>
+            //   )}
+            // </Menu.Item>
+          }
         </Menu.Items>
       </Menu>
     </>
