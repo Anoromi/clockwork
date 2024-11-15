@@ -4,7 +4,7 @@ import { AppDialog } from "@/app/components/Dialog";
 import CommonButton from "@/app/components/button/commonButton";
 import Flex from "@/app/components/layout/flex";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useDeleteActivityMutation } from "../api";
 import { selectDeleteActivity } from "../libraryStore";
 
@@ -16,8 +16,6 @@ export default function DeleteAcivityDialog({}: Props) {
 
   const [deleteActivityMutation, deleteActivityResult] =
     useDeleteActivityMutation();
-
-  const opened = useMemo(() => state.selected !== null, [state.selected]);
 
   const onDelete = () => {
     deleteActivityMutation(state.selected!);

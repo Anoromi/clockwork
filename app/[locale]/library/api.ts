@@ -21,13 +21,13 @@ type Query =
 export const activityApi = createApi({
   reducerPath: "activityApi",
   tagTypes: ["Activity", "Record"],
-  baseQuery: (query: Query) => {
+  baseQuery: (_query: Query) => {
     return { data: undefined };
   },
   endpoints(builder) {
     return {
       getActivity: builder.query<IActivity[], void>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
+        async queryFn() {
           return {
             data: await (await getDb()).activity.toArray(),
           };
@@ -35,12 +35,11 @@ export const activityApi = createApi({
         providesTags: ["Activity"],
       }),
       getRecords: builder.query<IRecord[], number | null>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
+        async queryFn(arg) {
           if (arg === null)
             return {
               data: await (await getDb()).record.reverse().sortBy("id"),
             };
-          console.log(arg);
           return {
             data: await (await getDb()).record
               .where("activityId")
@@ -59,23 +58,8 @@ export const activityApi = createApi({
         },
         number
       >({
-        async queryFn(arg, api, extraOptions, baseQuery) {
+        async queryFn(arg) {
           const pageSize = 10;
-
-          //const resultPage = await (
-          //  await getDb()
-          //).record
-          //  .offset(arg * pageSize)
-          //  .limit(pageSize)
-          //  .sortBy('id');
-          //return {
-          //  data: {
-          //    list: resultPage,
-          //    reachedEnd: resultPage.length < pageSize,
-          //    lastPage: arg,
-          //  },
-          //};
-          //
 
           const resultPage = await (await getDb()).record.toArray();
           const sortedResult = resultPage
@@ -92,11 +76,10 @@ export const activityApi = createApi({
         serializeQueryArgs: (e) => {
           return e.endpointName;
         },
-        merge(currentCacheData, responseData, otherArgs) {
+        merge(currentCacheData, responseData, _otherArgs) {
           currentCacheData.list.push(...responseData.list);
           currentCacheData.lastPage = responseData.lastPage;
           currentCacheData.reachedEnd = responseData.reachedEnd;
-          //currentCacheData.push(...responseData);
         },
 
         forceRefetch(params) {
@@ -105,7 +88,7 @@ export const activityApi = createApi({
       }),
 
       addActivity: builder.mutation<null, IActivity>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
+        async queryFn(arg) {
           await (await getDb()).activity.add(arg);
           return {
             data: null,
@@ -115,8 +98,7 @@ export const activityApi = createApi({
       }),
 
       editActivity: builder.mutation<null, IActivity>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
-          console.log(arg);
+        async queryFn(arg) {
           await (await getDb()).activity.update(arg.id!, arg);
           return {
             data: null,
@@ -126,7 +108,7 @@ export const activityApi = createApi({
       }),
 
       deleteActivity: builder.mutation<null, IActivity>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
+        async queryFn(arg) {
           const db = await getDb();
           await db.record.where("activityId").equals(arg.id!).delete();
           await db.activity.delete(arg.id!);
@@ -137,14 +119,14 @@ export const activityApi = createApi({
         invalidatesTags: ["Activity", "Record"],
       }),
 
-      checkUnsuedActivityName: builder.mutation<
+      checkUnusedActivityName: builder.mutation<
         boolean,
         {
           value: string;
           activityName?: string;
         }
       >({
-        async queryFn({ value, activityName }, api, extraOptions, baseQuery) {
+        async queryFn({ value, activityName }) {
           return {
             data:
               (await (
@@ -159,8 +141,7 @@ export const activityApi = createApi({
       }),
 
       addRecord: builder.mutation<null, IRecord>({
-        async queryFn(arg, api, extraOptions, baseQuery) {
-          console.log("executing add record");
+        async queryFn(arg) {
           await (await getDb()).record.add(arg);
           return {
             data: null,
@@ -168,12 +149,6 @@ export const activityApi = createApi({
         },
         invalidatesTags: ["Record"],
       }),
-
-      //editAcitivity: builder.mutation<null, IActivity>({
-      //  async queryFn(arg, api, extraOptions, baseQuery) {
-
-      //  }
-      //})
     };
   },
 });

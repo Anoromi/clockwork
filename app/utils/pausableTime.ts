@@ -23,8 +23,6 @@ export function pauseTimer(time: PausableTime) {
 }
 
 export function resumeTimer(time: PausableTime) {
-  console.assert(isPaused(time));
-
   time.paused = false;
   time.lastContinue = new Date().getTime();
 }

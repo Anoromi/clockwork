@@ -1,7 +1,4 @@
 import "./globals.scss";
-// import "sanitize.css"
-// import "sanitize.css/forms.css"
-// import "sanitize.css/typography.css"
 import "reset-css";
 
 import styles from "@/app/[locale]/layout.module.scss";

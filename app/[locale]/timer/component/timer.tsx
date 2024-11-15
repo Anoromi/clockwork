@@ -12,14 +12,11 @@ type Props = {
 function calculateNextStep(initial: number) {
   const i = dayjs(initial);
   const now = dayjs();
-  //  i.millisecond()
   let step = now.startOf("second").add(i.millisecond());
   while (step.isBefore(now)) {
-    // console.log('hehe')
     step = step.add(1, "second");
   }
   return step.diff(now, "millisecond");
-  return 1000;
 }
 
 function dateToDisplay(date: Dayjs, initial: Dayjs): string {
@@ -32,7 +29,6 @@ function dateToDisplay(date: Dayjs, initial: Dayjs): string {
 
   return `${minutes}:${seconds}`;
 
-  // return date.toISOString().substring(11,19)
 }
 
 export default function Timer({ initial, className }: Props) {
@@ -40,27 +36,22 @@ export default function Timer({ initial, className }: Props) {
 
   useEffect(() => {
     let executing = true;
-    //console.log("changed", initial);
 
-    const ex = () => {
+    const execute = () => {
       if (initial === undefined || initial.lastContinue === undefined) return;
-      //console.log(dayjs(initial.lastContinue));
       return setTimeout(() => {
-        //console.log("jenny", executing);
         if (!executing || initial === undefined) return;
-        // initial
         seconds.set(
           dateToDisplay(
             dayjs(Date.now()).add(initial.extraMilliseconds, "millisecond"),
             dayjs(initial.lastContinue),
           ),
         );
-        //console.log("hehe");
-        ex();
+        execute();
       }, calculateNextStep(initial.lastContinue));
     };
 
-    ex();
+    execute();
 
     return () => {
       executing = false;

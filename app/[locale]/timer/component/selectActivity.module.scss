@@ -20,7 +20,6 @@
   padding: 1.25rem 1.75rem;
   border-radius: 2rem;
   font-size: 1.25rem;
-  // position: static;
   transition: border-radius 1000ms var(--ease-decelerate);
   margin: 0 2rem;
 
@@ -29,11 +28,6 @@
   justify-content: center;
   align-items: center;
   row-gap: 0.5rem;
-
-  //@include coloring.surface-coloring(
-  //  var(--on-surface-level-4),
-  //  var(--on-surface-level-0)
-  //);
 
   &Selected {
     border-end-end-radius: 0rem;

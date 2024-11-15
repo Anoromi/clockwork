@@ -95,7 +95,7 @@ function ActivityOption({ data }: { data: IActivity }) {
         )
       }
     >
-      {({ active }) => (
+      {() => (
         <>
           <div {...rippleData}></div>
           {data.name}

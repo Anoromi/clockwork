@@ -3,16 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type State = {
   records: {
-    //recordList: IRecord[] | null;
-    //activityList: IActivity[] | null;
-    //loading: boolean;
-    //dirty: boolean;
     selectedActivity: IActivity | null;
   };
   activities: {
-    //actvityList: IActivity[] | null;
-    //loading: boolean;
-    //dirty: boolean;
     edit: {
       selected: IActivity | null;
     };
@@ -25,23 +18,15 @@ type State = {
     openedAddDialog: boolean;
     addDialog: {
       submitting: boolean;
-      //nameUsed: boolean;
     };
   };
 };
 
 const initialState: State = {
   records: {
-    //recordList: null,
-    //activityList: null,
-    //loading: true,
-    //dirty: true,
     selectedActivity: null,
   },
   activities: {
-    //actvityList: null,
-    //loading: true,
-    //dirty: true,
     edit: {
       selected: null,
     },
@@ -54,134 +39,14 @@ const initialState: State = {
     openedAddDialog: false,
     addDialog: {
       submitting: false,
-      //nameUsed: false,
     },
   },
 };
-
-//const testState: State = {
-//  recordList: [
-//    {
-//      activityId: 1,
-//      date: new Date().getTime(),
-//      records: [
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//        [1, 2],
-//      ],
-//      id: undefined,
-//    },
-//    {
-//      activityId: 1,
-//      date: new Date().getTime(),
-//      records: [[1, 2]],
-//      id: undefined,
-//    },
-//  ],
-//  activityMap: new Map([
-//    [
-//      1,
-//      {
-//        metrics: [
-//          {
-//            name: "count",
-//            metric: "",
-//          },
-//          {
-//            name: "weight",
-//            metric: "kg",
-//          },
-//        ],
-//        name: "Hello",
-//        id: 1,
-//      },
-//    ],
-//  ]),
-//  loading: false,
-//};
-//
-
-//const addActivity = createAsyncThunk(
-//  "libraryStore/addActivity",
-//  async (activity: IActivity) => {
-//    await wait(300);
-//    const db = await getDb();
-//    await db.activity.add(activity);
-//  }
-//);
-//
-//const editActivity = createAsyncThunk(
-//  "libraryStore/editActivity",
-//  async ({
-//    previousAc,
-//    newAc,
-//  }: {
-//    previousAc: IActivity;
-//    newAc: IActivity;
-//  }) => {
-//    const db = await getDb();
-//    await db.activity.update(previousAc.id!, newAc);
-//  }
-//);
-//
-//const deleteActivity = createAsyncThunk(
-//  "libraryStore/deleteActivity",
-//  async (activity: IActivity) => {
-//    const db = await getDb();
-//    console.log(
-//      "deleting",
-//      await db.record.where("activityId").equals(activity.id!).toArray()
-//    );
-//    await db.record.where("activityId").equals(activity.id!).delete();
-//    await db.activity.delete(activity.id!);
-//    console.log(activity.id);
-//    console.log(await db.activity.toArray());
-//    console.log("record", await db.record.toArray());
-//    console.log("deleted");
-//  }
-//);
 
 const librarySlice = createSlice({
   initialState: initialState,
   name: "libraryStore",
   reducers: {
-    //setRecordsData(
-    //  state,
-    //  data: PayloadAction<{
-    //    records: IRecord[] | null;
-    //    activities: IActivity[] | null;
-    //  }>,
-    //) {
-    //  state.records.recordList = data.payload.records;
-    //  state.records.activityList = data.payload.activities;
-    //  state.records.loading = false;
-    //},
-
-    //changeRecordsToLoading(state, data: PayloadAction<undefined>) {
-    //  state.records.dirty = false;
-    //  state.records.loading = true;
-    //},
-
-    //setActivityData(
-    //  state,
-    //  data: PayloadAction<{
-    //    activities: IActivity[] | null;
-    //  }>
-    //) {
-    //  state.activities.actvityList = data.payload.activities;
-    //  state.activities.loading = false;
-    //},
-
-    //changeActivityToLoading(state, data: PayloadAction<undefined>) {
-    //  state.activities.dirty = false;
-    //  state.activities.loading = true;
-    //},
-
     changeAddDialog(state, data: PayloadAction<boolean>) {
       state.menuOptions.openedAddDialog = data.payload;
     },
@@ -197,56 +62,13 @@ const librarySlice = createSlice({
     selectActivity(state, data: PayloadAction<IActivity | null>) {
       state.records.selectedActivity = data.payload;
     },
-
-    //addActivity(state, data: PayloadAction<boolean>) {},
-  },
-  extraReducers: (builder) => {
-    //builder.addCase(addActivity.fulfilled, (state, action) => {
-    //  state.activities.dirty = true;
-    //  state.records.dirty = true;
-    //  state.menuOptions.addDialog.submitting = false;
-    //  state.menuOptions.openedAddDialog = false;
-    //  //state.menuOptions.addDialog.nameUsed
-    //});
-    //builder.addCase(addActivity.pending, (state, action) => {
-    //  state.menuOptions.addDialog.submitting = true;
-    //});
-    //builder.addCase(editActivity.pending, (state, action) => {
-    //  state.activities.edit.selected = null;
-    //});
-    //builder.addCase(editActivity.fulfilled, (state, action) => {
-    //  state.activities.dirty = true;
-    //  state.records.dirty = true;
-    //  state.activities.actvityList = null;
-    //  state.records.activityList = null;
-    //  state.activities.loading = true;
-    //  state.records.loading = true;
-    //});
-    //builder.addCase(deleteActivity.pending, (state, action) => {
-    //  state.activities.delete.selected = null;
-    //});
-    //builder.addCase(deleteActivity.fulfilled, (state, action) => {
-    //  console.log("marking dirty");
-    //  state.activities.dirty = true;
-    //  state.records.dirty = true;
-    //  state.activities.actvityList = null;
-    //  state.records.activityList = null;
-    //  state.records.recordList = null;
-    //  state.activities.loading = true;
-    //  state.records.loading = true;
-    //});
   },
 });
 
 export const {
-  //setRecordsData,
-  //setActivityData,
   changeAddDialog,
-  //changeRecordsToLoading,
-  //changeActivityToLoading,
   selectEditActivity,
   selectDeleteActivity,
   selectActivity,
 } = librarySlice.actions;
-//export { addActivity, editActivity, deleteActivity };
 export default librarySlice.reducer;

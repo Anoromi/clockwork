@@ -53,7 +53,6 @@ function Attempt({
       <div className={styles.attempt}>
         <div className={styles.attemptIndex}>{index + 1}</div>
         {values.map((value, index) => {
-          //console.log(value, index)
           return (
             <div key={index}>
               {value} {metrics[index].metric}

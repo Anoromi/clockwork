@@ -8,7 +8,6 @@ import { switchTheme } from "@/app/extraStore";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { clockFont, rubik } from "../../styles/fonts";
 import ActionButtons from "./component/actionButtons";
@@ -18,7 +17,6 @@ import TimerInfo from "./component/topBar";
 import { setOpenedRecord } from "./timerStore";
 
 export default function TimerPage() {
-  const t = useTranslations("Timer");
   const dispatch = useAppDispatch();
 
   return (
@@ -60,7 +58,6 @@ const DynamicDialog = dynamic(() => import("./component/addRecordDialog"), {
 
 function CurrentTimer() {
   const state = useAppSelector((state) => state.timer.currentTimer);
-  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -71,7 +68,9 @@ function CurrentTimer() {
               className={classNames(styles.clockCurrent, clockFont.className)}
               initial={state?.currentRecordTimestamp}
             />
-            <div className={styles["clock-overall"]}>12:00</div>
+            {
+              // <div className={styles["clock-overall"]}>12:00</div>
+            }
           </>
         ) : (
           <>

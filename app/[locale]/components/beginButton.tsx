@@ -6,10 +6,6 @@ import { PropsWithChildren } from "react";
 import styles from "./beginButton.module.scss"
 import classNames from "classnames";
 
-// type BottomAppBarProps = {
-//   locale: string;
-// };
-
 export function BeginButton({ children }: PropsWithChildren<{}>) {
   const { buttonData, rippleData } = useRipple();
   return (

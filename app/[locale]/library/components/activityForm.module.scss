@@ -19,7 +19,6 @@
   box-sizing: content-box;
   border: none;
   transition: outline ease-out 100ms;
-  //outline: none;
   &:focus-visible {
     outline-width: 2px;
   }
@@ -52,7 +51,6 @@
   padding: 0.5rem 1rem;
   display: inline;
   min-width: 0;
-  //max-width: 5rem;
   border-radius: 999rem;
   font-size: 1rem;
   background-color: transparent;
@@ -65,8 +63,6 @@
 
 .measurementAction {
   font-size: 0.75rem;
-  //margin-left: 2rem;
-  //width:100%;
 }
 
 .measurementDelete {

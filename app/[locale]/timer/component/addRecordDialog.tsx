@@ -100,7 +100,6 @@ function DialogImpl() {
 }
 
 type TextFieldProps = {
-  //text: Modal<string>;
   text: string;
   errors: Record<string, unknown> | null;
   updateText: (text: string) => void;

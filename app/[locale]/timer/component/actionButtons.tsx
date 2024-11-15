@@ -1,4 +1,3 @@
-"use client";
 import styles from "@/app/[locale]/timer/component/actionButtons.module.scss";
 import { IRecord } from "@/app/backend/database";
 import CommonButton from "@/app/components/button/commonButton";
@@ -6,7 +5,6 @@ import RippleButton from "@/app/components/ripple-button";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import { useAddRecordMutation } from "../../library/api";
 import { createRecord, pause, resume, start } from "../timerStore";
 
 type Props = {
@@ -17,19 +15,12 @@ export default function ActionButtons({ openRecord }: Props) {
   const state = useAppSelector((state) => state.timer);
   const dispatch = useAppDispatch();
 
-  const [addRecordMutation, addRecordResult] = useAddRecordMutation();
-
   const stop = () => {
     const record: IRecord = {
       date: Date.now(),
       activityId: state.record!.activity.id!,
       records: state.record!.records,
     };
-    //addRecordMutation({
-    //    date: Date.now(),
-    //    activityId: state.record!.activity.id!,
-    //    records: state.record!.records
-    //  })
     dispatch(createRecord(record));
   };
 

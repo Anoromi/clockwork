@@ -4,7 +4,6 @@ export function conditionalStyles(
   let resultValues = {};
 
   for (let v of values) {
-    // console.log(v[1])
     if (v[0])
       resultValues = {
         ...resultValues,

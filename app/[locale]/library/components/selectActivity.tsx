@@ -15,7 +15,6 @@ import { selectActivity } from "../libraryStore";
 
 export function LibrarySelectActivity() {
   const data = useGetActivityQuery();
-  //const selectedActivity = useReactive<IActivity | null>(null);
   const selectedActivity = useAppSelector(
     (state) => state.library.records.selectedActivity,
   );
@@ -29,7 +28,7 @@ export function LibrarySelectActivity() {
       <span className={styles.listbox}>
         <Listbox value={selectedActivity} onChange={onActivityChange}>
           <Listbox.Button className={utilStyles.contents}>
-            {(state) => (
+            {() => (
               <RippleButton as="div" className={styles.listboxButton}>
                 {selectedActivity?.name ?? "Activity"}
                 <Icon icon="octicon:chevron-down-12" fontSize={24} />

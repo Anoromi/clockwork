@@ -15,35 +15,25 @@
   column-gap: 0.5rem;
   font-weight: 500;
   min-width: 7rem;
-  //display: inline-block;
   display: flex;
   justify-content: space-between;
-
-  //outline: var(--outline) 2px solid;
 }
 
 .options {
   margin-top: 4px;
-  //margin-top: 0.5rem;
   z-index: 10;
   position: absolute;
-  //background-color: var(--primary90);
-  //color: var(--primary10);
 
   background: var(--surface-container-highest);
-  //outline: var(--primary40) 2px solid;
   left: 0;
   top: 100%;
   min-width: 100%;
   font-weight: 500;
   border-radius: 0.4rem;
-  //overflow-x: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-height: 200px;
-  //touch-action: pan-y;
-  //overscroll-behavior-y: contain;
   overflow: hidden auto;
 }
 
@@ -62,11 +52,7 @@
   );
   position: absolute;
   overflow: hidden auto;
-  //min-width: 16px;
-  //min-height: 16px;
-  //max-width: calc(100% - 32px);
   outline: 0px;
-  //max-height: calc(100% - 96px);
   height: 200px;
   top: 0;
   left: 0;
@@ -77,7 +63,6 @@
 .option {
   --ripple-color: var(--primary10);
   --surface-coloring: var(--primary10);
-  //overflow-x: hidden;
   overflow: hidden;
   padding: 1rem 1rem;
   user-select: none;

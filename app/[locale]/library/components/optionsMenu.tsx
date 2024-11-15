@@ -9,7 +9,6 @@ import { Icon } from "@iconify/react";
 import { changeAddDialog } from "../libraryStore";
 
 type Props = {
-  //locale: string
 };
 
 export default function OptionsMenu({}: Props) {

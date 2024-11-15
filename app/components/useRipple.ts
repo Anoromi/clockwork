@@ -27,12 +27,6 @@ export function useRipple(
     diameter: number;
     startedAt: Date;
   } | null>(
-    //   {
-    //   x: 20,
-    //   y: 20,
-    //   diameter: 10,
-    //   startedAt: new Date()
-    // }
     null,
   );
 
@@ -40,16 +34,11 @@ export function useRipple(
     diameter: number;
   } | null>(null);
 
-  //console.log("running");
 
   function calculateRipple(e: ClickEvent) {
     if (ripplePos !== null || params.disabled) return;
     setCalming(null);
     setCalming(ripplePos);
-    console.log(e.currentTarget.offsetLeft, e.currentTarget.offsetTop);
-    console.log(e.currentTarget.clientLeft, e.currentTarget.clientTop);
-    console.log(e.clientX, e.clientY);
-    console.log(e);
     let offsetX = e.currentTarget.offsetLeft;
     let offsetY = e.currentTarget.offsetTop;
     let element = e.currentTarget.offsetParent;
@@ -59,28 +48,20 @@ export function useRipple(
       offsetX += element.offsetLeft;
       offsetY += element.offsetTop;
       element = element.offsetParent;
-      // console.log(element)
     }
 
-    // console.log()
-    // e.currentTarget.client
     const diameter = Math.max(
       e.currentTarget.clientWidth,
       e.currentTarget.clientHeight,
     );
     const radius = diameter / 2;
     setRipplePos({
-      //x: e.clientX - (offsetX + radius),
-      //y: e.clientY - (offsetY + radius),
-      //x: e.clientX - radius,
-      //y: e.clientY - radius,
       x: e.clientX - e.currentTarget.getBoundingClientRect().left - radius,
       y: e.clientY - e.currentTarget.getBoundingClientRect().top - radius,
 
       diameter,
       startedAt: new Date(),
     });
-    // setRippleClicked(true)
   }
 
   function finishRipple() {
@@ -120,8 +101,6 @@ export function useRipple(
       onMouseUp: () => finishRipple(),
       onMouseOut: () => finishRipple(),
       onTouchStart: (e: React.TouchEvent<HTMLElement>) => {
-        console.log(e);
-        // e.touches[0].
         calculateRipple({
           clientX: e.touches[0].clientX,
           clientY: e.touches[0].clientY,

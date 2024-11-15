@@ -15,13 +15,11 @@ export namespace Validators {
   };
 
   export const properNumber: Validator<number> = (value) => {
-    console.log("validating number", value);
     if (
       isNaN(value) ||
       value === Number.POSITIVE_INFINITY ||
       value === Number.NEGATIVE_INFINITY
     ) {
-      console.log("found error");
       return { valid: undefined };
     }
     return null;

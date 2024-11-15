@@ -98,7 +98,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("submitting");
 
     const values: Record<string, InputControl<unknown>> = {};
     let anyErrors = false;
@@ -106,13 +105,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
     for (const inputName of Object.keys(state.value.inputs)) {
       let input = state.value.inputs[inputName];
       const errors = checkValidators(params[inputName].validators, input.value);
-      console.log(
-        "cheking errors",
-        inputName,
-        input,
-        errors,
-        params[inputName].validators,
-      );
 
       if (errors !== null) {
         anyErrors = true;
@@ -130,7 +122,6 @@ export function useForm<T extends Record<string, FormInput<any>>>({
       return;
     }
 
-    console.log("successfully submitted");
     onSubmit(state.value.inputs);
   }
 
@@ -145,13 +136,11 @@ export function useForm<T extends Record<string, FormInput<any>>>({
 function checkValidators<T>(validators: Validator<T>[], value: T) {
   let errors: Record<string, unknown> = {};
   for (const validator of validators) {
-    console.log("checking", errors);
     errors = {
       ...errors,
       ...(validator(value) ?? {}),
     };
   }
-  console.log("checking", errors);
 
   if (Object.keys(errors).length === 0) {
     return null;

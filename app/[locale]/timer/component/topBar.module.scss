@@ -1,8 +1,3 @@
-//.topBar {
-//  display: flex;
-//  flex-direction: column;
-//}
-
 .summary {
   align-self: center;
   font-size: 1.25rem;
@@ -11,7 +6,6 @@
 .eventList {
   display: flex;
   margin: 1.5rem 1.25rem 1.25rem 1.25rem;
-  // margin-top: 1.5rem;
   column-gap: 0.5rem;
   overflow-x: scroll;
 }

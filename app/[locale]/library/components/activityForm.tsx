@@ -1,4 +1,3 @@
-"use client";
 import styles from "@/app/[locale]/library/components/activityForm.module.scss";
 import { getDb } from "@/app/backend/database";
 import CommonButton from "@/app/components/button/commonButton";
@@ -20,18 +19,12 @@ type FormActivityValues = {
 
 const unusedName = async (value: string) => {
   const db = await getDb();
-  console.log(
-    await db.activity.where("name").equalsIgnoreCase(value).toArray(),
-  );
   if ((await db.activity.where("name").equalsIgnoreCase(value).count()) !== 0)
     return "used/name";
 };
 
 const unusedEditName = (originalName: string) => async (value: string) => {
   const db = await getDb();
-  console.log(
-    await db.activity.where("name").equalsIgnoreCase(value).toArray(),
-  );
   if (
     (await db.activity
       .where("name")
@@ -67,11 +60,7 @@ export function ActivityForm({
       mutators={{ ...arrayMutators }}
     >
       {({
-        values,
         handleSubmit,
-        form: {
-          mutators: { push, pop },
-        },
       }) => (
         <form onSubmit={handleSubmit}>
           <fieldset disabled={submitting}>
@@ -108,7 +97,7 @@ export function ActivityForm({
               </Field>
 
               <FieldArray name="measurements">
-                {({ fields, meta }) => (
+                {({ fields }) => (
                   <Flex<"fieldset">
                     flexDirection="column"
                     rowGap={"0.5rem"}
@@ -130,7 +119,7 @@ export function ActivityForm({
                           {index + 1}
                         </span>
                         <Field name={`${name}.name`}>
-                          {({ meta, input }) => (
+                          {({  input }) => (
                             <input
                               {...input}
                               type="text"
@@ -140,7 +129,7 @@ export function ActivityForm({
                           )}
                         </Field>
                         <Field name={`${name}.metric`}>
-                          {({ meta, input }) => (
+                          {({ input }) => (
                             <input
                               {...input}
                               type="text"

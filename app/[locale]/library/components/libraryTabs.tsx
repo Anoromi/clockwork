@@ -6,7 +6,7 @@ import { useReactive } from "@/app/components/useReactive";
 import utilStyles from "@/app/styles/utils.module.scss";
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 export default function LibraryTab() {
   let options = [
@@ -28,16 +28,15 @@ export default function LibraryTab() {
     top: number;
   } | null>(null);
 
-  function drawTo(left: number, top: number) {
-    //tabIndicatorBox.current!.style = {
-    //  left: left,
-    //  top: top,
-    //};
-    position.set({
-      left,
-      top,
-    });
-  }
+  const drawTo = useCallback(
+    (left: number, top: number) => {
+      position.set({
+        left,
+        top,
+      });
+    },
+    [position],
+  );
 
   return (
     <>
@@ -81,22 +80,19 @@ function TabIndicator({
   const value = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log("indicator", selected, value.current);
     if (selected && value.current !== undefined) {
       let posL = value.current!.offsetLeft;
       let posT = value.current!.offsetTop;
 
       let parent = value.current!.offsetParent as HTMLElement;
-      console.log("hhee");
       while (parent !== null && parent.dataset.tabWrapper !== "true") {
         posL += parent.offsetLeft;
         posT += parent.offsetTop;
         parent = parent.offsetParent as HTMLElement;
       }
-      console.log("draw to", posL, posT);
       drawTo(posL, posT);
     }
-  }, [selected]);
+  }, [selected, drawTo]);
 
   return (
     <>

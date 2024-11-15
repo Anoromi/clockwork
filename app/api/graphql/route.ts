@@ -4,7 +4,6 @@ import { createSchema, createYoga } from "graphql-yoga";
 import { readFileSync } from "node:fs";
 import path from "path";
 
-console.log("type");
 
 const jsonDirectory = path.join(process.cwd(), "src");
 const typeDefs = readFileSync(jsonDirectory + "/schema.graphql", "utf8");

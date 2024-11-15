@@ -5,7 +5,6 @@ import {
   resumeTimer,
 } from "@/app/utils/pausableTime";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import dayjs from "dayjs";
 import { activityApi } from "../library/api";
 
 type StartedTimer = {
@@ -60,7 +59,7 @@ export const timerSlice = createSlice({
   initialState: initialState,
 
   reducers: {
-    start(state, action: PayloadAction<undefined>) {
+    start(state, _action: PayloadAction<undefined>) {
       state.currentTimer = createStartTimer();
       state.record = {
         activity: state.selectedActivity!,
@@ -84,22 +83,11 @@ export const timerSlice = createSlice({
     },
 
     pause(state) {
-      console.log("actually");
-      const resume = state.currentTimer?.currentRecordTimestamp.lastContinue;
-      const now = dayjs(Date.now());
       pauseTimer(state.currentTimer!.currentRecordTimestamp);
       pauseTimer(state.currentTimer!.firstRecordTimestamp);
-
-      // const start = dayjs(Date.now())
-      // state.currentTimer = {
-
-      // }
     },
 
     resume(state) {
-      const resume = state.currentTimer?.currentRecordTimestamp.lastContinue;
-      const now = dayjs(Date.now());
-
       resumeTimer(state.currentTimer!.currentRecordTimestamp);
       resumeTimer(state.currentTimer!.firstRecordTimestamp);
     },
@@ -114,7 +102,6 @@ export const timerSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(createRecord.fulfilled, (state) => {
-      console.log("ended");
       state.record = null;
       state.currentTimer = null;
     });

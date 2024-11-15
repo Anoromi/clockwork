@@ -29,17 +29,10 @@ export default function ActivityItem({ activity }: Props) {
               buttonType="blank"
               textType="icon"
               onClick={() => {
-                console.log("clicked");
                 dispatch(selectDeleteActivity(activity));
               }}
             >
               <Icon icon="ic:round-delete" fontSize={24} />
-
-              {
-                //<div>
-                //Hello there
-                //</div>
-              }
             </CommonButton>
           </div>
         </div>

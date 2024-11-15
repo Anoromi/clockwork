@@ -3,7 +3,7 @@
 import styles from "@/app/[locale]/timer/component/topBar.module.scss";
 import { Metric } from "@/app/backend/database";
 import Flex from "@/app/components/layout/flex";
-import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
+import { useAppSelector } from "@/app/utils/clientUseRedux";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
 
@@ -12,7 +12,6 @@ type Props = {};
 export default function TimerInfo({}: Props) {
   const translate = useTranslations("Timer");
   const state = useAppSelector((state) => state.timer.record);
-  const dispatch = useAppDispatch();
 
   return (
     <>

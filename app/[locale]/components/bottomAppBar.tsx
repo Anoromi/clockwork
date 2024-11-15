@@ -5,14 +5,13 @@ import { useRipple } from "@/app/components/useRipple";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type BottomAppBarProps = {
   locale: string;
 };
 
 export function BottomAppBar({ locale }: BottomAppBarProps) {
-  const route = useRouter();
   const pathName = usePathname();
 
   return (

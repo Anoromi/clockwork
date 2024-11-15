@@ -1,8 +1,5 @@
-import Link from "next/link";
-import CommonButton from "../components/button/commonButton";
-import { useRipple } from "../components/useRipple";
-import styles from "./page.module.scss";
 import { BeginButton } from "./components/beginButton";
+import styles from "./page.module.scss";
 
 export default function Home() {
   return (
