@@ -1,11 +1,10 @@
-const withNextIntl = require("next-intl/plugin")(
-  // This is the default (also the `src` folder is supported out of the box)
-  "./i18n.ts",
-);
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./app/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withNextIntl({
   webpack: {},
 });
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

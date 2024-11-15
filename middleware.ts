@@ -1,14 +1,10 @@
-import createMiddleware from "next-intl/middleware";
-
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ["en", "uk"],
-
-  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-  defaultLocale: "en",
-});
-
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './app/routing';
+ 
+export default createMiddleware(routing);
+ 
 export const config = {
-  // Skip all paths that should not be internationalized
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // Match only internationalized pathnames
+  matcher: ['/', '/(uk|en)/:path*']
 };
+
