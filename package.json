@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen",
-    "hehe": "type-intl generate ./messages/en.json ./src/intl.ts"
+    "generate-intl": "type-intl generate ./messages/en.json ./src/intl.ts"
   },
   "dependencies": {
     "@apollo/client": "3.8.0-beta.5",
