@@ -2,11 +2,10 @@
 
 import styles from "@/app/[locale]/library/components/libraryTabs.module.scss";
 import RippleButton from "@/app/components/ripple-button";
-import { useReactive } from "@/app/components/useReactive";
 import utilStyles from "@/app/styles/utils.module.scss";
-import { Tab } from "@headlessui/react";
+import { Tab, TabList } from "@headlessui/react";
 import classNames from "classnames";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function LibraryTab() {
   let options = [
@@ -23,29 +22,23 @@ export default function LibraryTab() {
 
   const tabIndicatorBox = useRef<HTMLDivElement | null>(null);
 
-  const position = useReactive<{
-    left: number;
-    top: number;
-  } | null>(null);
+  const [position, setPosition] = useState<{ left: number; top: number }>();
 
-  const drawTo = useCallback(
-    (left: number, top: number) => {
-      position.set({
-        left,
-        top,
-      });
-    },
-    [position],
-  );
+  const drawTo = useCallback((left: number, top: number) => {
+    setPosition({
+      left,
+      top,
+    });
+  }, []);
 
   return (
     <>
-      <Tab.List className={styles.tabWrapper} data-tab-wrapper={"true"}>
-        {position.value !== null ? (
+      <TabList className={styles.tabWrapper} data-tab-wrapper={"true"}>
+        {position !== null ? (
           <div
             className={styles.tabIndicatorBox}
             ref={tabIndicatorBox}
-            style={position.value}
+            style={position}
           ></div>
         ) : (
           <></>
@@ -65,7 +58,7 @@ export default function LibraryTab() {
             )}
           </Tab>
         ))}
-      </Tab.List>
+      </TabList>
     </>
   );
 }
