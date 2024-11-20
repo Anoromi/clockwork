@@ -4,7 +4,7 @@ import styles from "@/app/[locale]/library/page.module.scss";
 import Flex from "@/app/components/layout/flex";
 import Title from "@/app/components/text/title";
 import utilStyles from "@/app/styles/utils.module.scss";
-import { Tab } from "@headlessui/react";
+import { TabGroup, TabPanel, TabPanels } from "@headlessui/react";
 import { Fragment } from "react";
 import LibraryAddDialog from "./components/addDialog";
 import LibraryDeleteAcivityDialog from "./components/deleteActivityDialog";
@@ -29,19 +29,17 @@ export default function LibraryPage() {
             <Title href="/">Library</Title>
             <OptionsMenu />
           </Flex>
-
-          <Tab.Group>
-            <Tab.Panels as={Fragment}>
-              <Tab.Panel className={utilStyles.contents}>
+          <TabGroup as={Fragment}>
+            <TabPanels as={Fragment}>
+              <TabPanel as={Fragment}>
                 <LibraryList />
-              </Tab.Panel>
-              <Tab.Panel className={utilStyles.contents}>
+              </TabPanel>
+              <TabPanel as={Fragment}>
                 <ActivityList />
-              </Tab.Panel>
-            </Tab.Panels>
-
+              </TabPanel>
+            </TabPanels>
             <LibraryTab />
-          </Tab.Group>
+          </TabGroup>
         </div>
       </main>
       <LibraryAddDialog />
