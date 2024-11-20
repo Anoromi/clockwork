@@ -28,11 +28,11 @@
   justify-content: center;
   align-items: center;
   row-gap: 0.5rem;
+}
 
-  &Selected {
-    border-end-end-radius: 0rem;
-    border-end-start-radius: 0rem;
-  }
+.buttonSelected {
+  border-end-end-radius: 0rem;
+  border-end-start-radius: 0rem;
 }
 
 .options {
@@ -52,6 +52,7 @@
   &:focus-visible {
     outline: none;
   }
+
   overflow-x: hidden;
 }
 

@@ -5,9 +5,13 @@ import { IActivity } from "@/app/backend/database";
 import RippleButton from "@/app/components/ripple-button";
 import { useRipple } from "@/app/components/useRipple";
 import { surfaceColoring } from "@/app/styles/coloring";
-import utilStyles from "@/app/styles/utils.module.scss";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { Listbox, Transition } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { Fragment } from "react";
@@ -35,21 +39,19 @@ export default function SelectActivity({}: Props) {
               value={null as null | IActivity}
               onChange={(value) => dispatch(selectActivity(value))}
             >
-              <Listbox.Button className={classNames(utilStyles.contents)}>
-                {({ open }) => (
-                  <>
-                    <RippleButton
-                      className={classNames(styles.button, {
-                        [styles.buttonSelected]: open,
-                      })}
-                      as="div"
-                    >
-                      {selectedActivity?.name ?? "Select activity"}
-                      <Icon icon="material-symbols:expand-more" fontSize={30} />
-                    </RippleButton>
-                  </>
-                )}
-              </Listbox.Button>
+              <ListboxButton
+                as={RippleButton}
+                className={({ open }) =>
+                  classNames(styles.button, {
+                    [styles.buttonSelected]: open,
+                  })
+                }
+              >
+                <>
+                  {selectedActivity?.name ?? "Select activity"}
+                  <Icon icon="material-symbols:expand-more" fontSize={30} />
+                </>
+              </ListboxButton>
               <Transition
                 as={Fragment}
                 leave={styles["opacity-leave"]}
@@ -59,14 +61,14 @@ export default function SelectActivity({}: Props) {
                 leaveTo={styles["opacity-leave-to"]}
                 leaveFrom={styles["opacity-leave-from"]}
               >
-                <Listbox.Options
+                <ListboxOptions
                   className={classNames(styles.options)}
                   hidden={false}
                 >
                   {data.data!.map((activity) => (
                     <ActivityOption data={activity} key={activity.name} />
                   ))}
-                </Listbox.Options>
+                </ListboxOptions>
               </Transition>
             </Listbox>
           </span>
