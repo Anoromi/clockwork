@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .flex {
   display: flex;
 }
@@ -28,7 +30,7 @@ $align-items-rules: center, start, end, stretch, baseline;
 
 @for $i from 0 through 40 {
   .gap-y-#{$i} {
-    column-gap: #{$i / 4}rem;
+    column-gap: #{math.div($i, 4)}rem;
   }
 }
 
