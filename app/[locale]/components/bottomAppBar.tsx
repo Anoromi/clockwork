@@ -2,16 +2,16 @@
 
 import styles from "@/app/[locale]/components/bottomAppBar.module.scss";
 import { useRipple } from "@/app/components/useRipple";
+import { Link } from "@/app/routing";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type BottomAppBarProps = {
   locale: string;
 };
 
-export function BottomAppBar({ locale }: BottomAppBarProps) {
+export function BottomAppBar({}: BottomAppBarProps) {
   const pathName = usePathname();
 
   return (
@@ -21,13 +21,13 @@ export function BottomAppBar({ locale }: BottomAppBarProps) {
           icon="material-symbols:timer"
           text="Timer"
           selected={pathName.includes("timer")}
-          href={`/${locale}/timer`}
+          href={`/timer`}
         />
         <AppBarIcon
           icon="fluent:library-20-filled"
           text="Library"
           selected={pathName.includes("library")}
-          href={`/${locale}/library`}
+          href={`/library`}
         />
       </div>
     </>

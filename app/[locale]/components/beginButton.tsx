@@ -9,7 +9,7 @@ import { Link } from "@/app/routing";
 export function BeginButton({ children }: PropsWithChildren<{}>) {
   const { buttonData, rippleData } = useRipple();
   return (
-    <Link href="timer" 
+    <Link href="/timer" 
     {...buttonData}
     className={classNames(styles.button, buttonData.className)}>
       <div {...rippleData}></div>
