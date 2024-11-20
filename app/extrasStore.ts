@@ -11,7 +11,7 @@ const initialState: State = {
   theme: "light",
 };
 
-const extraSlice = createSlice({
+const extrasSlice = createSlice({
   initialState,
   name: "extraStore",
   reducers: {
@@ -27,5 +27,5 @@ const extraSlice = createSlice({
   },
 });
 
-export const { changeTheme, switchTheme } = extraSlice.actions;
-export default extraSlice.reducer;
+export const { changeTheme, switchTheme } = extrasSlice.actions;
+export default extrasSlice.reducer;

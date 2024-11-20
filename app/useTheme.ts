@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Theme, changeTheme } from "./extraStore";
+import { Theme, changeTheme } from "./extrasStore";
 import { useAppDispatch, useAppSelector } from "./utils/clientUseRedux";
 import { isClient } from "./utils/isClient";
 

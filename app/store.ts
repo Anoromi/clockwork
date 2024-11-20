@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { activityApi } from "./[locale]/library/api";
 import libraryReducer from "./[locale]/library/libraryStore";
 import timerReducer from "./[locale]/timer/timerStore";
-import extraReducer from "./extraStore";
+import extraReducer from "./extrasStore";
 
 export const store = configureStore({
   reducer: {

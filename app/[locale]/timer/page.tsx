@@ -1,10 +1,9 @@
 "use client";
-
 import styles from "@/app/[locale]/timer/page.module.scss";
 import CommonButton from "@/app/components/button/commonButton";
 import Flex from "@/app/components/layout/flex";
 import Title from "@/app/components/text/title";
-import { switchTheme } from "@/app/extraStore";
+import { switchTheme } from "@/app/extrasStore";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
