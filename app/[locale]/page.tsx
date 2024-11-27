@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Clockwork</h1>
-      <h2>Record, time, overview</h2>
+      <h2>Record, time, review</h2>
       <BeginButton>Begin</BeginButton>
     </main>
   );
