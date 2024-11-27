@@ -26,14 +26,11 @@ export function useRipple(
     y: number;
     diameter: number;
     startedAt: Date;
-  } | null>(
-    null,
-  );
+  } | null>(null);
 
   const [calming, setCalming] = useState<{
     diameter: number;
   } | null>(null);
-
 
   function calculateRipple(e: ClickEvent) {
     if (ripplePos !== null || params.disabled) return;

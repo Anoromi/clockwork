@@ -59,9 +59,7 @@ export function ActivityForm({
       }}
       mutators={{ ...arrayMutators }}
     >
-      {({
-        handleSubmit,
-      }) => (
+      {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <fieldset disabled={submitting}>
             <Flex flexDirection="column" rowGap={"1rem"}>
@@ -119,7 +117,7 @@ export function ActivityForm({
                           {index + 1}
                         </span>
                         <Field name={`${name}.name`}>
-                          {({  input }) => (
+                          {({ input }) => (
                             <input
                               {...input}
                               type="text"

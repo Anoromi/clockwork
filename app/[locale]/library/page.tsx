@@ -3,7 +3,6 @@
 import styles from "@/app/[locale]/library/page.module.scss";
 import Flex from "@/app/components/layout/flex";
 import Title from "@/app/components/text/title";
-import utilStyles from "@/app/styles/utils.module.scss";
 import { TabGroup, TabPanel, TabPanels } from "@headlessui/react";
 import { Fragment } from "react";
 import LibraryAddDialog from "./components/addDialog";

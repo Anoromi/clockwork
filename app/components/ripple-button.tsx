@@ -21,7 +21,6 @@ export default function RippleButton({
   type = "button",
   disabled,
 }: React.PropsWithChildren<Props>) {
-
   let { buttonData, rippleData } = useRipple({
     disabled,
   });
@@ -38,9 +37,7 @@ export default function RippleButton({
       {...extraProps}
       className={classNames(buttonData.className, className)}
     >
-      <div
-        {...rippleData}
-      ></div>
+      <div {...rippleData}></div>
       {children}
     </Element>
   );

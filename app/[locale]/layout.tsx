@@ -1,14 +1,14 @@
-import "./globals.scss";
 import "reset-css";
+import "./globals.scss";
 
 import styles from "@/app/[locale]/layout.module.scss";
-import { NextIntlClientProvider, useLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Providers from "../providers";
+import { routing } from "../routing";
 import { BottomAppBar } from "./components/bottomAppBar";
 import PageResizer from "./pageResizer";
-import { getMessages } from "next-intl/server";
-import { routing } from "../routing";
 
 export const metadata = {
   title: "Create Next App",
@@ -26,7 +26,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const {locale} = await params
+  const { locale } = await params;
 
   // Show a 404 error if the user requests an unknown locale
   if (!routing.locales.includes(locale as any)) {
@@ -38,14 +38,14 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <NextIntlClientProvider locale={locale} messages={messages}>
-      {
-        <Providers>
-          <PageResizer>
-            <div className={styles.mainPage}>{children}</div>
-            <BottomAppBar locale={locale} />
-          </PageResizer>
-        </Providers>
-      }
+        {
+          <Providers>
+            <PageResizer>
+              <div className={styles.mainPage}>{children}</div>
+              <BottomAppBar locale={locale} />
+            </PageResizer>
+          </Providers>
+        }
       </NextIntlClientProvider>
     </html>
   );
