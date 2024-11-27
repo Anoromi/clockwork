@@ -5,9 +5,13 @@ import { IActivity } from "@/app/backend/database";
 import RippleButton from "@/app/components/ripple-button";
 import { useRipple } from "@/app/components/useRipple";
 import { surfaceColoring } from "@/app/styles/coloring";
-import utilStyles from "@/app/styles/utils.module.scss";
 import { useAppDispatch, useAppSelector } from "@/app/utils/clientUseRedux";
-import { Listbox } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import classNames from "classnames";
 import { useGetActivityQuery } from "../api";
@@ -27,16 +31,12 @@ export function LibrarySelectActivity() {
     <>
       <span className={styles.listbox}>
         <Listbox value={selectedActivity} onChange={onActivityChange}>
-          <Listbox.Button className={utilStyles.contents}>
-            {() => (
-              <RippleButton as="div" className={styles.listboxButton}>
-                {selectedActivity?.name ?? "Activity"}
-                <Icon icon="octicon:chevron-down-12" fontSize={24} />
-              </RippleButton>
-            )}
-          </Listbox.Button>
+          <ListboxButton className={styles.listboxButton} as={RippleButton}>
+            {selectedActivity?.name ?? "Activity"}
+            <Icon icon="octicon:chevron-down-12" fontSize={24} />
+          </ListboxButton>
 
-          <Listbox.Options className={styles.options}>
+          <ListboxOptions className={styles.options}>
             <ActivityOption key={"Empty"} value={null}>
               None
             </ActivityOption>
@@ -49,7 +49,7 @@ export function LibrarySelectActivity() {
                 </ActivityOption>
               ))
             )}
-          </Listbox.Options>
+          </ListboxOptions>
         </Listbox>
       </span>
     </>
@@ -65,17 +65,17 @@ function ActivityOption({
   });
 
   return (
-    <Listbox.Option
+    <ListboxOption
       value={value}
       {...buttonData}
-      className={({ active }) =>
+      className={({ focus }) =>
         classNames(styles.option, surfaceColoring.surfaceNormal, {
-          [surfaceColoring.surfaceElevated]: active,
+          [surfaceColoring.surfaceElevated]: focus,
         })
       }
     >
       <div {...rippleData}></div>
       {children}
-    </Listbox.Option>
+    </ListboxOption>
   );
 }
